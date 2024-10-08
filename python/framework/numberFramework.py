@@ -38,10 +38,32 @@ def abbreviate(number, decimals=3, digits=False, scientific=False):
     abbrev_symbol = masterList.abbreviations[degree]
     return f"{number}{abbrev_symbol}"
 
-# Example usage:
-print(abbreviate(2540000000000660205040000000000000042662602540000000000066020500000000000000000000000000000000000000000000426626025400000000000660205000000000000000000000000000000000000000000004266260254000000000006602050000000000000000000000000000000000000000000042662602540000000000066020500000000000000000000000000000000000000000000426626025400000000000660205000000000000000000000000000000000000000000004266260, 5, 3))  # Output: "254.254B"
-print(abbreviate(254254266260, 10))     # Output: "254.25B"
-#print(abbreviate(254254266260, 10,0))     # Throws error
-print(abbreviate(254254266260, digits=4))  # Output: "254.3B"
-print(abbreviate(2542542000066260, 5, scientific=True))  # Output: "2.54250e+15"
-print(abbreviate(2542542000066260, digits=4, scientific=True))  # Output: "2.542e+15"
+def softcap(function, limitPoint, baseDecay, decayExponent, hardExponent): # https://www.desmos.com/calculator/ofsodmsbbm
+    '''
+    Applies a softcap to the given function.
+
+    Args:
+        function (lambda): The function to apply the softcap to.
+        limitPoint (float): The point at which the softcap starts to apply.
+        baseDecay (float): The base decay value.
+        decayExponent (float): The exponent for the decay function.
+        hardExponent (float): The growing exponent for the decay function.
+    '''
+    from generalFramework import onArgRaiseError, is_lambda
+
+    onArgRaiseError((function, limitPoint, baseDecay, decayExponent, hardExponent), 
+                    ("function", "limitPoint", "baseDecay", "decayExponent", "hardExponent"), 
+                    [7, 2, 2, 2, 2], 
+                    [False, False, False, False, False], 
+                    [False, False, False, False, False], 
+                    [False, False, False, False, False])
+
+    def softcapped_function(number):
+        if number <= limitPoint:
+            return function(number)
+        else:
+            return function(limitPoint) + ((1 + baseDecay) ** (-decayExponent * ((number - limitPoint) ** hardExponent))) * function(number)
+
+    return lambda x: softcapped_function(x)
+
+# HAVE NOT TESTED SOFTCAP AT ALL

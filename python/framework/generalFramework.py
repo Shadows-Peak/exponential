@@ -1,5 +1,5 @@
-# I added comments just for you, Kai
-# P.S. I hope you enjoy excessive
+def is_lambda(FUNCTION): # Checks if the given function/input is a lambda function
+    return isinstance(FUNCTION, type(lambda: None)) and FUNCTION.__name__ == (lambda: None).__name__
 
 def onArgRaiseError(parameters, parameterNames, types, minValues, maxValues, exceptionValues): # General function to generalize the raise error messages to save code lines and create more readability in other functions
     '''
@@ -8,7 +8,7 @@ def onArgRaiseError(parameters, parameterNames, types, minValues, maxValues, exc
     Args:
         parameters (tuple): Tuple of all parameters.
         parameterNames (list): List of all parameter names.
-        types (list): List of all parameter types. (You can nest if a parameter can take multiple types) [0 -> str, 1 -> int, 2 -> float, 3 -> bool, 4 -> list, 5 -> dict, 6 -> tuple]
+        types (list): List of all parameter types. (You can nest if a parameter can take multiple types) [0 -> str, 1 -> int, 2 -> float, 3 -> bool, 4 -> list, 5 -> dict, 6 -> tuple, 7 -> lambda]
         minValues (list): List containing the minimum values of each parameter.
         maxValues (list): List containing the maximum values of each parameter.
         exceptionValues (list): List containing the exception values of each parameter. (You can nest if a parameter can take multiple exception values)
@@ -29,15 +29,18 @@ def onArgRaiseError(parameters, parameterNames, types, minValues, maxValues, exc
             return(type(parameter) == dict)
         elif parameterType == 6:
             return(type(parameter) == tuple)
+        elif parameterType == 7:
+            return is_lambda(parameter)
+
     def convertTypeToName(parameterType): # Function to convert the type(s) to a string
         if type(parameterType) == list: # If the parameter can take multiple types
             typeNameStr = " or " # Joining string
             typeNameList = [] # Initialize dummy list
             for i in range(len(parameterType)): # Iterate through the types
-                typeNameList.append(["a string", "an integer", "a float", "a boolean", "a list", "a dictionary", "a tuple"][parameterType[i]]) # Append the type to the list
+                typeNameList.append(["a string", "an integer", "a float", "a boolean", "a list", "a dictionary", "a tuple", "a lambda"][parameterType[i]]) # Append the type to the list
             typeNameStr = typeNameStr.join(typeNameList) # Join the list into a string with a seperator of " or"
             return typeNameStr # Return the types as a string
-        return ["a string", "an integer", "a float", "a boolean", "a list", "a dictionary", "a tuple"][parameterType] # Return the type as a string
+        return ["a string", "an integer", "a float", "a boolean", "a list", "a dictionary", "a tuple", "a lambda"][parameterType] # Return the type as a string
 
     for i in range(len(parameters)):
         if type(types[i]) == list: # If the parameter can take multiple types
