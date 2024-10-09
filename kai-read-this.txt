@@ -1,8 +1,0 @@
-After seeing how something this simple didnt work (works in the codespace but not the static website), I think I'm
-eventually going to just purchase a cheap Heroku space for us to host stuff on
-
-I'm not going to do this yet  (I only want to spend the money once we have something), but I think its just easiest
-(and most fun) if we have a dynamic website to work with. This also means we likely won't need api use (maybe you're
-sad about that idk but personally this is great)
-
-In the meantime, we can code general systems
