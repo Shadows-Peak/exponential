@@ -1,0 +1,8 @@
+Right now the only things that are stored on the config file is important stuff, but I think that we should consider adding more, like the names of sheets, and dev options/ user data?
+The other thing is how do we plan to organize the sheets for MySQL, 
+my thought would be to create a general one for security/user lists and then 1 per user. 
+
+its more about the framework but every peice of data sent to mysql should be checked and given the NOT NULL tag, because the server automatically does this, and its 
+better to just do it on the program, expecially if there are multiples users at once
+
+
