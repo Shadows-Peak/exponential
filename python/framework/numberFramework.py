@@ -38,6 +38,20 @@ def abbreviate(number, decimals=3, digits=False, scientific=False):
     abbrev_symbol = masterList.abbreviations[degree]
     return f"{number}{abbrev_symbol}"
 
+def clamp(number, minimum, maximum):
+    '''
+    Clamps a number between a minimum and maximum value.
+
+    Args:
+        number (int or float): The number to clamp.
+        minimum (int or float): The minimum value.
+        maximum (int or float): The maximum value.
+    '''
+    from generalFramework import onArgRaiseError
+    onArgRaiseError((number,minimum,maximum),("number","minimum","maximum"),[[1,2],[1,2],[1,2]],[False,False,False],[False,False,False],[False,False,False])
+
+    return max(min(number, maximum), minimum)
+
 # Feel free to change how our softcap works
 def softcap(function, XlimitPoint=False, YlimitPoint=False, baseDecay=1, decayExponent=1, hardExponent=1): # https://www.desmos.com/calculator/ofsodmsbbm
     '''
@@ -131,9 +145,9 @@ def exponential(base, exponentialFactor=1, totalFactor=1, exponentialOffset=0, T
     '''
     return lambda x : totalFactor * (base ** (x * exponentialFactor + exponentialOffset)) + TotalOffset
 
-testFunc = softcap(exponential(base=2,exponentialFactor=2),YlimitPoint=16)
+testFunc = softcap(exponential(base=2,exponentialFactor=2),XlimitPoint=16)
 testFunc2 = softcap(exponential(base=2,exponentialFactor=2),XlimitPoint=2)
 testFunc3 = exponential(base=2,exponentialFactor=2)
-print(testFunc(3))
-print(testFunc2(3))
-print(testFunc3(3))
+#print(testFunc(3))
+#print(testFunc2(3))
+#print(testFunc3(3))
