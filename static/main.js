@@ -1,3 +1,10 @@
+import LargeNumber from '../js/framework/numberframework.js';
+
+const num1 = new LargeNumber('1' + '0'.repeat(603));
+const num2 = new LargeNumber('2');
+const result = num1.add(num2);
+console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
     fetch('/get_value')
@@ -11,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error fetching value:', error));
 });
+
 document.getElementById('signUp').addEventListener('click', function() {
     document.body.innerHTML = `
         <h1>Sign Up</h1>
