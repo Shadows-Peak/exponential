@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5dc; /* Cream color background */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+#value-container {
+    margin-top: 20px;
+    font-size: 18px;
+}

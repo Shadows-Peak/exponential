@@ -38,6 +38,20 @@ def abbreviate(number, decimals=3, digits=False, scientific=False):
     abbrev_symbol = masterList.abbreviations[degree]
     return f"{number}{abbrev_symbol}"
 
+def clamp(number, minimum, maximum):
+    '''
+    Clamps a number between a minimum and maximum value.
+
+    Args:
+        number (int or float): The number to clamp.
+        minimum (int or float): The minimum value.
+        maximum (int or float): The maximum value.
+    '''
+    from generalFramework import onArgRaiseError
+    onArgRaiseError((number,minimum,maximum),("number","minimum","maximum"),[[1,2],[1,2],[1,2]],[False,False,False],[False,False,False],[False,False,False])
+
+    return max(min(number, maximum), minimum)
+
 # Feel free to change how our softcap works
 def softcap(function, XlimitPoint=False, YlimitPoint=False, baseDecay=1, decayExponent=1, hardExponent=1): # https://www.desmos.com/calculator/ofsodmsbbm
     '''
@@ -131,9 +145,45 @@ def exponential(base, exponentialFactor=1, totalFactor=1, exponentialOffset=0, T
     '''
     return lambda x : totalFactor * (base ** (x * exponentialFactor + exponentialOffset)) + TotalOffset
 
-testFunc = softcap(exponential(base=2,exponentialFactor=2),YlimitPoint=16)
+def logarithmic(base, innerFactor=1, totalFactor=1, logarithmicOffset=0, TotalOffset=0):
+    '''
+    Computes the result of a logarithmic function with the given parameters.
+
+    Args:
+        number (float): The input value to the logarithmic function.
+        base (float): The base of the logarithmic function.
+        innerFactor (float, optional): The multiplier for your input.
+        totalFactor (float, optional): The total multiplier applied to the result.
+        logarithmicOffset (float, optional): The offset added to the exponent.
+        TotalOffset (float, optional): The offset added to the final result.
+    '''
+    import math
+    return lambda x : totalFactor * (math.log(innerFactor*x + logarithmicOffset) / math.log(base)) + TotalOffset
+
+def quadratic(a, b=0, c=0):
+    '''
+    Computes the result of a quadratic function with the given parameters.
+
+    Args:
+        a (float): The coefficient of the quadratic term.
+        b (float, optional): The coefficient of the linear term.
+        c (float, optional): The constant term.
+    '''
+    return lambda x : a * x ** 2 + b * x + c
+
+def linear(slope, intercept=0):
+    '''
+    Computes the result of a linear function with the given parameters.
+
+    Args:
+        slope (float): The slope of the linear function.
+        intercept (float, optional): The intercept of the linear function.
+    '''
+    return lambda x : slope * x + intercept
+
+testFunc = softcap(exponential(base=2,exponentialFactor=2),XlimitPoint=16)
 testFunc2 = softcap(exponential(base=2,exponentialFactor=2),XlimitPoint=2)
 testFunc3 = exponential(base=2,exponentialFactor=2)
-print(testFunc(3))
-print(testFunc2(3))
-print(testFunc3(3))
+#print(testFunc(3))
+#print(testFunc2(3))
+#print(testFunc3(3))
