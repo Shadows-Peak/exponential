@@ -27,3 +27,8 @@ Pick Crafter                * Game I played as a kid that was honestly likely on
 Grind Craft                 * Legit OG game. I loved this thing to death. Epitome of linear based progression right here. It feels dynamic, understandable, yet complex all at once. -- https://grindcraft.com/game.html
 Learn to Fly 3              * Almost seems strange to call this an incremental, but it technically is. Fun mechanic and goal of trying to get as high as possible. Visual appeal is strong. -- https://store.steampowered.com/app/589870/Learn_to_Fly_3/
 Duck Life                   * Literally the entirety of duck life was one of my favorite incrementals as a kid. Really simple linear based progression with clearly set goals. -- https://duck-life.io/
+mechanics we should have:
+Acheivements that give some currency: i really like the idea of achievements giving something like mp from hps where you can use it for tuning what you are doing
+Challanges: The challages from dli was one of the best things in it. also challages should have levels where theyvare borderline impossible they make it alot more fun.
+Avoid currency creep. Alot of clickers have levels of currency where all of the other ones do not matter anymore. This removes aome level of progression from the game, instead we should focus on the central game loop.
+Our early game should be simple, with any mechanics that have a level of emergent complexity ir just complex with a trade off it should be later in the game.
