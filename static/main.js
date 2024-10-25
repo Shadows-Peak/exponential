@@ -20,6 +20,7 @@ function fillCircle() {
 
 document.addEventListener('DOMContentLoaded', function() {
     fillCircle();
+    /*
     console.log('DOM fully loaded and parsed');
     fetch('/get_value')
         .then(response => {
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('value-container').innerText = data.value;
         })
         .catch(error => console.error('Error fetching value:', error));
+    */
 });
 
 document.getElementById('signUp').addEventListener('click', function() {
