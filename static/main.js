@@ -5,6 +5,21 @@ const num2 = new LargeNumber('2');
 const result = num1.add(num2);
 console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
 
+function fillCircle() {
+    const fillElement = document.querySelector('.fill');
+    let height = 0;
+    const interval = setInterval(() => {
+        if (height >= 100) {
+            clearInterval(interval);
+        } else {
+            height++;
+            fillElement.style.height = height + '%';
+        }
+    }, 50); // Adjust the interval duration as needed
+}
+
+fillCircle();
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
     fetch('/get_value')
@@ -59,19 +74,3 @@ document.addEventListener('submit', function(event) {
         // Add your login logic here
     }
 });
-
-
-function fillCircle() {
-    const fillElement = document.querySelector('.fill');
-    let height = 0;
-    const interval = setInterval(() => {
-        if (height >= 100) {
-            clearInterval(interval);
-        } else {
-            height++;
-            fillElement.style.height = height + '%';
-        }
-    }, 50); // Adjust the interval duration as needed
-}
-
-fillCircle();
