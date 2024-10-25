@@ -18,9 +18,8 @@ function fillCircle() {
     }, 50); // Adjust the interval duration as needed
 }
 
-fillCircle();
-
 document.addEventListener('DOMContentLoaded', function() {
+    fillCircle();
     console.log('DOM fully loaded and parsed');
     fetch('/get_value')
         .then(response => {
