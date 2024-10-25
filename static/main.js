@@ -59,3 +59,19 @@ document.addEventListener('submit', function(event) {
         // Add your login logic here
     }
 });
+
+
+function fillCircle() {
+    const fillElement = document.querySelector('.fill');
+    let height = 0;
+    const interval = setInterval(() => {
+        if (height >= 100) {
+            clearInterval(interval);
+        } else {
+            height++;
+            fillElement.style.height = height + '%';
+        }
+    }, 50); // Adjust the interval duration as needed
+}
+
+fillCircle();
