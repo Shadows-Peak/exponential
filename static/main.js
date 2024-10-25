@@ -6,16 +6,42 @@ const result = num1.add(num2);
 console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
 
 function fillCircle() {
-    const fillElement = document.querySelector('.fill');
-    let height = 0;
-    const interval = setInterval(() => {
-        if (height >= 100) {
-            clearInterval(interval);
-        } else {
-            height++;
-            fillElement.style.height = height + '%';
-        }
-    }, 50); // Adjust the interval duration as needed
+    const waitForElement = (selector) => {
+        return new Promise((resolve) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                resolve(element);
+                return;
+            }
+
+            const observer = new MutationObserver((mutations, me) => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    resolve(element);
+                    me.disconnect();
+                }
+            });
+
+            observer.observe(document, {
+                childList: true,
+                subtree: true
+            });
+        });
+    };
+
+    waitForElement('.fill').then((fillElement) => {
+        let height = 0;
+        const interval = setInterval(() => {
+            if (height >= 100) {
+                clearInterval(interval);
+            } else {
+                height++;
+                fillElement.style.height = height + '%';
+            }
+        }, 50); // Adjust the interval duration as needed
+    }).catch(() => {
+        console.error('Fill element not found');
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
