@@ -86,7 +86,6 @@ document.getElementById('login').addEventListener('click', function() {
         </form>
     `;
 });
-
 document.addEventListener('submit', function(event) {
     event.preventDefault();
     const form = event.target;
