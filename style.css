@@ -37,7 +37,7 @@ button:hover {
     width: 50px;
     height: 50px;
     background-color: red;
-    border-radius: 50%;
+    border-radius: 50px;
     position: absolute;
     left: 10%;
     top: 20%;
