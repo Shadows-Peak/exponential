@@ -1,5 +1,5 @@
 import LargeNumber from '../js/framework/numberframework.js';
-
+var Points = 0 //Should be retreived from the server. 
 const num1 = new LargeNumber('1' + '0'.repeat(603));
 const num2 = new LargeNumber('2');
 const result = num1.add(num2);
@@ -85,7 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
             </form>
         `;
     });
-    
+    document.getElementById('clickButton').addEventListener('click', function() {
+        Point = Points + ClickValue
+    });
     document.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
