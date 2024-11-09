@@ -24,9 +24,10 @@ class LargeNumber {
     }
 }
 
-export default LargeNumber;
+export class LargeNumber 
 
 // Example usage:
+{}
 const num1 = new LargeNumber('1' + '0'.repeat(603));
 const num2 = new LargeNumber('2');
 const result = num1.add(num2);

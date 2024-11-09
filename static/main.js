@@ -1,4 +1,4 @@
-import LargeNumber from '../js/framework/numberframework.js';
+import LargeNumber from 'static/framework/numberFramework.js';
 var Points = 0 //Should be retreived from the server. 
 const num1 = new LargeNumber('1' + '0'.repeat(603));
 const num2 = new LargeNumber('2');
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Data received:', data);
             document.getElementById('value-container').innerText = data.value;
         })
-        .catch(error => console.error('Error fetching value:', error));
-    */
+        .catch(error => console.error('Error fetching value:', error)); */
+    
 
     document.getElementById('signUp').addEventListener('click', function() {
         document.body.innerHTML = `
@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('clickButton').addEventListener('click', function() {
         Point = Points + ClickValue
     });
+    document.getElementById('counter').innerHTML = "You have: <b>"+abbrev(clicks)+"</b> Dilyan Points";
     document.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
