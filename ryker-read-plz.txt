@@ -6,3 +6,8 @@ its more about the framework but every peice of data sent to mysql should be che
 better to just do it on the program, expecially if there are multiples users at once
 
 
+----------------------------------------------------------
+
+  Via here,
+when testing the app, I got a js console error: `Uncaught ReferenceError: abbrev is not defined` pointing to main.js line 91.
+Upon further inspection I realized that all over main.js, there are references/calls to variables/functions that aren't defined in the js source, but only in the python source. Idk why you guys did that, but I would consider reimplementing them in javascript.
