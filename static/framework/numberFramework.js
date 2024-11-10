@@ -1,4 +1,4 @@
-class LargeNumber {
+export default class LargeNumber {
     constructor(value) {
         this.value = BigInt(value);
     }
@@ -23,8 +23,6 @@ class LargeNumber {
         return this.value.toString();
     }
 }
-
-export class LargeNumber 
 
 // Example usage:
 {}

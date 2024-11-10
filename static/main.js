@@ -1,4 +1,4 @@
-import LargeNumber from 'static/framework/numberFramework.js';
+import LargeNumber from "./framework/numberFramework.js";
 var Points = 0 //Should be retreived from the server. 
 const num1 = new LargeNumber('1' + '0'.repeat(603));
 const num2 = new LargeNumber('2');
