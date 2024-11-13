@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('clickButton').addEventListener('click', function() {
         Points = Points + ClickValue
     });
-    document.getElementById('points').innerHTML = "You have:"+(Points)+" Dilyan Points";
+    
     document.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
