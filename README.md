@@ -1,1 +1,1 @@
-This is the testing branch, it is runnig the github website for testing :) :) :)
+This is the testing branch, it is running the github website for testing :) :) :)
