@@ -86,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     });
     document.getElementById('clickButton').addEventListener('click', function() {
-        Point = Points + ClickValue
+        Points = Points + ClickValue
     });
-    document.getElementById('counter').innerHTML = "You have: <b>"+abbrev(clicks)+"</b> Dilyan Points";
+    document.getElementById('counter').innerHTML = "You have: <b>"(Points)+"</b> Dilyan Points";
     document.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
