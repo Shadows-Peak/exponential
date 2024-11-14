@@ -1,5 +1,5 @@
 
-import { Points } from "./variables";
+import { Points } from "./variables.js";
 function GameTick() {
     document.getElementById('points').innerHTML = "You have:"+(Points)+" Dilyan Points";
     //add anything that should be constantly running 
