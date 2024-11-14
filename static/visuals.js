@@ -6,3 +6,4 @@ function GameTick() {
 
 }
 setInterval(GameTick, 10);
+
