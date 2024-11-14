@@ -1,3 +1,4 @@
+
 import { Points } from "./variables";
 function GameTick() {
     document.getElementById('points').innerHTML = "You have:"+(Points)+" Dilyan Points";
