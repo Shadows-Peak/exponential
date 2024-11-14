@@ -1,6 +1,5 @@
 import LargeNumber from "./framework/numberFramework.js";
-import { ClickValue } from "./variables.js";
-import { Points } from "./variables.js";
+//import { ClickValue } from "./variables.js";
 const num1 = new LargeNumber('1' + '0'.repeat(603));
 const num2 = new LargeNumber('2');
 const result = num1.add(num2);
@@ -87,7 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     });
     document.getElementById('clickButton').addEventListener('click', function() {
-        window['Points'] += ClickValue
+        Points += ClickValue
+        // Please :c
+        // ;-;
+        // :3 ill do anything
     });
     
     document.addEventListener('submit', function(event) {
