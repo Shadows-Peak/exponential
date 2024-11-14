@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     });
     document.getElementById('clickButton').addEventListener('click', function() {
-        Points += ClickValue
+        window['Points'] += ClickValue
     });
     
     document.addEventListener('submit', function(event) {
