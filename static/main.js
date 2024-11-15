@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // ;-;
         // :3 ill do anything
     });
-    
     document.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
