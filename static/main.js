@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     });
     document.getElementById('clickButton').addEventListener('click', function() {
-        Points += ClickValue
+        window.Points += Window.ClickValue
         // Please :c
         // ;-;
         // :3 ill do anything
