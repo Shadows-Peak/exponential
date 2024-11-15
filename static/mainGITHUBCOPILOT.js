@@ -1,3 +1,4 @@
+/*
 function hashData(data, secretKey) {
     return CryptoJS.SHA256(data + secretKey).toString();
 }
@@ -21,3 +22,4 @@ function submitScore(username, score) {
         console.error('Error:', error);
     });
 }
+*/

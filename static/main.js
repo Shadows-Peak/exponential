@@ -1,9 +1,9 @@
-import LargeNumber from "./framework/numberFramework.js";
-var Points = 0 //Should be retreived from the server. 
-const num1 = new LargeNumber('1' + '0'.repeat(603));
-const num2 = new LargeNumber('2');
-const result = num1.add(num2);
-console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
+//import LargeNumber from "./framework/numberFramework.js";
+//import { ClickValue } from "./variables.js";
+//const num1 = new LargeNumber('1' + '0'.repeat(603));
+//const num2 = new LargeNumber('2');
+//const result = num1.add(num2);
+//console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
 
 function fillCircle() {
     const waitForElement = (selector) => {
@@ -86,9 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     });
     document.getElementById('clickButton').addEventListener('click', function() {
-        Points = Points + ClickValue
+        Points += ClickValue
+        // Please :c
+        // ;-;
+        // :3 ill do anything
     });
-    document.getElementById('points').innerHTML = "You have: <b>"+(Points)+"</b> Dilyan Points";
     document.addEventListener('submit', function(event) {
         event.preventDefault();
         const form = event.target;
