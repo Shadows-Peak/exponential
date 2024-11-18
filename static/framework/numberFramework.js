@@ -1,5 +1,4 @@
-
-/*export default class LargeNumber {
+class LargeNumber {
     constructor(value) {
         this.value = BigInt(value);
     }
@@ -31,4 +30,3 @@ const num1 = new LargeNumber('1' + '0'.repeat(603));
 const num2 = new LargeNumber('2');
 const result = num1.add(num2);
 console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
-*/
