@@ -1,10 +1,3 @@
-//import LargeNumber from "./framework/numberFramework.js";
-//import { ClickValue } from "./variables.js";
-//const num1 = new LargeNumber('1' + '0'.repeat(603));
-//const num2 = new LargeNumber('2');
-//const result = num1.add(num2);
-//console.log(result.toString()); // Outputs a number with 603 zeros followed by 2
-
 function fillCircle() {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
@@ -72,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </form>
         `;
     });
-    
     document.getElementById('login').addEventListener('click', function() {
         document.body.innerHTML = `
             <h1>Login</h1>
@@ -102,7 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add your sign-up logic here
         } else if (form.id === 'login-form') {
             console.log('Login Form Data:', data);
-            // Add your login logic here
+            if (document.getElementById('username')  === '') {
+                if (document.getElementById('password' === '')){
+                    currentpage += 1
+                }
+            }
         }
     });
 });
