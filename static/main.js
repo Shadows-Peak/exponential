@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <button type="submit">Submit</button>
+                <button type="submit" id="submitbutton">Submit</button>
             </form>
         `;
     });
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        if ((document.getElementById('username') != 'Very-Secure-Username.gov') && (document.getElementById('password') != 'thosewhoknow')) {
+        if ((document.getElementById('username') != 'Very-Secure-Username.gov') || (document.getElementById('password') != 'thosewhoknow')) {
             const popup = document.createElement('div');
             popup.style.position = 'fixed';
             popup.style.top = '50%';
@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 document.getElementById('submitbutton').removeChild(popup);
             }, 3000);
+        } else {
+            alert("yippeee!!!");
         }
 
         if (form.id === 'signup-form') {
