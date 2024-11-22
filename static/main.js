@@ -91,8 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if ((document.getElementById('username') != 'Very-Secure-Username.gov') || (document.getElementById('password') != 'thosewhoknow')) {
             const popup = document.createElement('div');
-            const header = document.createElement('h1');
-            header.innerText = 'Incorrect username or password. Please try again.';
+            const error = doceument.createElement("h1");
+            error.textContent = "Incorrect username or password. Please try again.";
+            document.body.appendChild(error);
             popup.appendChild(header);
             popup.style.position = 'fixed';
             popup.style.top = '50%';
