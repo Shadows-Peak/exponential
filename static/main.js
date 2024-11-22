@@ -91,9 +91,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if ((document.getElementById('username') != 'Very-Secure-Username.gov') || (document.getElementById('password') != 'thosewhoknow')) {
             const popup = document.createElement('div');
-            const header = document.createElement('h1');
-            header.innerHTML = 'Incorrect username or password. Please try again.';
-            popup.appendChild(header);
+            document.getElementById('submitbutton').appendChild(popup);
+            const popupTXT = document.createElement("h1");
+            popupTXT.textContent = 'Incorrect username or password. Please try again.';
+            popup.appendChild(popupTXT);
             popup.style.position = 'fixed';
             popup.style.top = '50%';
             popup.style.left = '50%';
@@ -102,8 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.style.backgroundColor = 'white';
             popup.style.border = '1px solid black';
             popup.style.zIndex = '1000';
-
-            document.getElementById('submitbutton').appendChild(popup);
 
             setTimeout(() => {
                 document.getElementById('submitbutton').removeChild(popup);
