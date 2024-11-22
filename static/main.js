@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <input type="text" id="username" name="username" required><br><br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                <button type="submit">Submit</button>
+                <button type="submit" id="submitbutton">Submit</button>
             </form>
         `;
     });
@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.style.zIndex = '1000';
             popup.innerText = 'Incorrect username or password. Please try again.';
 
-            document.getElementById('submit').appendChild(popup);
+            document.getElementById('submitbutton').appendChild(popup);
 
             setTimeout(() => {
-                document.getElementById('submit').removeChild(popup);
+                document.getElementById('submitbutton').removeChild(popup);
             }, 3000);
         }
 
