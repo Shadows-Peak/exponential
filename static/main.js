@@ -37,7 +37,7 @@ function fillCircle() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fillCircle();
     /*
     console.log('DOM fully loaded and parsed');
@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('value-container').innerText = data.value;
         })
         .catch(error => console.error('Error fetching value:', error)); */
-    
 
-    document.getElementById('signUp').addEventListener('click', function() {
+
+    document.getElementById('signUp').addEventListener('click', function () {
         document.body.innerHTML = `
             <h1>Sign Up</h1>
             <form id="signup-form">
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </form>
         `;
     });
-    document.getElementById('login').addEventListener('click', function() {
+    document.getElementById('login').addEventListener('click', function () {
         document.body.innerHTML = `
             <h1>Login</h1>
             <form id="login-form">
@@ -77,25 +77,44 @@ document.addEventListener('DOMContentLoaded', function() {
             </form>
         `;
     });
-    document.getElementById('clickButton').addEventListener('click', function() {
+    document.getElementById('clickButton').addEventListener('click', function () {
         Points += ClickValue
         // Please :c
         // ;-;
         // :3 ill do anything
     });
-    document.addEventListener('submit', function(event) {
+    document.addEventListener('submit', function (event) {
         event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-    
+
+        if ((document.getElementById('username') != 'Very-Secure-Username.gov') && (document.getElementById('password') != 'thosewhoknow')) {
+            const popup = document.createElement('div');
+            popup.style.position = 'fixed';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.padding = '20px';
+            popup.style.backgroundColor = 'white';
+            popup.style.border = '1px solid black';
+            popup.style.zIndex = '1000';
+            popup.innerText = 'Incorrect username or password. Please try again.';
+
+            document.getElementById('submit').appendChild(popup);
+
+            setTimeout(() => {
+                document.getElementById('submit').removeChild(popup);
+            }, 3000);
+        }
+
         if (form.id === 'signup-form') {
             console.log('Sign Up Form Data:', data);
             // Add your sign-up logic here
         } else if (form.id === 'login-form') {
             console.log('Login Form Data:', data);
-            if (document.getElementById('username')  === '') {
-                if (document.getElementById('password' === '')){
+            if (document.getElementById('username') === '') {
+                if (document.getElementById('password' === '')) {
                     currentpage += 1
                 }
             }
