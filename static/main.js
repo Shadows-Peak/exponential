@@ -1,3 +1,4 @@
+console.log(process.env.API_Key);
 function fillCircle() {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
