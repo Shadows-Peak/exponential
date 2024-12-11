@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const form = event.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-        if ((formData['username'] != 'Very-Secure-Username.gov') || (formData['password'] != 'thosewhoknow')) {
+        if ((data['username'] != 'Very-Secure-Username.gov') || (data['password'] != 'thosewhoknow')) {
             const popup = document.createElement('div');
             document.body.appendChild(popup);
             const popupTXT = document.createElement("h1");
