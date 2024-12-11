@@ -1,9 +1,11 @@
 function GameTick() {
-    document.getElementById('points').innerHTML = "You have:" + (Points) + " Dilyan Points";
+    if (document.getElementById('points')) {
+        document.getElementById('points').innerHTML = "You have:" + (Points) + " Dilyan Points";
+    }
     //add anything that should be constantly running\
-    roomids = document.querySelectorAll('[room-id]');
-    document.getElementById('value-container').innerHTML = roomids
-
+    roomids = document.querySelectorAll('[data-room-id]');
+    //sconsole.log(Points)
 }
-setInterval(GameTick, 10);
-
+document.addEventListener('DOMContentLoaded', function () {
+    setInterval(GameTick, 10);
+});
