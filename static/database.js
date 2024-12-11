@@ -7,5 +7,5 @@ function get_pass(username) {
     api.fetchTable(Table1)
 
 }
-output = api.fetchTable(Table1)
-document.getElementById('version').innerHTML = (output);
+const output = api.fetchTable(Table1);
+document.getElementById('version').innerHTML = "version " + (output) + ".";
