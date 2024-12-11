@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="fill"></div>
                 </div>
                 <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
-                <h1 style="float:left" id="version" >login 1.1 </h1>
+                <h1 style="float:left" id="version" >login 1.2 </h1>
                 <script type="text/javascript" src="./static/variables.js"></script>
                 <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
                 <script type="text/javascript" src="./static/main.js"></script>
