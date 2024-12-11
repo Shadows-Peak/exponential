@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if ((document.getElementById('username') != 'Very-Secure-Username.gov') || (document.getElementById('password') != 'thosewhoknow')) {
             const popup = document.createElement('div');
-            document.getElementById('submitbutton').appendChild(popup);
+            document.body.appendChild(popup);
             const popupTXT = document.createElement("h1");
             popupTXT.textContent = 'Incorrect username or password. Please try again.';
             popup.appendChild(popupTXT);
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.style.zIndex = '1000';
 
             setTimeout(() => {
-                document.getElementById('submitbutton').removeChild(popup);
+                document.body.removeChild(popup);
             }, 3000);
         } else {
             alert("yippeee!!!");
