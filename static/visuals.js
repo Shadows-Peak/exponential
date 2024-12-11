@@ -8,5 +8,6 @@ function GameTick() {
     });
     document.getElementById('value-container').innerHTML = iteration
 }
-setInterval(GameTick, 10);
-
+document.addEventListener('DOMContentLoaded', function () {
+    setInterval(GameTick, 10);
+});
