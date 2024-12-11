@@ -9,6 +9,23 @@ body {
     font-family: Arial, sans-serif;
 }
 
+#top, #bottom, #left, #right {
+	background: #e3e3c8;
+	position: fixed;
+}
+#left, #right {
+	top: 0; bottom: 0;
+	width: 15px;
+}
+#left { left: 0; }
+#right { right: 0; }	
+#top, #bottom {
+	left: 0; right: 0;
+	height: 15px;
+}
+#top { top: 0; }
+#bottom { bottom: 0; }
+
 h1 {
     margin-bottom: 20px;
 }
