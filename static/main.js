@@ -75,8 +75,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
                 <button type="submit" id="submitbutton">Submit</button>
+                <button id="backButton">Back</button>
             </form>
         `;
+
+        document.getElementById('backButton').addEventListener('click', function () {
+            document.body.innerHTML = `
+                <h1>Dilyan Lopez Exponential</h1>
+                <hr>
+                <button data-room-id=0 id="signUp"> Sign Up</button>
+                <button data-room-id=0 id="login">Login</button>
+                <div data-room-id=0 id="value-container">Loading...</div>
+                <button data-room-id=2 id="clickButton"> Click Here </button>
+                <div data-room-id=2 class="circle">
+                    <div class="fill"></div>
+                </div>
+                <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
+                <h1 style="float:left" id="version" >login 1.1 </h1>
+            `;
+        });
     });
     document.getElementById('clickButton').addEventListener('click', function () {
         Points += ClickValue
