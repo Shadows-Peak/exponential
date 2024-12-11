@@ -121,8 +121,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h1>This is a test logged in page</h1>
                 <p>Username: ${data.username}</p>
                 <p>Password: ${data.password}</p>
-                <p>Points: ${Points}</p>
                 <p>Random vars to test</p>
+                <button data-room-id=2 id="clickButton"> Click Here </button>
+                <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
             `;
             if (document.getElementById('username') === '') {
                 if (document.getElementById('password' === '')) {
