@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching value:', error)); */
 
-
     document.getElementById('signUp').addEventListener('click', function () {
         document.body.innerHTML = `
             <h1>Sign Up</h1>
@@ -108,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 document.body.removeChild(popup);
             }, 3000);
+            return;
         } else {
             alert("yippeee!!!");
         }
@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add your sign-up logic here
         } else if (form.id === 'login-form') {
             console.log('Login Form Data:', data);
+            document.body.innerHTML = `
+                <h1>This is a test logged in page</h1>
+                <p>Username: ${data.username}</p>
+                <p>Password: ${data.password}</p>
+                <p>Points: ${Points}</p>
+                <p>Random vars to test</p>
+            `;
             if (document.getElementById('username') === '') {
                 if (document.getElementById('password' === '')) {
                     currentpage += 1
