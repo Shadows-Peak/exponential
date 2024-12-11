@@ -4,7 +4,7 @@ function GameTick() {
     }
     //add anything that should be constantly running\
     roomids = document.querySelectorAll('[data-room-id]');
-    //console.log(Points)
+    //sconsole.log(Points)
 }
 document.addEventListener('DOMContentLoaded', function () {
     setInterval(GameTick, 10);
