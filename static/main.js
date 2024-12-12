@@ -67,7 +67,7 @@ function menuLoad() {
                 document.getElementById('signUp').removeEventListener('click');
                 document.getElementById('login').removeEventListener('click');
                 document.getElementById('backButton').removeEventListener('click');
-                document.getElementById('submit').removeEventListener('click');
+                document.removeEventListener('submit');
                 menuLoad();
             });
         });
@@ -144,7 +144,9 @@ function gameLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
 
-        setInterval(GameTick, 10);
+        document.addEventListener('DOMContentLoaded', function () {
+            setInterval(GameTick, 10);
+        });
 
         // Event Listeners
         document.getElementById('clickButton').addEventListener('click', function () {
