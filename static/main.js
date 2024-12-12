@@ -145,11 +145,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>Random vars to test</p>
                 <button data-room-id=2 id="clickButton"> Click Here </button>
                 <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
-                <script type="text/javascript" src="./static/variables.js"></script>
-                <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
-                <script type="text/javascript" src="./static/main.js"></script>
-                <script type="text/javascript" src="./static/visuals.js"></script>
             `;
+
+            const scripts = [
+                './static/database.js',
+                './static/variables.js',
+                './static/framework/numberFramework.js',
+                './static/main.js',
+                './static/visuals.js'
+            ];
+
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = src;
+                document.body.appendChild(script);
+            });
             if (document.getElementById('username') === '') {
                 if (document.getElementById('password' === '')) {
                     currentpage += 1

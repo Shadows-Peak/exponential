@@ -8,4 +8,6 @@ function get_pass(username) {
 
 }
 const output = api.fetchTable(Table1);
-document.getElementById('version').innerHTML = "version " + (output) + ".";
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('version').innerHTML = "version " + (output) + ".";
+});
