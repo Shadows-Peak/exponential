@@ -39,21 +39,32 @@ function fillCircle() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    fillCircle();
-    /*
-    console.log('DOM fully loaded and parsed');
-    fetch('/get_value')
-        .then(response => {
-            console.log('Response received:', response);
-            return response.json();
-        })
-        .then(data => {
-            console.log('Data received:', data);
-            document.getElementById('value-container').innerText = data.value;
-        })
-        .catch(error => console.error('Error fetching value:', error)); */
+function menuLoad() {
+    // HTML Load
+    document.body.innerHTML = `
+        <div id="left"></div>
+        <div id="right"></div>
+        <div id="top"></div>
+        <div id="bottom"></div>
+        <h1>Dilyan Lopez Exponential</h1>
+        <hr>
+        <button data-room-id=0 id="signUp"> Sign Up</button>
+        <button data-room-id=0 id="login">Login</button>
+        <div data-room-id=0 id="value-container">Loading...</div>
+        <button data-room-id=2 id="clickButton"> Click Here </button>
+        <div data-room-id=2 class="circle">
+            <div class="fill"></div>
+        </div>
+        <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
+        <h1 id="version" >login 1.3 </h1>
+        <script type="text/javascript" src="./static/database.js"></script>
+        <script type="text/javascript" src="./static/variables.js"></script>
+        <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
+        <script type="text/javascript" src="./static/main.js"></script>
+        <script type="text/javascript" src="./static/visuals.js"></script>
+    `;
 
+    // Event Listeners
     document.getElementById('signUp').addEventListener('click', function () {
         document.body.innerHTML = `
             <h1>Sign Up</h1>
@@ -80,27 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
 
         document.getElementById('backButton').addEventListener('click', function () {
-            document.body.innerHTML = `
-                <h1>Dilyan Lopez Exponential</h1>
-                <hr>
-                <button data-room-id=0 id="signUp"> Sign Up</button>
-                <button data-room-id=0 id="login">Login</button>
-                <div data-room-id=0 id="value-container">Loading...</div>
-                <button data-room-id=2 id="clickButton"> Click Here </button>
-                <div data-room-id=2 class="circle">
-                    <div class="fill"></div>
-                </div>
-                <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
-                <h1 style="float:left" id="version" >login 1.2 </h1>
-                <script type="text/javascript" src="./static/variables.js"></script>
-                <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
-                <script type="text/javascript" src="./static/main.js"></script>
-                <script type="text/javascript" src="./static/visuals.js"></script>
-            `;
+            menuLoad();
         });
-    });
-    document.getElementById('clickButton').addEventListener('click', function () {
-        Points += ClickValue
     });
     document.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -135,34 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add your sign-up logic here
         } else if (form.id === 'login-form') {
             console.log('Login Form Data:', data);
-            document.body.innerHTML = `
-                <h1>This is a test logged in page</h1>
-                <p>Username: ${data.username}</p>
-                <p>Password: ${data.password}</p>
-                <p>Random vars to test</p>
-                <button data-room-id=2 id="clickButton"> Click Here </button>
-                <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
-            `;
 
-            const scripts = [
-                './static/database.js',
-                './static/variables.js',
-                './static/framework/numberFramework.js',
-                './static/main.js',
-                './static/visuals.js'
-            ];
-
-            scripts.forEach(src => {
-                const script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = src;
-                document.body.appendChild(script);
-            });
-
-            // Add event listener for the click button back
-            document.getElementById('clickButton').addEventListener('click', function () {
-                Points += ClickValue
-            });
+            // Load game
+            gameLoad();
 
             if (document.getElementById('username') === '') {
                 if (document.getElementById('password' === '')) {
@@ -171,4 +138,50 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+}
+function gameLoad() {
+    // HTML Load
+    document.body.innerHTML = `
+        <h1>This is a test logged in page</h1>
+        <p>Username: ${data.username}</p>
+        <p>Password: ${data.password}</p>
+        <p>Random vars to test</p>
+        <button data-room-id=2 id="clickButton"> Click Here </button>
+        <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
+    `;
+    const scripts = [
+        './static/database.js',
+        './static/variables.js',
+        './static/framework/numberFramework.js',
+        './static/main.js',
+        './static/visuals.js'
+    ];
+    scripts.forEach(src => {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        document.body.appendChild(script);
+    });
+
+    // Event Listeners
+    document.getElementById('clickButton').addEventListener('click', function () {
+        Points += ClickValue
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    fillCircle();
+    menuLoad();
+    /*
+    console.log('DOM fully loaded and parsed');
+    fetch('/get_value')
+        .then(response => {
+            console.log('Response received:', response);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data received:', data);
+            document.getElementById('value-container').innerText = data.value;
+        })
+        .catch(error => console.error('Error fetching value:', error)); */
 });
