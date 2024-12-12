@@ -51,12 +51,11 @@ function menuLoad() {
         <button data-room-id=0 id="signUp"> Sign Up</button>
         <button data-room-id=0 id="login">Login</button>
         <div data-room-id=0 id="value-container">Loading...</div>
-        <button data-room-id=2 id="clickButton"> Click Here </button>
         <div data-room-id=2 class="circle">
             <div class="fill"></div>
         </div>
-        <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
-        <h1 id="version" >login 1.3 </h1>
+        <p>Kai: Everything is moved into the logged in page in terms of game functionality. The html now needs to be loaded in code as well, but I will likely add separate html files with empty everything but body so we can just edit those and then yoink the data in them from js so we don't have to write it all in js anyways im yapping and its only 12.</P>
+        <h1 id="version" >login 1.4 </h1>
         <script type="text/javascript" src="./static/database.js"></script>
         <script type="text/javascript" src="./static/variables.js"></script>
         <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
@@ -148,20 +147,12 @@ function gameLoad() {
         <p>Random vars to test</p>
         <button data-room-id=2 id="clickButton"> Click Here </button>
         <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
+        <script type="text/javascript" src="./static/database.js"></script>
+        <script type="text/javascript" src="./static/variables.js"></script>
+        <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
+        <script type="text/javascript" src="./static/main.js"></script>
+        <script type="text/javascript" src="./static/visuals.js"></script>
     `;
-    const scripts = [
-        './static/database.js',
-        './static/variables.js',
-        './static/framework/numberFramework.js',
-        './static/main.js',
-        './static/visuals.js'
-    ];
-    scripts.forEach(src => {
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = src;
-        document.body.appendChild(script);
-    });
 
     // Event Listeners
     document.getElementById('clickButton').addEventListener('click', function () {
