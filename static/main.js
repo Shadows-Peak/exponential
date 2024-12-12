@@ -134,6 +134,8 @@ function gameLoad() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
+        
+        setInterval(GameTick, 10);
 
         // Event Listeners
         document.getElementById('clickButton').addEventListener('click', function () {

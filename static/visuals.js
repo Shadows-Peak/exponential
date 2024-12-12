@@ -7,6 +7,3 @@ function GameTick() {
     roomids = document.querySelectorAll('[data-room-id]');
     //sconsole.log(Points)
 }
-document.addEventListener('DOMContentLoaded', function () {
-    setInterval(GameTick, 10);
-});
