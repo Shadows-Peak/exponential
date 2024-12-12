@@ -41,7 +41,15 @@ function fillCircle() {
 
 function menuLoad() {
     // HTML Load
-    document.body.innerHTML = `
+    fetch('./templates/menu.html')
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            document.body.innerHTML = doc.body.innerHTML;
+        })
+        .catch(error => console.error('Error loading menu.html:', error));
+        /*document.body.innerHTML = `
         <div id="left"></div>
         <div id="right"></div>
         <div id="top"></div>
@@ -61,7 +69,7 @@ function menuLoad() {
         <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
         <script type="text/javascript" src="./static/main.js"></script>
         <script type="text/javascript" src="./static/visuals.js"></script>
-    `;
+    `;*/
 
     // Event Listeners
     document.getElementById('signUp').addEventListener('click', function () {
