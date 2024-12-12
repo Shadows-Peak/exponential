@@ -48,6 +48,8 @@ function menuLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
 
+        fillCircle();
+
         // Event Listeners
         document.getElementById('signUp').addEventListener('click', function () {
             document.body.innerHTML = `
@@ -147,10 +149,7 @@ function gameLoad() {
     .catch(error => console.error('Error loading game.html:', error));
 }
 
-import { GameTick } from './visuals.js';
-
 document.addEventListener('DOMContentLoaded', function () {
-    fillCircle();
     menuLoad();
     /*
     console.log('DOM fully loaded and parsed');

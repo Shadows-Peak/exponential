@@ -1,4 +1,4 @@
-const {GristDocAPI} = require('grist-api');
+/*const {GristDocAPI} = require('grist-api');
 
 // Put here the URL of your document.
 const DOC_URL = "https://docs.getgrist.com/9KC8xj6xEYzA/docs";
@@ -19,4 +19,4 @@ async function main() {
   await api.syncTable('Food', [{Name: 'eggs', AmountToBuy: 0}], ['Name']);
 }
 
-main();
+main();*/
