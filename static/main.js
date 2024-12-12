@@ -101,9 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('clickButton').addEventListener('click', function () {
         Points += ClickValue
-        // Please :c
-        // ;-;
-        // :3 ill do anything
     });
     document.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -161,6 +158,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 script.src = src;
                 document.body.appendChild(script);
             });
+
+            // Add event listener for the click button back
+            document.getElementById('clickButton').addEventListener('click', function () {
+                Points += ClickValue
+            });
+
             if (document.getElementById('username') === '') {
                 if (document.getElementById('password' === '')) {
                     currentpage += 1
