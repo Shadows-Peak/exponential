@@ -147,6 +147,8 @@ function gameLoad() {
     .catch(error => console.error('Error loading game.html:', error));
 }
 
+import { GameTick } from './visuals.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     fillCircle();
     menuLoad();
