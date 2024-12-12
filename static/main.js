@@ -42,14 +42,14 @@ function fillCircle() {
 function menuLoad() {
     // HTML Load
     fetch('./templates/menu.html')
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            document.body.innerHTML = doc.body.innerHTML;
-        })
-        .catch(error => console.error('Error loading menu.html:', error));
-        /*document.body.innerHTML = `
+    .then(response => response.text())
+    .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        document.body.innerHTML = doc.body.innerHTML;
+    })
+    .catch(error => console.error('Error loading menu.html:', error));
+    /*document.body.innerHTML = `
         <div id="left"></div>
         <div id="right"></div>
         <div id="top"></div>
