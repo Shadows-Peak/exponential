@@ -58,9 +58,12 @@ function menuLoad() {
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required><br><br>
                     <button type="submit" id="submitbutton">Submit</button>
-                    <button id="backButton">Back</button>
+                    <button type="button" id="backButton">Back</button>
                 </form>
             `;
+            document.getElementById('backButton').addEventListener('click', function () {
+                menuLoad();
+            });
         });
         document.getElementById('login').addEventListener('click', function () {
             document.body.innerHTML = `
@@ -74,9 +77,9 @@ function menuLoad() {
                     <button type="button" id="backButton">Back</button>
                 </form>
             `;
-        });
-        document.getElementById('backButton').addEventListener('click', function () {
-            menuLoad();
+            document.getElementById('backButton').addEventListener('click', function () {
+                menuLoad();
+            });
         });
         document.addEventListener('submit', function (event) {
             event.preventDefault();
