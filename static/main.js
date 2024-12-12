@@ -49,27 +49,6 @@ function menuLoad() {
         document.body.innerHTML = doc.body.innerHTML;
     })
     .catch(error => console.error('Error loading menu.html:', error));
-    /*document.body.innerHTML = `
-        <div id="left"></div>
-        <div id="right"></div>
-        <div id="top"></div>
-        <div id="bottom"></div>
-        <h1>Dilyan Lopez Exponential</h1>
-        <hr>
-        <button data-room-id=0 id="signUp"> Sign Up</button>
-        <button data-room-id=0 id="login">Login</button>
-        <div data-room-id=0 id="value-container">Loading...</div>
-        <div data-room-id=2 class="circle">
-            <div class="fill"></div>
-        </div>
-        <p>Kai: Everything is moved into the logged in page in terms of game functionality. The html now needs to be loaded in code as well, but I will likely add separate html files with empty everything but body so we can just edit those and then yoink the data in them from js so we don't have to write it all in js anyways im yapping and its only 12.</P>
-        <h1 id="version" >login 1.4 </h1>
-        <script type="text/javascript" src="./static/database.js"></script>
-        <script type="text/javascript" src="./static/variables.js"></script>
-        <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
-        <script type="text/javascript" src="./static/main.js"></script>
-        <script type="text/javascript" src="./static/visuals.js"></script>
-    `;*/
 
     // Event Listeners
     document.getElementById('signUp').addEventListener('click', function () {
@@ -148,19 +127,15 @@ function menuLoad() {
 }
 function gameLoad() {
     // HTML Load
-    document.body.innerHTML = `
-        <h1>This is a test logged in page</h1>
-        <p>Username: ${data.username}</p>
-        <p>Password: ${data.password}</p>
-        <p>Random vars to test</p>
-        <button data-room-id=2 id="clickButton"> Click Here </button>
-        <h1 data-room-id=2 id="points"> You have XYZ Points </h1>
-        <script type="text/javascript" src="./static/database.js"></script>
-        <script type="text/javascript" src="./static/variables.js"></script>
-        <script type="text/javascript" src="./static/framework/numberFramework.js"></script>
-        <script type="text/javascript" src="./static/main.js"></script>
-        <script type="text/javascript" src="./static/visuals.js"></script>
-    `;
+    // HTML Load
+    fetch('./templates/game.html')
+    .then(response => response.text())
+    .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        document.body.innerHTML = doc.body.innerHTML;
+    })
+    .catch(error => console.error('Error loading game.html:', error));
 
     // Event Listeners
     document.getElementById('clickButton').addEventListener('click', function () {
