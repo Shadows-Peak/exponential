@@ -4,6 +4,8 @@
     "grist-api": "^0.1.7"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "jest": "^29.7.0"
   }
 }

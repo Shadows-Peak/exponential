@@ -64,6 +64,10 @@ function menuLoad() {
                 </form>
             `;
             document.getElementById('backButton').addEventListener('click', function () {
+                document.getElementById('signUp').removeEventListener('click');
+                document.getElementById('login').removeEventListener('click');
+                document.getElementById('backButton').removeEventListener('click');
+                document.getElementById('submit').removeEventListener('click');
                 menuLoad();
             });
         });
