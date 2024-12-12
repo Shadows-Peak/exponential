@@ -85,6 +85,7 @@ function menuLoad() {
         });
         document.addEventListener('submit', function (event) {
             event.preventDefault();
+            alert(event.defaultPrevented);
             const form = event.target;
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
