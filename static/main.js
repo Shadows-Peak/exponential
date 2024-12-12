@@ -74,10 +74,9 @@ function menuLoad() {
                     <button id="backButton">Back</button>
                 </form>
             `;
-
-            document.getElementById('backButton').addEventListener('click', function () {
-                menuLoad();
-            });
+        });
+        document.getElementById('backButton').addEventListener('click', function () {
+            menuLoad();
         });
         document.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -134,7 +133,7 @@ function gameLoad() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
-        
+
         setInterval(GameTick, 10);
 
         // Event Listeners
