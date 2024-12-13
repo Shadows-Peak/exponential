@@ -10,7 +10,7 @@ base('logins').select({
     // This function (`page`) will get called for each page of records.
 
     records.forEach(function(record) {
-        console.log('Retrieved', record.get('Username'));
+        alert('Retrieved', record.get('Username'));
     });
 
     // To fetch the next page of records, call `fetchNextPage`.
