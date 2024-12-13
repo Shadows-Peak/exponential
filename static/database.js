@@ -18,5 +18,6 @@ async function main() {
   // Sync data by a key column.
   await api.syncTable('Food', [{Name: 'eggs', AmountToBuy: 0}], ['Name']);
 }
+*/
 
-main();*/
+const {GristDocAPI} = require('grist-api');
