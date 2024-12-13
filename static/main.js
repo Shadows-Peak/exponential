@@ -160,7 +160,16 @@ function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
-        circle = document.getElementById('clickableCircle');
+        function clickButton() {
+            alert("Here is a test alert");
+            Points += ClickValue
+            fillCircle(Points/100);
+        }
+        if (document.getElementById('clickableCircle').onclick) {
+            document.getElementById('clickableCircle').onclick(clickButton);
+         } else if (document.getElementById('clickableCircle').click) {
+            document.getElementById('clickableCircle').click(clickButton);
+         }
         (circle.onclick || circle.click || function() {
             Points += ClickValue
             fillCircle(Points/100);
