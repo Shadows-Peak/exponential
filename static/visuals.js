@@ -1,7 +1,7 @@
-//import { Points } from './variables.js';
+import { Points } from './variables.js';
 
 function GameTick() {
-    alert("running game tick")
+    console.log("running game tick")
     if (document.getElementById('points')) {
         document.getElementById('points').innerHTML = "You have:" + (Points) + " Dilyan Points";
     }
