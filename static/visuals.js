@@ -12,7 +12,7 @@ function GameTick() {
     }
     //add anything that should be constantly running\
     roomids = document.querySelectorAll('[data-room-id]');
-    //sconsole.log(Points)
+    //console.log(Points)
 }
 
 //export { GameTick };
