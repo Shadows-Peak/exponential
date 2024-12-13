@@ -18,5 +18,17 @@ async function main() {
   // Sync data by a key column.
   await api.syncTable('Food', [{Name: 'eggs', AmountToBuy: 0}], ['Name']);
 }
+*/
 
-main();*/
+const {GristDocAPI} = require('grist-api');
+const DOC_URL = "https://docs.getgrist.com/9KC8xj6xEYzA/docs";
+new GristDocAPI(DOC_URL, {apiKey: 'd398ddbce150c59c00a039c76b4bd24d6e35ba5b'})
+function main() {
+  const api = new GristDocAPI(DOC_URL);
+  // Add some rows to a table
+  api.addRecords('Food', [
+    {Name: 'eggs', AmountToBuy: 12},
+    {Name: 'beets', AmountToBuy: 1},
+  ]);
+}
+main();
