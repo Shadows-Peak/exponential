@@ -162,6 +162,7 @@ function gameLoad() {
         // Event Listeners
         circle = document.getElementById('clickableCircle');
         (circle.onclick || circle.click || function() {
+            Points += ClickValue
             fillCircle(Points/100);
         })();
         document.getElementById('clickButton').addEventListener('click', function () {
