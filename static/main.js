@@ -146,6 +146,7 @@ function menuLoad() {
     })
     .catch(error => console.error('Error loading menu.html:', error));
 }
+
 function gameLoad() {
     // HTML Load
     fetch('./templates/game.html')
