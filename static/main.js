@@ -3,7 +3,7 @@ import { GameTick } from './visuals.js';*/
 
 
 
-function fillCircle() {
+function fillCircle(percentage) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
             const element = document.querySelector(selector);
@@ -28,7 +28,8 @@ function fillCircle() {
     };
 
     waitForElement('.fill').then((fillElement) => {
-        let height = 0;
+        //let height = 0;
+        /* Automated filling of circle
         const interval = setInterval(() => {
             if (height >= 100) {
                 clearInterval(interval);
@@ -36,7 +37,8 @@ function fillCircle() {
                 height++;
                 fillElement.style.height = height + '%';
             }
-        }, 50); // Adjust the interval duration as needed
+        }, 50); // Adjust the interval duration as needed*/
+        fillElement.style.height = percentage + '%';
     }).catch(() => {
         console.error('Fill element not found');
     });
@@ -128,8 +130,6 @@ function menuLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
 
-        fillCircle();
-
         // Event Listeners
 
         try{
@@ -160,9 +160,16 @@ function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
+        /*
         document.getElementById('clickButton').addEventListener('click', function () {
             Points += ClickValue
-        });
+        });*/
+
+        function clickButton() {
+            Points += ClickValue
+            fillCircle(Points);
+        }
+        document.getElementById('clickableCircle').addEventListener('click', clickButton);
     })
     .catch(error => console.error('Error loading game.html:', error));
 }
