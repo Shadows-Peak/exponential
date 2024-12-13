@@ -160,23 +160,16 @@ function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
+        document.getElementById('clickButton').addEventListener('click', function () {
+            Points += ClickValue
+        });
+
         function clickButton() {
             alert("Here is a test alert");
             Points += ClickValue
             fillCircle(Points/100);
         }
-        if (document.getElementById('clickableCircle').onclick) {
-            document.getElementById('clickableCircle').onclick(clickButton);
-         } else if (document.getElementById('clickableCircle').click) {
-            document.getElementById('clickableCircle').click(clickButton);
-         }
-        (circle.onclick || circle.click || function() {
-            Points += ClickValue
-            fillCircle(Points/100);
-        })();
-        document.getElementById('clickButton').addEventListener('click', function () {
-            Points += ClickValue
-        });
+        document.getElementById('clickableCircle').addEventListener('click', clickButton);
     })
     .catch(error => console.error('Error loading game.html:', error));
 }
