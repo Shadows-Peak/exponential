@@ -128,8 +128,6 @@ function menuLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
 
-        fillCircle();
-
         // Event Listeners
 
         try{
@@ -158,6 +156,8 @@ function gameLoad() {
         document.body.innerHTML = doc.body.innerHTML;
 
         setInterval(GameTick, 10);
+
+        fillCircle();
 
         // Event Listeners
         document.getElementById('clickButton').addEventListener('click', function () {
