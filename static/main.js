@@ -1,3 +1,4 @@
+import { Points, ClickValue, currentpage } from './variables.js';
 import { GameTick } from './visuals.js';
 
 
