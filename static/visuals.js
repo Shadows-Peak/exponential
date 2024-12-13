@@ -10,3 +10,5 @@ function GameTick() {
     roomids = document.querySelectorAll('[data-room-id]');
     //sconsole.log(Points)
 }
+
+export { GameTick };

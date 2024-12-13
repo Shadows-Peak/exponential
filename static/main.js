@@ -1,3 +1,5 @@
+import { GameTick } from './visuals.js';
+
 
 
 function fillCircle() {
@@ -153,9 +155,7 @@ function gameLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
 
-        document.addEventListener('DOMContentLoaded', function () {
-            setInterval(GameTick, 10);
-        });
+        setInterval(GameTick, 10);
 
         // Event Listeners
         document.getElementById('clickButton').addEventListener('click', function () {
