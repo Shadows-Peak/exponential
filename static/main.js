@@ -1,5 +1,5 @@
-import { Points, ClickValue, currentpage } from './variables.js';
-import { GameTick } from './visuals.js';
+/*import { Points, ClickValue, currentpage } from './variables.js';
+import { GameTick } from './visuals.js';*/
 
 
 

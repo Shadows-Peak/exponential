@@ -1,4 +1,4 @@
-import { Points } from './variables.js';
+//import { Points } from './variables.js';
 
 var roomids;
 
