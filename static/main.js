@@ -160,14 +160,14 @@ function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
+        /*
         document.getElementById('clickButton').addEventListener('click', function () {
             Points += ClickValue
-        });
+        });*/
 
         function clickButton() {
-            alert("Here is a test alert");
             Points += ClickValue
-            fillCircle(Points/100);
+            fillCircle(Points);
         }
         document.getElementById('clickableCircle').addEventListener('click', clickButton);
     })
