@@ -1,3 +1,5 @@
+//import { Points } from './variables.js';
+
 function GameTick() {
     alert("running game tick")
     if (document.getElementById('points')) {
