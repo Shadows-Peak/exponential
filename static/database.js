@@ -10,7 +10,7 @@ base('Table 1').select({
     // This function (`page`) will get called for each page of records.
 
     records.forEach(function(record) {
-        console.log('Retrieved', record.get('Name'));
+        alert('Retrieved', record.get('Name'));
     });
 
     // To fetch the next page of records, call `fetchNextPage`.
