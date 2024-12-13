@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Value</title>
     <link rel="stylesheet" href="./style.css">
@@ -10,8 +11,13 @@
     <script src="./static/framework/numberFramework.js"></script>
     <script src="./static/visuals.js"></script>
     <script src="./static/main.js"></script>
+    <script>
+        function bodyLoad() {
+            GameTick();
+        }
+    </script>
 </head>
-<body>
+<body onload="bodyLoad()">
     <div id="left"></div>
     <div id="right"></div>
     <div id="top"></div>
@@ -25,6 +31,6 @@
         <div class="fill"></div>
     </div>
     <p>Kai: the rooms are now separate html files that you can edit. deal with it B)</p>
-    <h1 id="version">(0.)1.7.9.5 - final  fix part 2 part 6 </h1>
+    <h1 id="version">(0.)1.7.9.6 - final  fix part 2 part crash out </h1>
 </body>
 </html>

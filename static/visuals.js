@@ -15,4 +15,4 @@ function GameTick() {
     //sconsole.log(Points)
 }
 
-export { GameTick };
+//export { GameTick };
