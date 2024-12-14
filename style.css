@@ -57,7 +57,8 @@ button:hover {
     border-radius: 50px;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
     overflow: hidden;
 }
 
@@ -71,4 +72,12 @@ button:hover {
 
 left {
     float:left;
+}
+
+#points {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 10px;
 }
