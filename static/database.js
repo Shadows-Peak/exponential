@@ -9,7 +9,8 @@ async function fetchAirtableData() {
         }
     });
     const data = await response.json();
-    alert(data.records); // Access your Airtable records here
+    alert(data); // Access your Airtable records here
+    return data
 }
 
 fetchAirtableData();
