@@ -10,7 +10,7 @@ async function fetchAirtableData() {
     });
     const data = await response.json();
     alert(JSON.stringify(data, null , 2)); // Access your Airtable records here
-    console.log(JSON.stringify(data, null , 2));
+    console.log(JSON.stringify(data, null , 2)); // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
     return data
 }
 
