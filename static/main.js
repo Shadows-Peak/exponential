@@ -38,7 +38,7 @@ function fillCircle(value) {
                 fillElement.style.height = height + '%';
             }
         }, 50); // Adjust the interval duration as needed*/
-        fillElement.style.height = value*(PointsNeeded/100) + '%';
+        fillElement.style.height = value*(100/PointsNeeded) + '%';
     }).catch(() => {
         console.error('Fill element not found');
     });
@@ -160,16 +160,22 @@ function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
-        /*
-        document.getElementById('clickButton').addEventListener('click', function () {
-            Points += ClickValue
-        });*/
-
         function clickButton() {
-            Points += ClickValue
+            if (Points + ClickValue < PointsNeeded) {
+                Points += ClickValue
+            } else if (Points < PointsNeeded) {
+                Points = PointsNeeded;
+            }
             fillCircle(Points);
         }
         document.getElementById('clickableCircle').addEventListener('click', clickButton);
+
+        document.getElementById('clickButton').addEventListener('click', function () {
+            if (Points == PointsNeeded) {
+                Points = 0;
+                fillCircle(Points);
+            }
+        });
     })
     .catch(error => console.error('Error loading game.html:', error));
 }
