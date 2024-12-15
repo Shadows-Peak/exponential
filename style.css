@@ -56,8 +56,8 @@ button:hover {
     background-color: red;
     border-radius: 50px;
     position: absolute;
-    left: 20%;
-    top: 30%;
+    left: 15%;
+    top: 20%;
     transform: translate(-50%, -50%);
     overflow: hidden;
 }
@@ -94,7 +94,7 @@ left {
 
 #clickButton {
     position: absolute;
-    top: calc(30% + 50px + 10px); /* 30% from top + circle height + padding */
-    left: 20%;
-    transform: translateX(-50%);
+    top: calc(20% + 25px + 10px); /* 30% from top + half circle height + padding */
+    left: 15%;
+    transform: translate(-50%, -50%);
 }

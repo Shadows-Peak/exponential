@@ -13,4 +13,5 @@ async function fetchAirtableData() {
     return data
 }
 var data = fetchAirtableData();
-alert(data);
+console.log(data);
+alert(data); // object Promise
