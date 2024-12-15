@@ -13,3 +13,7 @@ async function fetchAirtableData() {
     return data
 }
 alert(fetchAirtableData());
+console.log(fetchAirtableData());
+const usernames = data.records.map(record => record.fields.Username);
+alert(usernames);
+console.log(usernames);
