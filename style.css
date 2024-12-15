@@ -72,13 +72,12 @@ button:hover {
 
 #number {
     position: absolute;
-    top: 50%;
+    top: calc(50% +25px);
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 16px;
     font-weight: bold;
-    line-height: 50px; /* Adjust line-height to center vertically */
 }
 
 left {
@@ -96,6 +95,6 @@ left {
 #clickButton {
     position: absolute;
     top: calc(20% + 25px + 10px); /* 30% from top + half circle height + padding */
-    left: 15%;
+    left: calc(15% - 25px);
     transform: translate(-50%, -50%);
 }

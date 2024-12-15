@@ -13,7 +13,6 @@ async function fetchAirtableData() {
     return data
 }
 var data = fetchAirtableData();
-console.log(data);
 data.then(result => {
     console.log(result);
     alert(result);
