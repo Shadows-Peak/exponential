@@ -14,4 +14,9 @@ async function fetchAirtableData() {
 }
 var data = fetchAirtableData();
 console.log(data);
-alert(data); // object Promise
+data.then(result => {
+    console.log(result);
+    alert(result);
+}).catch(error => {
+    console.error('Error fetching data:', error);
+});
