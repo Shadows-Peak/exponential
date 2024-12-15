@@ -19,12 +19,17 @@ data.then(result => {
 }).catch(error => {
     console.error('Error fetching data:', error);
 });
+console.log(data.records.map(record => ({
+    username: record.fields.Username,
+    password: record.fields.Password
+    })));
 
 // Function to get all usernames and passwords
 function getAllUsernamesAndPasswords(data) {
   return data.records.map(record => ({
     username: record.fields.Username,
     password: record.fields.Password
+    
   }));
 }
 
@@ -34,4 +39,9 @@ function findPasswordByUsername(data, username) {
   return record ? record.fields.Password : 'Username not found';
 }
 const ALL_USERS = getAllUsernamesAndPasswords(data)
-console.log(ALL_USERS)
+console.log(data.records.map(record => ({
+    username: record.fields.Username,
+    password: record.fields.Password
+    })));
+
+
