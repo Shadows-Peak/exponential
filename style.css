@@ -56,8 +56,8 @@ button:hover {
     background-color: red;
     border-radius: 50px;
     position: absolute;
-    left: 50%;
-    top: 60%;
+    left: 20%;
+    top: 30%;
     transform: translate(-50%, -50%);
     overflow: hidden;
 }
@@ -70,6 +70,16 @@ button:hover {
     bottom: 0;
 }
 
+#number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 left {
     float:left;
 }
@@ -80,4 +90,11 @@ left {
     left: 50%;
     transform: translateX(-50%);
     padding-top: 10px;
+}
+
+#clickButton {
+    position: absolute;
+    top: calc(30% + 50px + 10px); /* 30% from top + circle height + padding */
+    left: 20%;
+    transform: translateX(-50%);
 }
