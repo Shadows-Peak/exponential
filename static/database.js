@@ -8,12 +8,16 @@ async function fetchAirtableData() {
             Authorization: `Bearer ${API_KEY}`
         }
     });
-    const data = JSON.stringify((await response.json()) , null , 2)
-    console.log(data); // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
+    const data = JSON.stringify((await response.json()) , null , 2) // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
     return data
 }
-alert(fetchAirtableData());
-console.log(fetchAirtableData());
-const usernames = data.records.map(record => record.fields.Username);
-alert(usernames);
-console.log(usernames);
+console.log(data);
+
+base('logins').select({
+    view: 'Grid view'
+}).firstPage(function(err, records) {
+    if (err) { console.error(err); return; }
+    records.forEach(function(record) {
+        console.log('Retrieved', record.get('Username'));
+    });
+});
