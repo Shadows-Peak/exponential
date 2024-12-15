@@ -184,18 +184,23 @@ function gameLoad() {
                 transferCell.style.position = 'absolute';
                 transferCell.style.left = `${circleRect.left + circleRect.width / 2}px`;
                 transferCell.style.top = `${circleRect.top + circleRect.height / 2}px`;
-                transferCell.style.width = '50px';
-                transferCell.style.height = '50px';
+                transferCell.style.width = '20px';
+                transferCell.style.height = '20px';
                 transferCell.style.backgroundColor = 'red';
                 transferCell.style.borderRadius = '50%';
 
-                transferCell.animate([
+                const animation = transferCell.animate([
                     { left: `${circleRect.left + circleRect.width / 2}px`, top: `${circleRect.top + circleRect.height / 2}px` },
                     { left: '70%', top: '60%' }
                 ], {
                     duration: 1000,
                     easing: 'ease'
                 });
+
+                animation.onfinish = function() {
+                    console.log('Animation finished');
+                    document.body.removeChild(transferCell);
+                };
             }
         });
     })
