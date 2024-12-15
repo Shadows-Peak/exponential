@@ -9,7 +9,6 @@ async function fetchAirtableData() {
         }
     });
     const data = JSON.stringify((await response.json()) , null , 2)
-    console.log(JSON.stringify(data, null , 2)); // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
     return data
 }
 var data = fetchAirtableData();
@@ -23,19 +22,14 @@ function getAllUsernamesAndPasswords(data) {
   return data.records.map(record => ({
     username: record.fields.Username,
     password: record.fields.Password
-    
   }));
 }
-
 // Function to find a password by username
 function findPasswordByUsername(data, username) {
   const record = data.records.find(record => record.fields.Username === username);
   return record ? record.fields.Password : 'Username not found';
 }
 const ALL_USERS = getAllUsernamesAndPasswords(data)
-console.log(data.records.map(record => ({
-    username: record.fields.Username,
-    password: record.fields.Password
-    })));
-
+console.log(ALL_USERS)
+console.log(findPasswordByUsername(data, 'Very-Secure-Username.gov'))
 
