@@ -105,10 +105,12 @@ function submitRun(event) {
     }
 
     if (form.id === 'signup-form') {
-        console.log('Sign Up Form Data:', data);
+        console.log('Sign Up Form Data:', JSON.stringify(data));
         // Add your sign-up logic here
     } else if (form.id === 'login-form') {
-        console.log('Login Form Data:', data);
+        console.log('Login Form Data:', JSON.stringify(data));
+        console.log(data[0])
+        console.log(data[1])
 
         // Load game
         gameLoad();
