@@ -33,4 +33,4 @@ function findPasswordByUsername(data, username) {
   const record = data.records.find(record => record.fields.Username === username);
   return record ? record.fields.Password : 'Username not found';
 }
-alert(getAllUsernamesAndPasswords(data));
+const ALL_USERS = getAllUsernamesAndPasswords(data)
