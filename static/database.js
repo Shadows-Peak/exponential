@@ -12,5 +12,4 @@ async function fetchAirtableData() {
     console.log(data); // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
     return data
 }
-fetchAirtableData();
-alert(data)
+alert(fetchAirtableData);
