@@ -9,7 +9,7 @@ async function fetchAirtableData() {
         }
     });
     const data = JSON.stringify((await response.json()) , null , 2)
-    console.log(JSON.stringify(data, null , 2)); // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
+    console.log(data); // Failed to load resource: the server responded with a status of 403 () -> {"error":{"type":"AUTHENTICATION_REQUIRED","message":"Authentication required"}}
     return data
 }
 fetchAirtableData();
