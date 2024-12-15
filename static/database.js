@@ -12,23 +12,9 @@ async function fetchAirtableData() {
     return data
 }
 var data = fetchAirtableData();
+alert(data)
 data.then(result => {
 }).catch(error => {
     console.error('Error fetching data:', error);
 });
 
-// Function to get all usernames and passwords
-function getAllUsernamesAndPasswords(data) {
-  return data.records.map(record => ({
-    username: record.fields.Username,
-    password: record.fields.Password
-  }));
-}
-// Function to find a password by username
-function findPasswordByUsername(data, username) {
-  const record = data.records.find(record => record.fields.Username === username);
-  return record ? record.fields.Password : 'Username not found';
-}
-const ALL_USERS = getAllUsernamesAndPasswords(data)
-alert(ALL_USERS)
-alert(findPasswordByUsername(data, 'Very-Secure-Username.gov'))
