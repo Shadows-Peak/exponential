@@ -174,6 +174,28 @@ function gameLoad() {
             if (Points == PointsNeeded) {
                 Points = 0;
                 fillCircle(Points);
+                const circle = document.querySelector('.circle');
+                const circleRect = circle.getBoundingClientRect();
+
+                const transferCell = document.createElement('div');
+                transferCell.className = 'transferCell';
+                document.body.appendChild(transferCell);
+
+                transferCell.style.position = 'absolute';
+                transferCell.style.left = `${circleRect.left + circleRect.width / 2}px`;
+                transferCell.style.top = `${circleRect.top + circleRect.height / 2}px`;
+                transferCell.style.width = '50px';
+                transferCell.style.height = '50px';
+                transferCell.style.backgroundColor = 'red';
+                transferCell.style.borderRadius = '50%';
+
+                transferCell.animate([
+                    { left: `${circleRect.left + circleRect.width / 2}px`, top: `${circleRect.top + circleRect.height / 2}px` },
+                    { left: '70%', top: '60%' }
+                ], {
+                    duration: 1000,
+                    easing: 'ease'
+                });
             }
         });
     })
