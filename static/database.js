@@ -19,3 +19,18 @@ data.then(result => {
 }).catch(error => {
     console.error('Error fetching data:', error);
 });
+
+// Function to get all usernames and passwords
+function getAllUsernamesAndPasswords(data) {
+  return data.records.map(record => ({
+    username: record.fields.Username,
+    password: record.fields.Password
+  }));
+}
+
+// Function to find a password by username
+function findPasswordByUsername(data, username) {
+  const record = data.records.find(record => record.fields.Username === username);
+  return record ? record.fields.Password : 'Username not found';
+}
+alert(getAllUsernamesAndPasswords(data));
