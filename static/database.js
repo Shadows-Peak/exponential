@@ -14,15 +14,9 @@ async function fetchAirtableData() {
 }
 var data = fetchAirtableData();
 data.then(result => {
-    console.log(result);
-    alert(result);
 }).catch(error => {
     console.error('Error fetching data:', error);
 });
-console.log(data.records.map(record => ({
-    username: record.fields.Username,
-    password: record.fields.Password
-    })));
 
 // Function to get all usernames and passwords
 function getAllUsernamesAndPasswords(data) {
