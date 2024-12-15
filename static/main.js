@@ -3,7 +3,7 @@ import { GameTick } from './visuals.js';*/
 
 
 
-function fillCircle(percentage) {
+function fillCircle(value) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
             const element = document.querySelector(selector);
@@ -38,7 +38,7 @@ function fillCircle(percentage) {
                 fillElement.style.height = height + '%';
             }
         }, 50); // Adjust the interval duration as needed*/
-        fillElement.style.height = percentage + '%';
+        fillElement.style.height = value*(PointsNeeded/100) + '%';
     }).catch(() => {
         console.error('Fill element not found');
     });

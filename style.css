@@ -94,8 +94,14 @@ left {
 
 #clickButton {
     position: absolute;
-    top: calc(20% + 25px + 10px); /* 30% from top + half circle height + padding */
+    top: calc(20% + 25px + 15px); /* 30% from top + half circle height + padding */
     left: 15%; /* Align with the circle */
-    transform: translate(-50%, -50%);
-    left: -25px;
+    transform: translate(-56.25%, -50%);
+}
+
+#TitleCard {
+    position: absolute;
+    top: calc(20% - 25px - 15px); /* 30% from top + half circle height + padding */
+    left: 15%; /* Align with the circle */
+    transform: translate(-56.25%, -50%);
 }
