@@ -8,11 +8,11 @@ async function fetchAirtableData() {
             Authorization: `Bearer ${API_KEY}`
         }
     });
-    const data = JSON.stringify((await response.json()) , null , 2)
+    const data = await response.json()
     return data
 }
 var data = fetchAirtableData();
-alert(data)
+alert(JSON.stringify(data))
 data.then(result => {
 }).catch(error => {
     console.error('Error fetching data:', error);
