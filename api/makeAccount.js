@@ -10,14 +10,7 @@ export default async function(req, res) {
   }
 
   try {
-    // Parse the incoming request body
-    const data = await json(req);
-    const { username, password } = data;
 
-    // Check if username and password are provided
-    if (!username || !password) {
-      return res.status(400).json({ message: "Username and password are required" });
-    }
 
     // Set up headers for the Airtable API request
     const myHeaders = new Headers();
