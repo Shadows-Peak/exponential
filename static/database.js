@@ -1,4 +1,6 @@
 function createAccount(input){
+  // input['username']
+  // input['password']
   const data = JSON.stringify(input, null, 2)
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");  

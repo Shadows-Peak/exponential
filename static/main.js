@@ -191,7 +191,7 @@ function gameLoad() {
                 transferCell.style.top = `${circleRect.top + circleRect.height / 2}px`;
                 transferCell.style.width = '20px';
                 transferCell.style.height = '20px';
-                transferCell.style.backgroundColor = 'red';
+                transferCell.style.backgroundColor = '#dcb773';
                 transferCell.style.borderRadius = '50%';
 
                 const animation = transferCell.animate([
