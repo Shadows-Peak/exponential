@@ -82,7 +82,7 @@ function submitRun(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     if (form.id === 'signup-form') {
-        console.log('Sign Up Form Data:', JSON.stringify(data));
+        console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
         // Add your sign-up logic here
         createAccount(data['username'], data['password'])       
     } else if (form.id === 'login-form') {
@@ -106,9 +106,9 @@ function submitRun(event) {
                 document.body.removeChild(popup);
             }, 3000);
         */ // Keep this framework for when we need to display it if its not in the database for login
-        console.log('Login Form Data:', JSON.stringify(data));
-        console.log(data[0])
-        console.log(data[1])
+        console.log('Login Form Data:', JSON.stringify(data, undefined, 2));
+        console.log(data['username'])
+        console.log(data['password'])
 
         // Load game
         gameLoad();
