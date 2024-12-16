@@ -26,6 +26,30 @@ body {
 #top { top: 0; }
 #bottom { bottom: 0; }
 
+#toolbar {
+    position: fixed;
+    top: 15px; /* Render under #top */
+    left: 0;
+    width: 100%;
+    height: 5%;
+    background-color: #e3e3c8;
+    padding: 10px;
+}
+
+#logoutButton {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ff6666; /* Light red background */
+    color: white;
+    padding: 20px 10px;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+}
+
 h1 {
     margin-bottom: 20px;
 }
@@ -53,7 +77,7 @@ button:hover {
 .circle {
     width: 50px;
     height: 50px;
-    background-color: red;
+    background-color: #e0e0b0;
     border-radius: 50px;
     position: absolute;
     left: 15%;
@@ -65,7 +89,7 @@ button:hover {
 .fill {
     width: 100%;
     height: 0;
-    background-color: green; /* Color of the filling */
+    background-color: #ffcbcb; /* Brighter and slightly more red color of the filling */
     position: absolute;
     bottom: 0;
 }

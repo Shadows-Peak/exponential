@@ -161,6 +161,10 @@ function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
+        document.getElementById('logoutButton').addEventListener('click', function () {
+            menuLoad();
+        });
+
         function clickButton() {
             if (Points + ClickValue < PointsNeeded) {
                 Points += ClickValue
