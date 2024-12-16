@@ -1,5 +1,6 @@
 export default async function handler(req, res) {
   //const {username, password} = req.body;
+
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer patFPAzk3Ni4jtL7K.8bdcda86e17b32bd177f9ab25661e401e4454a8e4a2401a267c36b67e94ea933");
   myHeaders.append("Content-Type", "application/json");
@@ -7,13 +8,10 @@ export default async function handler(req, res) {
   const raw = JSON.stringify({
     "records": [
       {
-        "fields": {
-          "username": "username",
-          "password": "password"
-        }
+        "fields": req
       }
     ]
-  });
+  }, null , 2);
 
   const requestOptions = {
     method: "POST",
