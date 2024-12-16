@@ -12,47 +12,33 @@ export default async function(req, res) {
   try {
 
 
-    // Set up headers for the Airtable API request
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${API_Key}`);
+    myHeaders.append("Authorization", "Bearer patFPAzk3Ni4jtL7K.8bdcda86e17b32bd177f9ab25661e401e4454a8e4a2401a267c36b67e94ea933");
     myHeaders.append("Content-Type", "application/json");
-
-    // Prepare the data to be sent to Airtable
+    myHeaders.append("Cookie", "brw=brwtcGK1QAbqebbws; brwConsent=opt-in; AWSALBTG=05EdyotyuE+/rdSRD+10ASSNIr4LQdBvhypgba7SRyIq6cCVn45d0C5PTOl4+YKC1Hnlwc54PGBe7HgSJgGxdN3cRVah/j9XrB5C1ij6VhI43rR4M1N6oNyPbRGfJgs3S6P9T8Uk7kp/w2mKtoJ0VboBl90PkhRaOkgxlC0cwkeUgseipug=; AWSALBTGCORS=05EdyotyuE+/rdSRD+10ASSNIr4LQdBvhypgba7SRyIq6cCVn45d0C5PTOl4+YKC1Hnlwc54PGBe7HgSJgGxdN3cRVah/j9XrB5C1ij6VhI43rR4M1N6oNyPbRGfJgs3S6P9T8Uk7kp/w2mKtoJ0VboBl90PkhRaOkgxlC0cwkeUgseipug=");
+    
     const raw = JSON.stringify({
       "records": [
         {
           "fields": {
-            "username": username,
-            "password": password
+            "username": "username123",
+            "password": "37t83t2"
           }
         }
       ]
     });
-
-    // Request options for the fetch call
+    
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: raw,
       redirect: "follow"
     };
-
-    // Make the request to Airtable and wait for the response
-    const response = await fetch("https://api.airtable.com/v0/appXXbVu5p4uSKViT/logins", requestOptions);
-
-    // Check if the response was successful
-    if (!response.ok) {
-      // If the response status is not OK, return an error
-      const errorData = await response.json();
-      return res.status(response.status).json({ message: errorData.error.message });
-    }
-
-    // Parse the response from Airtable (if needed)
-    const result = await response.json();
-    console.log("Airtable response:", result);
-
-    // Return a success response
-    return res.status(200).json({ message: 'Account created successfully', data: result });
+    
+    fetch("https://api.airtable.com/v0/appXXbVu5p4uSKViT/logins", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
 
   } catch (error) {
     // Catch any errors and log them
