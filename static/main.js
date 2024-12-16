@@ -1,7 +1,7 @@
 /*import { Points, ClickValue, currentpage } from './variables.js';
 import { GameTick } from './visuals.js';*/
 
-import bcrypt from 'bcrypt';
+//import bcrypt from 'bcrypt';
 
 function fillCircle(value) {
     const waitForElement = (selector) => {
