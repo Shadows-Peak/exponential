@@ -27,10 +27,9 @@ body {
 #bottom { bottom: 0; }
 
 #toolbar {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100%;
     height: 10%;
     background-color: #e3e3c8;
@@ -79,7 +78,7 @@ button:hover {
 .circle {
     width: 50px;
     height: 50px;
-    background-color: red;
+    background-color: #e0e0b0;
     border-radius: 50px;
     position: absolute;
     left: 15%;
@@ -91,7 +90,7 @@ button:hover {
 .fill {
     width: 100%;
     height: 0;
-    background-color: green; /* Color of the filling */
+    background-color: #ffcbcb; /* Brighter and slightly more red color of the filling */
     position: absolute;
     bottom: 0;
 }
