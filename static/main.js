@@ -1,7 +1,7 @@
 /*import { Points, ClickValue, currentpage } from './variables.js';
 import { GameTick } from './visuals.js';*/
 
-
+import bcrypt from 'bcrypt';
 
 function fillCircle(value) {
     const waitForElement = (selector) => {
@@ -109,7 +109,29 @@ function submitRun(event) {
         console.log('Sign Up Form Data:', JSON.stringify(data));
         console.log(data[0])
         console.log(data[1])
-        // Add your sign-up logic here
+        const password = data['password'];
+        const username = data['username'];
+        try {
+            const response = await fetch('https://exponential-psi.vercel.app/api/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ username, password }),
+            });
+        
+            const data = await response.json();
+            if (response.ok) {
+              console.log('Login successful:', data);
+            } else {
+              console.log('Login failed:', data.message);
+            }
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        });
+
+        
     } else if (form.id === 'login-form') {
         console.log('Login Form Data:', JSON.stringify(data));
         console.log(data[0])
