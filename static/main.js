@@ -145,7 +145,8 @@ function menuLoad() {
         document.getElementById('login').addEventListener('click', loginRun);
         document.addEventListener('submit', submitRun);
     })
-    .catch(error => console.error('Error loading menu.html:', error));
+    .catch(error => alert(error));
+    //.catch(error => console.error('Error loading menu.html:', error));
 }
 
 function gameLoad() {
