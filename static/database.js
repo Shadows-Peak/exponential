@@ -3,8 +3,12 @@ function createAccount(username, password){
     "username": username,
     "password": password
   };
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");  
   const requestOptions = {
-    method: "POST",
+    method: "GET",
+    headers: myHeaders,
+    body: data,
     redirect: "follow"
   };
   
