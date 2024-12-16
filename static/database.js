@@ -6,7 +6,7 @@ function createAccount(username, password){
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");  
   const requestOptions = {
-    method: "GET",
+    method: "POST",
     headers: myHeaders,
     body: data,
     redirect: "follow"
