@@ -1,7 +1,7 @@
 /*import { Points, ClickValue, currentpage } from './variables.js';
 import { GameTick } from './visuals.js';*/
 
-import bcrypt from 'bcrypt';
+//import bcrypt from 'bcrypt';
 
 function fillCircle(value) {
     const waitForElement = (selector) => {
@@ -82,8 +82,30 @@ function submitRun(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     if (form.id === 'signup-form') {
-        createAccount(data['username'], data['password'])        
+        console.log('Sign Up Form Data:', data);
+        // Add your sign-up logic here
+        createAccount(data['username'], data['password'])       
     } else if (form.id === 'login-form') {
+        /*
+        if ((data['username'] != 'Very-Secure-Username.gov') || (data['password'] != 'thosewhoknow')) {
+            const popup = document.createElement('div');
+            document.body.appendChild(popup);
+            const popupTXT = document.createElement("h1");
+            popupTXT.textContent = 'Incorrect username or password. Please try again.';
+            popup.appendChild(popupTXT);
+            popup.style.position = 'fixed';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.padding = '20px';
+            popup.style.backgroundColor = 'white';
+            popup.style.border = '1px solid black';
+            popup.style.zIndex = '1000';
+
+            setTimeout(() => {
+                document.body.removeChild(popup);
+            }, 3000);
+        */ // Keep this framework for when we need to display it if its not in the database for login
         console.log('Login Form Data:', JSON.stringify(data));
         console.log(data[0])
         console.log(data[1])
@@ -123,7 +145,8 @@ function menuLoad() {
         document.getElementById('login').addEventListener('click', loginRun);
         document.addEventListener('submit', submitRun);
     })
-    .catch(error => console.error('Error loading menu.html:', error));
+    .catch(error => alert(error));
+    //.catch(error => console.error('Error loading menu.html:', error));
 }
 
 function gameLoad() {
