@@ -1,13 +1,16 @@
 function createAccount(input){
-  // input['username']
-  // input['password']
-  const data = JSON.stringify(input, null, 2)
   const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");  
+  myHeaders.append("Content-Type", "application/json");
+  
+  const raw = JSON.stringify({
+    "username": input['username'],
+    "password": input['password']
+  });
+  
   const requestOptions = {
-    method: "POST",
+    method: "GET",
     headers: myHeaders,
-    body: data,
+    body: raw,
     redirect: "follow"
   };
   
