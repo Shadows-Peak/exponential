@@ -102,6 +102,7 @@ function submitRun(event) {
         return;
     } else {
         alert("yippeee!!!");
+        alert(data);
     }
 
     if (form.id === 'signup-form') {
