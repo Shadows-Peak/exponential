@@ -26,6 +26,29 @@ body {
 #top { top: 0; }
 #bottom { bottom: 0; }
 
+#toolbar {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: #e3e3c8;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#logoutButton {
+    position: absolute;
+    left: 10px;
+    background-color: #ff6666; /* Light red background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+}
+
 h1 {
     margin-bottom: 20px;
 }
