@@ -35,7 +35,7 @@ export default async function(req, res) {
       redirect: "follow"
     };
     
-    fetch("https://api.airtable.com/v0/appXXbVu5p4uSKViT/logins", requestOptions)
+    await fetch("https://api.airtable.com/v0/appXXbVu5p4uSKViT/logins", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
