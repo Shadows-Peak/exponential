@@ -1,5 +1,5 @@
 function createAccount(input){
-  const data = input
+  const data = JSON.stringify(input, null, 2)
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");  
   const requestOptions = {
