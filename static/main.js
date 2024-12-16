@@ -111,25 +111,7 @@ function submitRun(event) {
         console.log(data[1])
         const password = data['password'];
         const username = data['username'];
-        try {
-            const response = await fetch('https://exponential-psi.vercel.app/api/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ username, password }),
-            });
         
-            const data = await response.json();
-            if (response.ok) {
-              console.log('Login successful:', data);
-            } else {
-              console.log('Login failed:', data.message);
-            }
-          } catch (error) {
-            console.error('Error:', error);
-          }
-        });
 
         
     } else if (form.id === 'login-form') {
