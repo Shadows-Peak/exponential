@@ -209,7 +209,6 @@ function gameLoad() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    alert("are you even loading you son of a bitch?")
     menuLoad();
     /*
     console.log('DOM fully loaded and parsed');
