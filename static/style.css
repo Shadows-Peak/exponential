@@ -9,6 +9,23 @@ body {
     font-family: Arial, sans-serif;
 }
 
+#top, #bottom, #left, #right {
+	background: #e3e3c8;
+	position: fixed;
+}
+#left, #right {
+	top: 0; bottom: 0;
+	width: 15px;
+}
+#left { left: 0; }
+#right { right: 0; }	
+#top, #bottom {
+	left: 0; right: 0;
+	height: 15px;
+}
+#top { top: 0; }
+#bottom { bottom: 0; }
+
 h1 {
     margin-bottom: 20px;
 }
@@ -39,8 +56,9 @@ button:hover {
     background-color: red;
     border-radius: 50px;
     position: absolute;
-    left: 10%;
+    left: 15%;
     top: 20%;
+    transform: translate(-50%, -50%);
     overflow: hidden;
 }
 
@@ -52,6 +70,38 @@ button:hover {
     bottom: 0;
 }
 
+#number {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 left {
     float:left;
+}
+
+#points {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 10px;
+}
+
+#clickButton {
+    position: absolute;
+    top: calc(20% + 25px + 15px); /* 30% from top + half circle height + padding */
+    left: 15%; /* Align with the circle */
+    transform: translate(-56.25%, -50%);
+}
+
+#TitleCard {
+    position: absolute;
+    top: calc(20% - 50px - 15px); /* 30% from top + half circle height + padding */
+    left: 15%; /* Align with the circle */
+    transform: translate(-50%, -50%);
 }
