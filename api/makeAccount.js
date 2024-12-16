@@ -6,7 +6,7 @@ export default async function(req, res) {
     }
 
     //logic :)
-    
+    /*
     const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer " + API_KEY);
 myHeaders.append("Content-Type", "application/json");
@@ -35,6 +35,6 @@ const raw = JSON.stringify({
   .then((response) => response.text())
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
-
+*/
     res.status(200).json({ message:'i gotchu boo'})
 }
