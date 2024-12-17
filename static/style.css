@@ -57,6 +57,8 @@ body {
     background-color: #e3e3c8;
     padding: 10px;
     border-radius: 12px;
+    width: 30vw; /* 30% of the viewport width */
+    height: 30vh; /* 30% of the viewport height */
 }
 
 h1 {
