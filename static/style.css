@@ -34,13 +34,12 @@ body {
     height: 5%;
     background-color: #e3e3c8;
     padding: 10px;
+    display: flex;
+    align-items: center; /* Center items vertically */
 }
 
 #logoutButton {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-left: 10px;
     background-color: #ff6666; /* Light red background */
     color: white;
     padding: 20px 10px;
@@ -89,7 +88,7 @@ button:hover {
 .fill {
     width: 100%;
     height: 0;
-    background-color: #ffcbcb; /* Brighter and slightly more red color of the filling */
+    background-color: #dcb773; /* Brighter and slightly more red color of the filling */
     position: absolute;
     bottom: 0;
 }
