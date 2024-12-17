@@ -6,7 +6,7 @@ function GameTick() {
     //console.log("running game tick")
     if (document.getElementById('points') && document.getElementById('number')) {
         document.getElementById('points').innerHTML = "You have:" + (Points) + " Dilyan Points";
-        document.getElementById('number').innerHTML = (Points)+"/"+(PointsNeeded);
+        document.getElementById('number').innerHTML = (HarvestPoints)+"/"+(HarvestPointsNeeded);
     }
     if (document.getElementById('version')) {
         document.getElementById('version').innerHTML = (output);
