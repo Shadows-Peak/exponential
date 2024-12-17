@@ -14,7 +14,7 @@ function createAccount(input){
     body: raw,
     redirect: "follow"
   };
-  console.log(JSON.stringify(raw, null ,2))
+  console.log(raw)
   
   fetch("https://exponential-psi.vercel.app/api/make-account", requestOptions)
     .then((response) => response.text())
