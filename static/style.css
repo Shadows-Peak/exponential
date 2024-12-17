@@ -142,3 +142,26 @@ left {
     left: 15%; /* Align with the circle */
     transform: translate(-50%, -50%);
 }
+
+#listOfMinigames {
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border: 1px solid #ddd;
+}
+
+#TicTacToeSelect {
+    width: 10px;
+    height: 10px;
+    background-color: #e3e3c8;
+    padding: 20px;
+    border-radius: 30px; /* Squircle effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
