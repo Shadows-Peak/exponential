@@ -42,11 +42,21 @@ body {
     margin-left: 10px;
     background-color: #ff6666; /* Light red background */
     color: white;
-    padding: 20px 10px;
+    padding: 20px 10px 30px 10px; /* Added bottom padding */
     border: none;
     border-radius: 12px; /* Rounded corners */
     cursor: pointer;
     font-size: 16px;
+}
+
+#processUnit {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e3e3c8;
+    padding: 10px;
+    border-radius: 12px;
 }
 
 h1 {
