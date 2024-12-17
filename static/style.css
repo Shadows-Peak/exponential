@@ -47,6 +47,7 @@ body {
     border-radius: 12px; /* Rounded corners */
     cursor: pointer;
     font-size: 16px;
+    align-self: center; /* Center vertically within the toolbar */
 }
 
 #processUnit {
@@ -57,8 +58,8 @@ body {
     background-color: #e3e3c8;
     padding: 10px;
     border-radius: 12px;
-    width: 30vw; /* 30% of the viewport width */
-    height: 30vh; /* 30% of the viewport height */
+    width: 40vw; /* 30% of the viewport width */
+    height: 45vh; /* 30% of the viewport height */
 }
 
 h1 {
