@@ -38,7 +38,7 @@ function fillCircle(value) {
                 fillElement.style.height = height + '%';
             }
         }, 50); // Adjust the interval duration as needed*/
-        fillElement.style.height = value*(100/PointsNeeded) + '%';
+        fillElement.style.height = value*(100/HarvestPointsNeeded) + '%';
     }).catch(() => {
         console.error('Fill element not found');
     });
@@ -166,19 +166,19 @@ function gameLoad() {
         });
 
         function clickButton() {
-            if (Points + ClickValue < PointsNeeded) {
-                Points += ClickValue
-            } else if (Points < PointsNeeded) {
-                Points = PointsNeeded;
+            if (HarvestPoints + ClickValue < HarvestPointsNeeded) {
+                HarvestPoints += HarvestClickValue
+            } else if (HarvestPoints < HarvestPointsNeeded) {
+                HarvestPoints = HarvestPointsNeeded;
             }
-            fillCircle(Points);
+            fillCircle(HarvestPoints);
         }
         document.getElementById('clickableCircle').addEventListener('click', clickButton);
 
         document.getElementById('clickButton').addEventListener('click', function () {
-            if (Points == PointsNeeded) {
-                Points = 0;
-                fillCircle(Points);
+            if (HarvestPoints == HarvestPointsNeeded) {
+                HarvestPoints = 0;
+                fillCircle(HarvestPoints);
                 const circle = document.querySelector('.circle');
                 const circleRect = circle.getBoundingClientRect();
 
@@ -206,6 +206,7 @@ function gameLoad() {
                 animation.onfinish = function() {
                     console.log('Animation finished');
                     document.body.removeChild(transferCell);
+                    Points += ClickValue;
                 };
             }
         });
