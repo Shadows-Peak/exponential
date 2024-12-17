@@ -8,20 +8,20 @@ body {
     background-color: #f5f5dc; /* Cream color background */
     font-family: Arial, sans-serif;
 }
-
 #top, #bottom, #left, #right {
-	background: #e3e3c8;
-	position: fixed;
+    background: #e3e3c8;
+    position: fixed;
+    z-index: 9999;
 }
 #left, #right {
-	top: 0; bottom: 0;
-	width: 15px;
+    top: 0; bottom: 0;
+    width: 15px;
 }
 #left { left: 0; }
-#right { right: 0; }	
+#right { right: 0; }    
 #top, #bottom {
-	left: 0; right: 0;
-	height: 15px;
+    left: 0; right: 0;
+    height: 15px;
 }
 #top { top: 0; }
 #bottom { bottom: 0; }
@@ -60,6 +60,7 @@ body {
     border-radius: 12px;
     width: 40vw; /* 30% of the viewport width */
     height: 45vh; /* 30% of the viewport height */
+    z-index: 2;
 }
 
 h1 {
