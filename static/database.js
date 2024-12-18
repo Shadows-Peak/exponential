@@ -16,5 +16,5 @@ function createAccount(input){
   };
   console.log(raw)
   alert(raw)
-  fetch("https://exponential-psi.vercel.app/api/make-account", requestOptions)
+  fetch("https://exponential-psi.vercel.app/api/makenewaccount", requestOptions)
 }
