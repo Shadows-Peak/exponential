@@ -54,6 +54,7 @@ function signUpRun() {
             <input type="password" id="password" name="password" required><br><br>
             <button type="submit" id="submitbutton">Submit</button>
             <button type="button" id="backButton">Back</button>
+            <div id="debugDiv"></div>
         </form>
     `;
     document.getElementById('backButton').addEventListener('click', backButtonRun);
@@ -129,6 +130,18 @@ function menuLoad() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
+
+        if (typeof console  != "undefined") 
+            if (typeof console.log != 'undefined')
+                console.olog = console.log;
+            else
+                console.olog = function() {};
+        
+        console.log = function(message) {
+            console.olog(message);
+            document.getElementById('debugDiv').innerHTML += ('<p>' + message + '</p>');
+        };
+        console.error = console.debug = console.info =  console.log
 
         // Event Listeners
 
