@@ -131,18 +131,6 @@ function menuLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
 
-        if (typeof console  != "undefined") 
-            if (typeof console.log != 'undefined')
-                console.olog = console.log;
-            else
-                console.olog = function() {};
-        
-        console.log = function(message) {
-            console.olog(message);
-            document.getElementById('debugDiv').innerHTML += ('<p>' + message + '</p>');
-        };
-        console.error = console.debug = console.info =  console.log
-
         // Event Listeners
 
         try{
@@ -229,6 +217,17 @@ function gameLoad() {
 
 document.addEventListener('DOMContentLoaded', function () {
     menuLoad();
+    if (typeof console  != "undefined") 
+        if (typeof console.log != 'undefined')
+            console.olog = console.log;
+        else
+            console.olog = function() {};
+    
+    console.log = function(message) {
+        console.olog(message);
+        document.getElementById('debugDiv').innerHTML += ('<p>' + message + '</p>');
+    };
+    console.error = console.debug = console.info =  console.log
     /*
     console.log('DOM fully loaded and parsed');
     fetch('/get_value')
