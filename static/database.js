@@ -2,10 +2,10 @@ function createAccount(input){
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   
-  const raw = JSON.stringify({
+  const raw = {
     "username": input['username'],
     "password": input['password']
-  });
+  };
 
   
   const requestOptions = {
