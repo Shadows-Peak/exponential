@@ -84,6 +84,7 @@ function submitRun(event) {
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
         // Add your sign-up logic here
+        
         createNewAccount(data['username'], data['password']);  
     } else if (form.id === 'login-form') {
         /*

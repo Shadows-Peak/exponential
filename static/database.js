@@ -4,7 +4,7 @@ async function createNewAccount(username, password) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ username, password }),
+    body:{ username, password },
   });
 
   const data = await response.json();
