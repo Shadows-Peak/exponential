@@ -4,9 +4,10 @@ async function createNewAccount(username, password) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body:{ username, password },
-  });
+    body:{ "username":username, "password":password },
+  })
+  .then(responce => responce.json);
 
   const data = await response.json();
-  return data;
+  alert(data)
 }
