@@ -174,7 +174,14 @@ function gameLoad() {
             }
             fillCircle(HarvestPoints);
         }
+        function clickTicTacToe() {
+            const ticTacToePopup = document.getElementById('TicTacToePopup');
+            if (ticTacToePopup) {
+                ticTacToePopup.style.display = 'block';
+            }
+        }
         document.getElementById('clickableCircle').addEventListener('click', clickButton);
+        document.getElementById('TicTacToeSelect').addEventListener('click', clickTicTacToe);
 
         document.getElementById('clickButton').addEventListener('click', function () {
             if (HarvestPoints == HarvestPointsNeeded) {
