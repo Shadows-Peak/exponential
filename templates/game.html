@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <script src="../static/visuals.js"></script>
     <script src="../static/main.js"></script>
 </head>
+
 <body>
     <div id="left"></div>
     <div id="right"></div>
@@ -22,10 +24,13 @@
     <div id="bottom"></div>
     <div id="processUnit">
         <h1>Processing Unit</h1>
-        <p id="processDisplay">0/10 Resources Queued   ---  0/10 Shipments Queued</p>
+        <p id="processDisplay">0/10 Resources Queued --- 0/10 Shipments Queued</p>
         <div id="listOfMinigames">
             <div id="TicTacToeSelect">Tic Tac Toe</div>
         </div>
+    </div>
+    <div id="TicTacToePopup" style="display: none;">
+        <h2>Popup Content</h2>
     </div>
     <h1>This is a test logged in page</h1>
     <p>Username: ${data.username}</p>
@@ -36,7 +41,9 @@
     <h2 id="TitleCard">Harvest Resources</h2>
     <div data-room-id=2 class="circle" id="clickableCircle">
         <div class="fill"></div>
-        <p id="number">0/10</div>
+        <p id="number">0/10
+    </div>
     </div>
 </body>
+
 </html>
