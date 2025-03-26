@@ -215,7 +215,22 @@ function gameLoad() {
                             alert('It\'s a draw!');
                             resetBoard(cells);
                         } else {
-                            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                            currentPlayer = 'O';
+                            const emptyCells = Array.from(cells).filter(cell => cell.textContent === '');
+                            if (emptyCells.length > 0) {
+                                const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                                randomCell.textContent = 'O';
+                                randomCell.style.color = 'red';
+
+                                if (checkWin('O')) {
+                                    alert('O wins!');
+                                    resetBoard(cells);
+                                } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
+                                    alert('It\'s a draw!');
+                                    resetBoard(cells);
+                                }
+                            }
+                            currentPlayer = 'X';
                         }
                     }
                 }
