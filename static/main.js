@@ -44,6 +44,83 @@ function fillCircle(value) {
     });
 }
 
+//  TIC TAC TOE START
+
+function clickTicTacToe() {
+    const ticTacToePopup = document.getElementById('TicTacToePopup');
+    if (ticTacToePopup) {
+        ticTacToePopup.style.display = 'block';
+
+        // Initialize the game
+        const cells = document.querySelectorAll('#TicTacToeBoard .cell');
+        let currentPlayer = 'X';
+
+        // Clear the board
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.addEventListener('click', function handleClick() {
+                // Check if the cell is already filled
+                if (cell.textContent === '') {
+                    cell.textContent = currentPlayer;
+                    cell.style.color = currentPlayer === 'X' ? 'blue' : 'red';
+
+                    // Check for a win or draw
+                    if (checkWin(currentPlayer)) {
+                        alert(`${currentPlayer} wins!`);
+                        resetBoard(cells);
+                    } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
+                        alert('It\'s a draw!');
+                        resetBoard(cells);
+                    } else {
+                        // Place the opposing side's move
+                        const emptyCells = Array.from(cells).filter(cell => cell.textContent === '');
+                        if (emptyCells.length > 0) {
+                            const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                            randomCell.textContent = currentPlayer === 'X' ? 'O' : 'X';
+                            randomCell.style.color = currentPlayer === 'X' ? 'red' : 'blue';
+
+                            // Check for a win or draw after the opposing side's move
+                            if (checkWin(currentPlayer === 'X' ? 'O' : 'X')) {
+                                alert(`${currentPlayer === 'X' ? 'O' : 'X'} wins!`);
+                                resetBoard(cells);
+                            } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
+                                alert('It\'s a draw!');
+                                resetBoard(cells);
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    }
+}
+
+function checkWin(player) {
+    const cells = document.querySelectorAll('#TicTacToeBoard .cell');
+    const winningCombinations = [
+        [0, 1, 2], // Top row
+        [3, 4, 5], // Middle row
+        [6, 7, 8], // Bottom row
+        [0, 3, 6], // Left column
+        [1, 4, 7], // Middle column
+        [2, 5, 8], // Right column
+        [0, 4, 8], // Diagonal top-left to bottom-right
+        [2, 4, 6]  // Diagonal top-right to bottom-left
+    ];
+
+    return winningCombinations.some(combination => {
+        return combination.every(index => cells[index].textContent === player);
+    });
+}
+
+function resetBoard(cells) {
+    cells.forEach(cell => {
+        cell.textContent = '';
+    });
+}
+
+//  TIC TAC TOE END
+
 function signUpRun() {
     document.body.innerHTML = `
         <h1>Sign Up</h1>
