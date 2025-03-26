@@ -24,6 +24,7 @@
     <div id="bottom"></div>
     <div id="processUnit">
         <h1>Processing Unit</h1>
+        <button id="packageShipmentsButton" style="position: absolute; top: 10px; left: 10px; padding: 5px 10px; cursor: pointer;">Package Shipments</button>
         <p id="processDisplay">0/10 Resources Queued --- 0/10 Shipments Queued</p>
         <div id="listOfMinigames">
             <div id="TicTacToeSelect">Tic Tac Toe</div>
@@ -49,6 +50,11 @@
                 <td class="cell" style="width: 50px; height: 50px; border: 1px solid black; text-align: center; vertical-align: middle;"></td>
             </tr>
         </table>
+    </div>
+    <div id="ShippingStation" style="position: absolute; bottom: 10px; left: 10px; width: 200px; padding: 10px; border: 2px solid black; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <h3 style="margin: 0; text-align: center;">Shipping Station</h3>
+        <p id="shipmentsCounter" style="text-align: center; margin: 10px 0;">Shipments Loaded: 0/5</p>
+        <button id="exportShipmentButton" style="display: block; margin: 0 auto; padding: 5px 10px; cursor: pointer;">Export Shipment</button>
     </div>
     <h1>This is a test logged in page</h1>
     <p>Username: ${data.username}</p>
