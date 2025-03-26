@@ -259,8 +259,50 @@ function gameLoad() {
             });
         }
 
+        function animatePackageToShippingStation() {
+            const processUnit = document.getElementById('processUnit');
+            const shippingStation = document.getElementById('ShippingStation');
+    
+            const processUnitRect = processUnit.getBoundingClientRect();
+            const shippingStationRect = shippingStation.getBoundingClientRect();
+    
+            const packageElement = document.createElement('div');
+            packageElement.className = 'floatingPackage';
+            document.body.appendChild(packageElement);
+    
+            packageElement.style.position = 'absolute';
+            packageElement.style.left = `${processUnitRect.left + processUnitRect.width / 2}px`;
+            packageElement.style.top = `${processUnitRect.top + processUnitRect.height / 2}px`;
+            packageElement.style.width = '20px';
+            packageElement.style.height = '20px';
+            packageElement.style.backgroundColor = '#ffcc00';
+            packageElement.style.borderRadius = '50%';
+            packageElement.style.zIndex = '1000';
+    
+            const animation = packageElement.animate([
+                { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
+                { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
+            ], {
+                duration: 1000,
+                easing: 'ease'
+            });
+    
+            animation.onfinish = function () {
+                document.body.removeChild(packageElement);
+            };
+        }
+        function clickExportShipment() {
+            if (shipmentsLoaded < maxShipments) {
+                shipmentsLoaded++;
+                document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
+            } else {
+                alert('Maximum shipments loaded! Please process the shipments before exporting more.');
+            }
+        }
+
         document.getElementById('clickableCircle').addEventListener('click', clickButton);
         document.getElementById('TicTacToeSelect').addEventListener('click', clickTicTacToe);
+        document.getElementById('exportShipmentButton').addEventListener('click', clickExportShipment);
 
         document.getElementById('clickButton').addEventListener('click', function () {
             if (HarvestPoints == HarvestPointsNeeded) {
@@ -295,6 +337,16 @@ function gameLoad() {
                     document.body.removeChild(transferCell);
                     Points += ClickValue;
                 };
+            }
+        });
+
+        document.getElementById('packageShipmentsButton').addEventListener('click', function () {
+            if (shipmentsQueued < maxQueueableShipments) {
+                shipmentsQueued++;
+                animatePackageToShippingStation();
+                document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsQueued}/${maxQueueableShipments}`;
+            } else {
+                alert('Maximum shipments loaded! Please export shipments before packaging more.');
             }
         });
     })
