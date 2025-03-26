@@ -206,3 +206,24 @@ left {
     text-align: center;
     margin-bottom: 20px;
 }
+
+#closeTicTacToePopup {
+    background-color: #ff4d4d; /* Red background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#closeTicTacToePopup:hover {
+    background-color: #e60000; /* Darker red on hover */
+}
