@@ -210,6 +210,9 @@ function gameLoad() {
         
                         if (checkWin(currentPlayer)) {
                             alert(`${currentPlayer} wins!`);
+                            if (shipmentsQueued < maxQueueableShipments) {
+                                shipmentsQueued++;
+                            }
                             resetBoard(cells);
                         } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
                             alert('It\'s a draw!');
@@ -341,9 +344,10 @@ function gameLoad() {
         });
 
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
-            if (shipmentsQueued < maxQueueableShipments) {
-                shipmentsQueued++;
+            if (shipmentsQueued > 0) {
+                shipmentsQueued = 0;
                 animatePackageToShippingStation();
+                shipmentsLoaded++;
                 document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsQueued}/${maxQueueableShipments}`;
             } else {
                 alert('Maximum shipments loaded! Please export shipments before packaging more.');
