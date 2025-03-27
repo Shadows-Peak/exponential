@@ -75,49 +75,54 @@ function loginRun() {
     `;
     document.getElementById('backButton').addEventListener('click', backButtonRun);
 }
-function submitRun(event) {
+async function submitRun(event) {
     event.preventDefault();
-    alert(event.defaultPrevented);
     const form = event.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
-        // Add your sign-up logic here
-        
-        createNewAccount(data['username'], data['password']);  
-    } else if (form.id === 'login-form') {
-        /*
-        if ((data['username'] != 'Very-Secure-Username.gov') || (data['password'] != 'thosewhoknow')) {
-            const popup = document.createElement('div');
-            document.body.appendChild(popup);
-            const popupTXT = document.createElement("h1");
-            popupTXT.textContent = 'Incorrect username or password. Please try again.';
-            popup.appendChild(popupTXT);
-            popup.style.position = 'fixed';
-            popup.style.top = '50%';
-            popup.style.left = '50%';
-            popup.style.transform = 'translate(-50%, -50%)';
-            popup.style.padding = '20px';
-            popup.style.backgroundColor = 'white';
-            popup.style.border = '1px solid black';
-            popup.style.zIndex = '1000';
-
-            setTimeout(() => {
-                document.body.removeChild(popup);
-            }, 3000);
-        */ // Keep this framework for when we need to display it if its not in the database for login
-        console.log('Login Form Data:', JSON.stringify(data, undefined, 2));
-        console.log(data['username'])
-        console.log(data['password'])
-
-        // Load game
-        gameLoad();
-
-        if (document.getElementById('username') === '') {
-            if (document.getElementById('password' === '')) {
-                currentpage += 1
+        try {
+            const userRecord = await getUserByUsername(data.username);
+            if (userRecord) {
+                alert('Error: Username already exists.');
+            } else {
+                const response = await signUp(data.username, data.password);
+                if (response) {
+                    alert('Sign Up Successful');
+                    menuLoad();
+                } else {
+                    alert('Sign Up Failed');
+                }
             }
+        } catch (error) {
+            console.error('Error during sign up:', error);
+            alert('Sign Up Failed');
+        }
+    } else if (form.id === 'login-form') {
+        console.log('Login Form Data:', JSON.stringify(data, undefined, 2));
+        try {
+            const userRecord = await getUserByUsername(data.username);
+            if (userRecord) {
+                const enteredPasswordHash = hashPassword(data.password); // Ensure hashPassword is defined
+                console.log('Entered Hash:', enteredPasswordHash);
+                console.log('Stored Hash:', userRecord.fields.password);
+
+                if (enteredPasswordHash === userRecord.fields.password) {
+                    alert('Login Successful');
+                    gameLoad();
+                } else {
+                    alert('Incorrect password. Login failed.');
+                    console.error('Incorrect password for user:', userRecord.fields.username);
+                }
+            } else {
+                alert('Error: User not found.');
+                console.error('Login failed: User not found.');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('Login Failed');
         }
     }
 }
