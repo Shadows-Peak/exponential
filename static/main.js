@@ -215,6 +215,9 @@ function gameLoad() {
                                 shipmentsQueued++;
                             }
                             resetBoard(cells);
+                            if (queuedResources < 1) {
+                                closePopup();
+                            }
                         } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
                             alert('It\'s a draw!');
                             resetBoard(cells);
