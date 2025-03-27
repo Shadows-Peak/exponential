@@ -7,7 +7,8 @@ function GameTick() {
     if (document.getElementById('points')) {
         document.getElementById('points').innerHTML = "You have:" + (Points) + " Dilyan Points";
         document.getElementById('number').innerHTML = (HarvestPoints)+"/"+(HarvestPointsNeeded);
-        document.getElementById('processDisplay').innerHTML = (Points)+'/10 Resources Queued   ---  '+(shipmentsQueued)+'/'+(maxQueueableShipments)+' Shipments Queued';
+        document.getElementById('processDisplay').innerHTML = (queuedResources)+'/'+(maxQueueableResources)+' Resources Queued   ---  '+(shipmentsQueued)+'/'+(maxQueueableShipments)+' Shipments Queued';
+        document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
     }
     if (document.getElementById('version')) {
         document.getElementById('version').innerHTML = (output);

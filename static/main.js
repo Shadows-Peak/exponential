@@ -211,6 +211,7 @@ function gameLoad() {
                         if (checkWin(currentPlayer)) {
                             alert(`${currentPlayer} wins!`);
                             if (shipmentsQueued < maxQueueableShipments) {
+                                queuedResources -= 1;
                                 shipmentsQueued++;
                             }
                             resetBoard(cells);
@@ -295,16 +296,20 @@ function gameLoad() {
             };
         }
         function clickExportShipment() {
-            if (shipmentsLoaded < maxShipments) {
-                shipmentsLoaded++;
-                document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
-            } else {
-                alert('Maximum shipments loaded! Please process the shipments before exporting more.');
+            if (shipmentsLoaded > 0) {
+                Points += shipmentsLoaded;
+                shipmentsLoaded = 0;
             }
         }
 
         document.getElementById('clickableCircle').addEventListener('click', clickButton);
-        document.getElementById('TicTacToeSelect').addEventListener('click', clickTicTacToe);
+        document.getElementById('TicTacToeSelect').addEventListener('click', function() {
+            if (queuedResources >= 1) {
+                clickTicTacToe();
+            } else {
+                alert('You need at least 1 queued resource to play Tic-Tac-Toe!');
+            }
+        });
         document.getElementById('exportShipmentButton').addEventListener('click', clickExportShipment);
 
         document.getElementById('clickButton').addEventListener('click', function () {
@@ -338,7 +343,7 @@ function gameLoad() {
                 animation.onfinish = function() {
                     console.log('Animation finished');
                     document.body.removeChild(transferCell);
-                    Points += ClickValue;
+                    queuedResources += ClickValue;
                 };
             }
         });
