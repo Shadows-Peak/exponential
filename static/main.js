@@ -80,6 +80,7 @@ async function submitRun(event) {
     const form = event.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    console.log('Form submitted:', form.id, data, JSON.stringify(data, undefined, 2), form, formData);
 
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
