@@ -1,4 +1,5 @@
 async function getUserByUsername(username) {
+    alert("ryker")
     const apiKey = "pat1nzJn2F4xz0rsu.467092737c986118748036d5a4414629242d4f789ac77b4e012c7a0dfa641152"; // Your read-only API key
     const baseId = "appum0pcb1Bu3mY6L";       //Airtable Base ID
     const tableName = "logins";               //table name
