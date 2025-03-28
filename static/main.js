@@ -204,6 +204,10 @@ function gameLoad() {
                 });
         
                 function handleCellClick() {
+                    if (queuedResources >= maxQueueableResources) {
+                        closePopup();
+                        alert('You have reached the maximum number of queued resources. Please export some shipments before playing.');
+                    }
                     if (this.textContent === '') {
                         this.textContent = currentPlayer;
                         this.style.color = currentPlayer === 'X' ? 'blue' : 'red';
@@ -217,6 +221,10 @@ function gameLoad() {
                             resetBoard(cells);
                             if (queuedResources < 1) {
                                 closePopup();
+                            }
+                            if (queuedResources+1 > maxQueueableResources) {
+                                closePopup();
+                                alert('Playing further would take you over your maximum capacity of queueable resources. Please export some shipments before playing.');
                             }
                         } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
                             alert('It\'s a draw!');
@@ -309,6 +317,8 @@ function gameLoad() {
         document.getElementById('TicTacToeSelect').addEventListener('click', function() {
             if (queuedResources >= 1) {
                 clickTicTacToe();
+            } else if (queuedResources+1 > maxQueueableResources) {
+                alert('Playing Tic-Tac-Toe would take you over your maximum capacity of queueable resources. Please export some shipments or find a game that processes less resources.');
             } else {
                 alert('You need at least 1 queued resource to play Tic-Tac-Toe!');
             }
@@ -353,9 +363,10 @@ function gameLoad() {
 
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
             if (shipmentsQueued > 0) {
+                let shipmentsToPackage = shipmentsQueued;
                 shipmentsQueued = 0;
                 animatePackageToShippingStation();
-                shipmentsLoaded++;
+                shipmentsLoaded += shipmentsToPackage;
                 document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsQueued}/${maxQueueableShipments}`;
             } else {
                 alert('Maximum shipments loaded! Please export shipments before packaging more.');
