@@ -104,8 +104,7 @@ async function submitRun(event) {
         }
     } else if (form.id === 'login-form') {
         console.log('Login Form Data:', JSON.stringify(data, undefined, 2));
-        try {
-            
+        try {  
             const userRecord = await getUserByUsername(data.username);
             if (userRecord) {
                 const enteredPasswordHash = await hashPassword(data.password); // Ensure hashPassword is defined
@@ -200,7 +199,7 @@ function gameLoad() {
         
                 // Close button functionality
                 const closeButton = document.getElementById('closeTicTacToePopup');
-                closeButton.addEventListener('click', function closePopup() {
+                function closePopup() {
                     ticTacToePopup.style.display = 'none';
         
                     // Remove event listeners from cells
@@ -210,10 +209,11 @@ function gameLoad() {
         
                     // Remove the close button event listener
                     closeButton.removeEventListener('click', closePopup);
-                });
+                }
+                closeButton.addEventListener('click', closePopup);
         
                 function handleCellClick() {
-                    if (queuedResources >= maxQueueableResources) {
+                    if (shipmentsQueued+1 > maxQueueableShipments) {
                         closePopup();
                         alert('You have reached the maximum number of queued resources. Please export some shipments before playing.');
                     }
