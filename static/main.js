@@ -94,6 +94,7 @@ async function submitRun(event) {
                     menuLoad();
                 } else {
                     alert('Sign Up Failed');
+                    menuLoad();
                 }
             }
         } catch (error) {
