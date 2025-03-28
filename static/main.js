@@ -105,7 +105,7 @@ async function submitRun(event) {
         try {
             const userRecord = await getUserByUsername(data.username);
             if (userRecord) {
-                const enteredPasswordHash = hashPassword(data.password); // Ensure hashPassword is defined
+                const enteredPasswordHash = await hashPassword(data.password); // Ensure hashPassword is defined
                 console.log('Entered Hash:', enteredPasswordHash);
                 console.log('Stored Hash:', userRecord.fields.password);
 
