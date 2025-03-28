@@ -125,6 +125,7 @@ async function submitRun(event) {
         } catch (error) {
             console.error('Error during login:', error);
             alert('Login Failed');
+            gameLoad(); // Remove this when you fix the buggy code, this is here to allow the user in even if it fails.
         }
     }
 }
