@@ -104,6 +104,7 @@ async function submitRun(event) {
     } else if (form.id === 'login-form') {
         console.log('Login Form Data:', JSON.stringify(data, undefined, 2));
         try {
+            
             const userRecord = await getUserByUsername(data.username);
             if (userRecord) {
                 const enteredPasswordHash = await hashPassword(data.password); // Ensure hashPassword is defined
