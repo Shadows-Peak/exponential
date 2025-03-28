@@ -214,8 +214,8 @@ function gameLoad() {
         
                 function handleCellClick() {
                     if (shipmentsQueued+1 > maxQueueableShipments) {
+                        alert('You have reached the maximum number of queued shipments. Please export some shipments before playing.');
                         closePopup();
-                        alert('You have reached the maximum number of queued resources. Please export some shipments before playing.');
                     }
                     if (this.textContent === '') {
                         this.textContent = currentPlayer;
@@ -231,9 +231,9 @@ function gameLoad() {
                             if (queuedResources < 1) {
                                 closePopup();
                             }
-                            if (queuedResources+1 > maxQueueableResources) {
+                            if (shipmentsQueued+1 > maxQueueableResources) {
                                 closePopup();
-                                alert('Playing further would take you over your maximum capacity of queueable resources. Please export some shipments before playing.');
+                                alert('Playing further would take you over your maximum capacity of queueable shipments. Please export some shipments before playing.');
                             }
                         } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
                             alert('It\'s a draw!');
