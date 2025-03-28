@@ -335,7 +335,7 @@ function gameLoad() {
         document.getElementById('exportShipmentButton').addEventListener('click', clickExportShipment);
 
         document.getElementById('clickButton').addEventListener('click', function () {
-            if (HarvestPoints == HarvestPointsNeeded) {
+            if (HarvestPoints == HarvestPointsNeeded && queuedResources+ClickValue <= maxQueueableResources) {
                 HarvestPoints = 0;
                 fillCircle(HarvestPoints);
                 const circle = document.querySelector('.circle');
@@ -371,13 +371,15 @@ function gameLoad() {
         });
 
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
-            if (shipmentsQueued > 0) {
+            if (shipmentsQueued > 0 && shipmentsLoaded < maxShipments) {
                 let shipmentsToPackage = shipmentsQueued;
                 shipmentsQueued = 0;
                 animatePackageToShippingStation();
                 shipmentsLoaded += shipmentsToPackage;
                 document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsQueued}/${maxQueueableShipments}`;
-            } else {
+            } else if (shipmentsQueued < 0 && shipmentsLoaded < maxShipments) {
+                alert('You have no shipments queued! Please queue some shipments before packaging.');
+            } else if (shipmentsLoaded >= maxShipments) {
                 alert('Maximum shipments loaded! Please export shipments before packaging more.');
             }
         });
