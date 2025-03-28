@@ -231,7 +231,7 @@ function gameLoad() {
                             if (queuedResources < 1) {
                                 closePopup();
                             }
-                            if (shipmentsQueued+1 > maxQueueableResources) {
+                            if (shipmentsQueued+1 > maxQueueableShipments) {
                                 closePopup();
                                 alert('Playing further would take you over your maximum capacity of queueable shipments. Please export some shipments before playing.');
                             }
