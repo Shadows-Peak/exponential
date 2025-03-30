@@ -117,10 +117,12 @@ async function submitRun(event) {
                 } else {
                     alert('Incorrect password. Login failed.');
                     console.error('Incorrect password for user:', userRecord.fields.username);
+                    gameLoad(); // Remove this when you fix the buggy code, this is here to allow the user in even if it fails.
                 }
             } else {
                 alert('Error: User not found.');
                 console.error('Login failed: User not found.');
+                gameLoad(); // Remove this when you fix the buggy code, this is here to allow the user in even if it fails.
             }
         } catch (error) {
             console.error('Error during login:', error);
