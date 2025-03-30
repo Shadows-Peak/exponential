@@ -32,4 +32,4 @@ async function signUp(username, password) {
     }  
 }
 // Expose the function globally so main.js can use it.
-window.signUp = signUp;
+//window.signUp = signUp; TESTING COMMENTING IT OUT FOR NOW

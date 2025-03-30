@@ -25,4 +25,4 @@ async function getUserByUsername(username) {
     }
 }
 // Expose the function globally so main.js can use it.
-window.getUserByUsername = getUserByUsername;
+//window.getUserByUsername = getUserByUsername; TESTING COMMENTING IT OUT FOR NOW
