@@ -233,6 +233,7 @@ function gameLoad() {
                             }
                             if (shipmentsQueued+1 > maxQueueableShipments) {
                                 closePopup();
+                                alert(shipmentsQueued);
                                 alert('Playing further would take you over your maximum capacity of queueable shipments. Please export some shipments before playing.');
                             }
                         } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
@@ -372,6 +373,21 @@ function gameLoad() {
 
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
             if (shipmentsQueued > 0 && shipmentsLoaded < maxShipments) {
+                if (shipmentsQueued + shipmentsLoaded > maxShipments) {
+                    // If adding the queued shipments would exceed the max, only package the difference
+                    let shipmentsToPackage = maxShipments - shipmentsLoaded;
+                    // Ensure we don't package more than we have queued
+                    if (shipmentsToPackage > shipmentsQueued) {
+                        shipmentsToPackage = shipmentsQueued;
+                    }
+                    // This ensures we don't package more than we have queued
+                    shipmentsQueued -= shipmentsToPackage;
+                    // Animate the package to the shipping station
+                    animatePackageToShippingStation();
+                    // Update the loaded shipments
+                    shipmentsLoaded += shipmentsToPackage;
+                    return; // Exit the function after packaging the difference
+                }
                 let shipmentsToPackage = shipmentsQueued;
                 shipmentsQueued = 0;
                 animatePackageToShippingStation();
