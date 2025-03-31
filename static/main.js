@@ -86,10 +86,11 @@ async function submitRun(event) {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
         try {
             const userRecord = await getUserByUsername(data.username);
+            data.password = hashPassword(data.password);
             if (userRecord) {
                 alert('Error: Username already exists.');
             } else {
-                const response = await signUp(data.username, hashPassword(data.password));
+                const response = await signUp(data.username, data.password);
                 if (response) {
                     alert('Sign Up Successful (we dont store passwords in plaintext, if you forget your password, make a new account (or pay me like 5 bucks and I will reset it for you))');
                     menuLoad();
