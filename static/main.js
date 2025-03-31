@@ -92,11 +92,15 @@ async function submitRun(event) {
             } else {
                 const response = await signUp(data.username, data.password);
                 if (response) {
-                    alert('Sign Up Successful (we dont store passwords in plaintext, if you forget your password, make a new account (or pay me like 5 bucks and I will reset it for you))');
-                    menuLoad();
+                    if (localStorage.getItem('made_account') === 'true') {
+                        alert('You have already made an account, please log in.');
+                    } else {
+                        alert('Sign Up Successful (we dont store passwords in plaintext, if you forget your password, make a new account (or pay me like 5 bucks and I will reset it for you))');
+                        localStorage.setItem('made_account', 'true');
+                        gameLoad();
+                    }
                 } else {
                     alert('Sign Up Failed');
-                    menuLoad();
                 }
             }
         } catch (error) {
