@@ -89,7 +89,7 @@ async function submitRun(event) {
             if (userRecord) {
                 alert('Error: Username already exists.');
             } else {
-                const response = await signUp(data.username, data.password);
+                const response = await signUp(data.username, hashPassword(data.password));
                 if (response) {
                     alert('Sign Up Successful');
                     menuLoad();
