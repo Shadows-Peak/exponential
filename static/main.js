@@ -91,7 +91,7 @@ async function submitRun(event) {
             } else {
                 const response = await signUp(data.username, hashPassword(data.password));
                 if (response) {
-                    alert('Sign Up Successful');
+                    alert('Sign Up Successful (we dont store passwords in plaintext, if you forget your password, make a new account (or pay me like 5 bucks and I will reset it for you))');
                     menuLoad();
                 } else {
                     alert('Sign Up Failed');
