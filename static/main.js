@@ -80,13 +80,13 @@ async function submitRun(event) {
     const form = event.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log('Form submitted:', data.username, hashPassword(data.password));
+    console.log('Form submitted:', data.username, await hashPassword(data.password));
 
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
         try {
             const userRecord = await getUserByUsername(data.username);
-            data.password = hashPassword(data.password);
+            data.password = await hashPassword(data.password);
             if (userRecord) {
                 alert('Error: Username already exists.');
             } else {
