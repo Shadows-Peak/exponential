@@ -290,17 +290,19 @@ function gameLoad() {
             });
         }
 
+        let waitingPackages = []; // Array to store packages waiting to move in
+
         function animatePackageToShippingStation() {
             const processUnit = document.getElementById('processUnit');
             const shippingStation = document.getElementById('ShippingStation');
-    
+        
             const processUnitRect = processUnit.getBoundingClientRect();
             const shippingStationRect = shippingStation.getBoundingClientRect();
-    
+        
             const packageElement = document.createElement('div');
             packageElement.className = 'floatingPackage';
             document.body.appendChild(packageElement);
-    
+        
             packageElement.style.position = 'absolute';
             packageElement.style.left = `${processUnitRect.left + processUnitRect.width / 2}px`;
             packageElement.style.top = `${processUnitRect.top + processUnitRect.height / 2}px`;
@@ -309,18 +311,60 @@ function gameLoad() {
             packageElement.style.backgroundColor = '#ffcc00';
             packageElement.style.borderRadius = '50%';
             packageElement.style.zIndex = '1';
+        
+            // Check if shipmentsLoaded is at max capacity
+            if (shipmentsLoaded >= maxShipments) {
+                // Stop the package short and line it up
+                const waitingPosition = {
+                    left: `${shippingStationRect.left + shippingStationRect.width / 2}px`,
+                    top: `${shippingStationRect.top - 30 - waitingPackages.length * 25}px` // Stack packages vertically
+                };
             
-            const animation = packageElement.animate([
-                { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
-                { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
-            ], {
-                duration: 1000,
-                easing: 'ease'
-            });
-    
-            animation.onfinish = function () {
-                document.body.removeChild(packageElement);
-            };
+                packageElement.style.left = waitingPosition.left;
+                packageElement.style.top = waitingPosition.top;
+            
+                waitingPackages.push(packageElement); // Add to waiting queue
+            } else {
+                // Animate the package to the shipping station
+                const animation = packageElement.animate([
+                    { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
+                    { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
+                ], {
+                    duration: 1000,
+                    easing: 'ease'
+                });
+            
+                animation.onfinish = function () {
+                    document.body.removeChild(packageElement);
+                    shipmentsLoaded++;
+                    document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
+                    processWaitingPackages(); // Check if waiting packages can move in
+                };
+            }
+        }
+        
+        function processWaitingPackages() {
+            while (waitingPackages.length > 0 && shipmentsLoaded < maxShipments) {
+                const packageElement = waitingPackages.shift(); // Get the first waiting package
+            
+                const shippingStation = document.getElementById('ShippingStation');
+                const shippingStationRect = shippingStation.getBoundingClientRect();
+            
+                // Animate the package to the shipping station
+                const animation = packageElement.animate([
+                    { left: packageElement.style.left, top: packageElement.style.top },
+                    { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
+                ], {
+                    duration: 1000,
+                    easing: 'ease'
+                });
+            
+                animation.onfinish = function () {
+                    document.body.removeChild(packageElement);
+                    shipmentsLoaded++;
+                    document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
+                };
+            }
         }
         function clickExportShipment() {
             if (shipmentsLoaded > 0) {
