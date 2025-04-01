@@ -453,7 +453,7 @@ function gameLoad() {
                     // This ensures we don't package more than we have queued
                     shipmentsQueued -= shipmentsToPackage;
                     // Animate the package to the shipping station
-                    animatePackageToShippingStation();
+                    animatePackageToShippingStation(shipmentsToPackage);
                     return; // Exit the function after packaging the difference
                 }
                 let shipmentsToPackage = shipmentsQueued;
