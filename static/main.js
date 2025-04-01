@@ -308,8 +308,8 @@ function gameLoad() {
             packageElement.style.height = '20px';
             packageElement.style.backgroundColor = '#ffcc00';
             packageElement.style.borderRadius = '50%';
-            packageElement.style.zIndex = '1000';
-    
+            packageElement.style.zIndex = '1';
+            
             const animation = packageElement.animate([
                 { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
                 { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
