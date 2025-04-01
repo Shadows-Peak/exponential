@@ -292,7 +292,7 @@ function gameLoad() {
 
         let waitingPackages = []; // Array to store packages waiting to move in
 
-        function animatePackageToShippingStation() {
+        function animatePackageToShippingStation(toPackage) {
             const processUnit = document.getElementById('processUnit');
             const shippingStation = document.getElementById('ShippingStation');
         
@@ -328,7 +328,7 @@ function gameLoad() {
                 // Animate the package to the shipping station
                 const animation = packageElement.animate([
                     { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
-                    { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
+                    { left: `${shipapingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
                 ], {
                     duration: 1000,
                     easing: 'ease'
@@ -336,17 +336,17 @@ function gameLoad() {
             
                 animation.onfinish = function () {
                     document.body.removeChild(packageElement);
-                    shipmentsLoaded++;
+                    shipmentsLoaded += toPackage;
                     document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
-                    processWaitingPackages(); // Check if waiting packages can move in
+                    processWaitingPackages(toPackage); // Check if waiting packages can move in
                 };
             }
         }
-        
-        function processWaitingPackages() {
+
+        function processWaitingPackages(toPackage) {
             while (waitingPackages.length > 0 && shipmentsLoaded < maxShipments) {
                 const packageElement = waitingPackages.shift(); // Get the first waiting package
-            
+                
                 const shippingStation = document.getElementById('ShippingStation');
                 const shippingStationRect = shippingStation.getBoundingClientRect();
             
@@ -361,7 +361,7 @@ function gameLoad() {
             
                 animation.onfinish = function () {
                     document.body.removeChild(packageElement);
-                    shipmentsLoaded++;
+                    shipmentsLoaded += toPackage;
                     document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
                 };
             }
@@ -434,19 +434,31 @@ function gameLoad() {
                     shipmentsQueued -= shipmentsToPackage;
                     // Animate the package to the shipping station
                     animatePackageToShippingStation();
-                    // Update the loaded shipments
-                    shipmentsLoaded += shipmentsToPackage;
                     return; // Exit the function after packaging the difference
                 }
                 let shipmentsToPackage = shipmentsQueued;
                 shipmentsQueued = 0;
-                animatePackageToShippingStation();
-                shipmentsLoaded += shipmentsToPackage;
-                document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsQueued}/${maxQueueableShipments}`;
+                animatePackageToShippingStation(shipmentsToPackage);
             } else if (shipmentsQueued < 0 && shipmentsLoaded < maxShipments) {
                 alert('You have no shipments queued! Please queue some shipments before packaging.');
             } else if (shipmentsLoaded >= maxShipments) {
                 alert('Maximum shipments loaded! Please export shipments before packaging more.');
+                if (shipmentsQueued + shipmentsLoaded > maxShipments) {
+                    // If adding the queued shipments would exceed the max, only package the difference
+                    let shipmentsToPackage = maxShipments - shipmentsLoaded;
+                    // Ensure we don't package more than we have queued
+                    if (shipmentsToPackage > shipmentsQueued) {
+                        shipmentsToPackage = shipmentsQueued;
+                    }
+                    // This ensures we don't package more than we have queued
+                    shipmentsQueued -= shipmentsToPackage;
+                    // Animate the package to the shipping station
+                    animatePackageToShippingStation();
+                    return; // Exit the function after packaging the difference
+                }
+                let shipmentsToPackage = shipmentsQueued;
+                shipmentsQueued = 0;
+                animatePackageToShippingStation(shipmentsToPackage);
             }
         });
     })
