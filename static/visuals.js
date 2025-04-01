@@ -5,7 +5,7 @@ var roomids;
 function GameTick() {
     //console.log("running game tick")
     if (document.getElementById('points')) {
-        document.getElementById('points').innerHTML = "You have:" + (Points) + " Dilyan Points";
+        document.getElementById('points').innerHTML = "You have:" + (DilyanPoints) + " Dilyan Points";
         document.getElementById('number').innerHTML = (HarvestPoints)+"/"+(HarvestPointsNeeded);
         document.getElementById('processDisplay').innerHTML = (queuedResources)+'/'+(maxQueueableResources)+' Resources Queued   ---  '+(shipmentsQueued)+'/'+(maxQueueableShipments)+' Shipments Queued';
         document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;

@@ -181,8 +181,8 @@ function gameLoad() {
         });
 
         function clickButton() {
-            if (HarvestPoints + ClickValue < HarvestPointsNeeded) {
-                HarvestPoints += HarvestClickValue
+            if (HarvestPoints + ResourcesPerHarvest < HarvestPointsNeeded) {
+                HarvestPoints += ResourcesPerHarvest
             } else if (HarvestPoints < HarvestPointsNeeded) {
                 HarvestPoints = HarvestPointsNeeded;
             }
@@ -324,7 +324,7 @@ function gameLoad() {
         }
         function clickExportShipment() {
             if (shipmentsLoaded > 0) {
-                Points += shipmentsLoaded;
+                DilyanPoints += shipmentsLoaded;
                 shipmentsLoaded = 0;
             }
         }
@@ -342,7 +342,7 @@ function gameLoad() {
         document.getElementById('exportShipmentButton').addEventListener('click', clickExportShipment);
 
         document.getElementById('clickButton').addEventListener('click', function () {
-            if (HarvestPoints == HarvestPointsNeeded && queuedResources+ClickValue <= maxQueueableResources) {
+            if (HarvestPoints == HarvestPointsNeeded && queuedResources+HarvestClickValue <= maxQueueableResources) {
                 HarvestPoints = 0;
                 fillCircle(HarvestPoints);
                 const circle = document.querySelector('.circle');
@@ -372,7 +372,7 @@ function gameLoad() {
                 animation.onfinish = function() {
                     console.log('Animation finished');
                     document.body.removeChild(transferCell);
-                    queuedResources += ClickValue;
+                    queuedResources += HarvestClickValue;
                 };
             }
         });
