@@ -74,7 +74,7 @@ function loginRun() {
         </form>
     `;
     document.getElementById('backButton').addEventListener('click', backButtonRun);
-    renderPosts(); // This should not be here, but it is for testing purposes
+    await renderPosts(); // This should not be here, but it is for testing purposes
 }
 async function submitRun(event) {
     event.preventDefault();
