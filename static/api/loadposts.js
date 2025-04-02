@@ -25,3 +25,10 @@ async function loadPosts() {
     }
 // Expose the function globally so main.js can use it.
 window.loadPosts = loadPosts;
+async function renderPosts() {
+    const posts  = loadPosts();
+    console.log('Loading posts...', posts);
+    
+}
+// Call the function to render posts when the page loads
+window.renderPosts = renderPosts;

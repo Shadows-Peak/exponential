@@ -74,6 +74,7 @@ function loginRun() {
         </form>
     `;
     document.getElementById('backButton').addEventListener('click', backButtonRun);
+    renderPosts(); // This should not be here, but it is for testing purposes
 }
 async function submitRun(event) {
     event.preventDefault();
@@ -118,8 +119,6 @@ async function submitRun(event) {
 
                 if (enteredPasswordHash === userRecord.fields.password) {
                     alert('Login Successful');
-                    const rendered = renderPosts();
-                    console.log('Rendered posts:', rendered);
                     localStorage.setItem('logged_in', 'true');
                     gameLoad();
                 } else {
