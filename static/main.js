@@ -496,9 +496,3 @@ function forumLoad() {
     })
     .catch(error => console.error('Error loading forum.html:', error));
 }
-
-function renderPosts() {
-    const posts  = loadPosts();
-    console.log('Loading posts...', posts);
-    
-}
