@@ -74,7 +74,7 @@ function loginRun() {
         </form>
     `;
     document.getElementById('backButton').addEventListener('click', backButtonRun);
-    await renderPosts(); // This should not be here, but it is for testing purposes
+    
 }
 async function submitRun(event) {
     event.preventDefault();
@@ -82,6 +82,8 @@ async function submitRun(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log('Form submitted:', data.username, await hashPassword(data.password));
+    const posts = await loadPosts(); // This should not be here, but it is for testing purposes
+    console.log('Posts:', posts); // ditto for this line
 
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
