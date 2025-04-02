@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 function forumLoad() {
     // HTML Load
-    fetch('./templates/form.html')
+    fetch('./templates/forum.html')
     .then(response => response.text())
     .then(html => {
         const parser = new DOMParser();
