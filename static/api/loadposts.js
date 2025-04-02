@@ -30,5 +30,5 @@ async function renderPosts() {
     console.log('Loading posts...', posts);
     
 }
-// Call the function to render posts when the page loads
+// Expose the function globally so main.js can use it.
 window.renderPosts = renderPosts;
