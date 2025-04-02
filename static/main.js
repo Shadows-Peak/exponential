@@ -83,7 +83,7 @@ async function submitRun(event) {
     const data = Object.fromEntries(formData.entries());
     console.log('Form submitted:', data.username, await hashPassword(data.password));
     const posts = await loadPosts(); // This should not be here, but it is for testing purposes
-    console.log('Posts:', posts); // ditto for this line
+    console.log('Posts:', json.stringify(posts)); // ditto for this line
 
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
