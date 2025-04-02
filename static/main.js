@@ -183,6 +183,9 @@ function gameLoad() {
         document.getElementById('logoutButton').addEventListener('click', function () {
             menuLoad();
         });
+        document.getElementById('forumButton').addEventListener('click', function () {
+            forumLoad();
+        });
 
         function clickButton() {
             if (HarvestPoints + ResourcesPerHarvest < HarvestPointsNeeded) {
@@ -492,9 +495,6 @@ function forumLoad() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
-
-        // Continuously run loadPosts
-        setInterval(renderPosts, 5000); // Adjust the interval as needed
     })
     .catch(error => console.error('Error loading forum.html:', error));
 }
