@@ -1,7 +1,7 @@
 async function loadPosts() {
     const apiKey = "pat1nzJn2F4xz0rsu.467092737c986118748036d5a4414629242d4f789ac77b4e012c7a0dfa641152"; // Your read-only API key
     const baseId = "appum0pcb1Bu3mY6L";       //Airtable Base ID
-    const tableName = "logins";             //table name
+    const tableName = "le chat";             //table name
     const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
     try {
         const response = await fetch(url, {
@@ -24,11 +24,11 @@ async function loadPosts() {
         }
     }
 // Expose the function globally so main.js can use it.
-window.loadPosts = loadPosts;
+//window.loadPosts = loadPosts;
 async function renderPosts() {
     const posts  = loadPosts();
     console.log('Loading posts...', posts);
     
 }
 // Expose the function globally so main.js can use it.
-window.renderPosts = renderPosts;
+//window.renderPosts = renderPosts;
