@@ -82,7 +82,7 @@ async function submitRun(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log('Form submitted:', data.username, await hashPassword(data.password));
-    const posts = await window.loadPosts(); // This should not be here, but it is for testing purposes
+    const posts = await loadPosts(); // This should not be here, but it is for testing purposes
     console.log('Posts:', posts); // ditto for this line
 
     if (form.id === 'signup-form') {
