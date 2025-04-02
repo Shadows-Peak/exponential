@@ -495,6 +495,7 @@ function forumLoad() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
+        document.body.style.backgroundColor = '#f0f0f0'; // Set background color for forum page
     })
     .catch(error => console.error('Error loading forum.html:', error));
 }
