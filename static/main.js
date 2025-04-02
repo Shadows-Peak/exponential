@@ -118,6 +118,7 @@ async function submitRun(event) {
 
                 if (enteredPasswordHash === userRecord.fields.password) {
                     alert('Login Successful');
+                    renderPosts();
                     gameLoad();
                 } else {
                     alert('Incorrect password. Login failed.');
@@ -480,3 +481,23 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching value:', error)); */
 });
+function forumLoad() {
+    // HTML Load
+    fetch('./templates/form.html')
+    .then(response => response.text())
+    .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        document.body.innerHTML = doc.body.innerHTML;
+
+        // Continuously run loadPosts
+        setInterval(renderPosts, 5000); // Adjust the interval as needed
+    })
+    .catch(error => console.error('Error loading forum.html:', error));
+}
+
+function renderPosts() {
+    const posts  = loadPosts();
+    console.log('Loading posts...', posts);
+    
+}
