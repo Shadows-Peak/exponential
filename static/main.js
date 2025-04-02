@@ -118,7 +118,9 @@ async function submitRun(event) {
 
                 if (enteredPasswordHash === userRecord.fields.password) {
                     alert('Login Successful');
-                    renderPosts();
+                    const rendered = renderPosts();
+                    console.log('Rendered posts:', rendered);
+                    localStorage.setItem('logged_in', 'true');
                     gameLoad();
                 } else {
                     alert('Incorrect password. Login failed.');
