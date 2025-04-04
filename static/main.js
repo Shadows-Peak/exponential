@@ -306,7 +306,7 @@ function gameLoad() {
             const processUnitRect = processUnit.getBoundingClientRect();
             const shippingStationRect = shippingStation.getBoundingClientRect();
             
-            const spacing = 30; // Spacing between packages
+            const spacing = 70; // Spacing between packages
 
             toPackage.forEach((packageValue, index) => {
             shipmentsQueued -= packageValue;
@@ -447,13 +447,9 @@ function gameLoad() {
         });
 
         function splitExports(numberToSplit, splitSize) {
-            alert('Splitting ' + numberToSplit + ' into ' + splitSize);
             let trackingNumber = numberToSplit;
             let trackingList = [];
-            alert('Looping ' + Math.ceil(numberToSplit/splitSize) + ' times');
             for (i = 1; i <= Math.ceil(numberToSplit/splitSize); i++) {
-                alert(i + 'ith loop');
-                alert('Tracking Number: ' + trackingNumber);
                 if (trackingNumber - splitSize < 0) {
                     trackingList.push(trackingNumber);
                     trackingNumber = 0;
@@ -462,7 +458,6 @@ function gameLoad() {
                     trackingNumber -= splitSize;
                 }
             }
-            alert('Tracking List: ' + trackingList);
             return trackingList;
         }
 
