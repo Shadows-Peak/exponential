@@ -430,40 +430,31 @@ function gameLoad() {
             }
         });
 
+        function splitExports(numberToSplit, splitSize) {
+            let trackingNumber = numberToSplit;
+            let trackingList = [];
+            for (i = 1; i < Math.ceil(numberToSplit/splitSize); i++) {
+                if (trackingNumber - splitSize < 0) {
+                    trackingList.push(trackingNumber);
+                    trackingNumber = 0;
+                } else {
+                    trackingList.push(splitSize);
+                    trackingNumber -= splitSize;
+                }
+            }
+            return trackingList;
+        }
+
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
             if (shipmentsQueued > 0 && shipmentsLoaded < maxShipments) {
-                if (shipmentsQueued + shipmentsLoaded > maxShipments) {
-                    // If adding the queued shipments would exceed the max, only package the difference
-                    let shipmentsToPackage = maxShipments - shipmentsLoaded;
-                    // Ensure we don't package more than we have queued
-                    if (shipmentsToPackage > shipmentsQueued) {
-                        shipmentsToPackage = shipmentsQueued;
-                    }
-                    // This ensures we don't package more than we have queued
-                    shipmentsQueued -= shipmentsToPackage;
-                    // Animate the package to the shipping station
-                    animatePackageToShippingStation([shipmentsToPackage]);
-                    return; // Exit the function after packaging the difference
-                }
-                let shipmentsToPackage = shipmentsQueued;
-                shipmentsQueued = 0;
-                animatePackageToShippingStation([shipmentsToPackage]);
+                let shipmentsToPackage = splitExports(shipmentsQueued,shipmentsPerPackage);
+                animatePackageToShippingStation(shipmentsToPackage);
             } else if (shipmentsQueued < 0 && shipmentsLoaded < maxShipments) {
                 alert('You have no shipments queued! Please queue some shipments before packaging.');
             } else if (shipmentsLoaded >= maxShipments) {
                 alert('Maximum shipments loaded! Please export shipments before packaging more.');
                 if (shipmentsQueued + shipmentsLoaded > maxShipments) {
-                    let shipmentsPackaging = shipmentsQueued;
-                    let shipmentsToPackage = [];
-                    for (i = 1; i < Math.ceil(shipmentsQueued/shipmentsPerPackage); i++) {
-                        if (shipmentsPackaging - shipmentsPerPackage < 0) {
-                            shipmentsToPackage.push(shipmentsPackaging);
-                            shipmentsPackaging = 0;
-                        } else {
-                            shipmentsToPackage.push(shipmentsPerPackage);
-                            shipmentsPackaging -= shipmentsPerPackage;
-                        }
-                    }
+                    let shipmentsToPackage = splitExports(shipmentsQueued,shipmentsPerPackage);
                     animatePackageToShippingStation(shipmentsToPackage);
                 }
             }
