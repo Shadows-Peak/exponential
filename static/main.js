@@ -435,7 +435,7 @@ function gameLoad() {
             let trackingNumber = numberToSplit;
             let trackingList = [];
             alert('Looping ' + Math.ceil(numberToSplit/splitSize) + ' times');
-            for (i = 1; i < Math.ceil(numberToSplit/splitSize); i++) {
+            for (i = 1; i <= Math.ceil(numberToSplit/splitSize); i++) {
                 alert(i + 'ith loop');
                 alert('Tracking Number: ' + trackingNumber);
                 if (trackingNumber - splitSize < 0) {
