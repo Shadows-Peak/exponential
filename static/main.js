@@ -442,12 +442,12 @@ function gameLoad() {
                     // This ensures we don't package more than we have queued
                     shipmentsQueued -= shipmentsToPackage;
                     // Animate the package to the shipping station
-                    animatePackageToShippingStation(shipmentsToPackage);
+                    animatePackageToShippingStation([shipmentsToPackage]);
                     return; // Exit the function after packaging the difference
                 }
                 let shipmentsToPackage = shipmentsQueued;
                 shipmentsQueued = 0;
-                animatePackageToShippingStation(shipmentsToPackage);
+                animatePackageToShippingStation([shipmentsToPackage]);
             } else if (shipmentsQueued < 0 && shipmentsLoaded < maxShipments) {
                 alert('You have no shipments queued! Please queue some shipments before packaging.');
             } else if (shipmentsLoaded >= maxShipments) {
