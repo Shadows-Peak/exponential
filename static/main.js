@@ -306,57 +306,59 @@ function gameLoad() {
             const processUnitRect = processUnit.getBoundingClientRect();
             const shippingStationRect = shippingStation.getBoundingClientRect();
         
-            const packageElement = document.createElement('div');
-            packageElement.className = 'floatingPackage';
-            document.body.appendChild(packageElement);
+            toPackage.forEach((packageValue, index) => {
+                const packageElement = document.createElement('div');
+                packageElement.className = 'floatingPackage';
+                document.body.appendChild(packageElement);
         
-            packageElement.style.position = 'absolute';
-            packageElement.style.left = `${processUnitRect.left + processUnitRect.width / 2}px`;
-            packageElement.style.top = `${processUnitRect.top + processUnitRect.height / 2}px`;
-            packageElement.style.width = '20px';
-            packageElement.style.height = '20px';
-            packageElement.style.backgroundColor = '#ffcc00';
-            packageElement.style.borderRadius = '50%';
-            packageElement.style.zIndex = '1';
+                packageElement.style.position = 'absolute';
+                packageElement.style.left = `${processUnitRect.left + processUnitRect.width / 2}px`;
+                packageElement.style.top = `${processUnitRect.top + processUnitRect.height / 2}px`;
+                packageElement.style.width = '20px';
+                packageElement.style.height = '20px';
+                packageElement.style.backgroundColor = '#ffcc00';
+                packageElement.style.borderRadius = '50%';
+                packageElement.style.zIndex = '1';
         
-            // Check if shipmentsLoaded is at max capacity
-            if (shipmentsLoaded >= maxShipments) {
-                // Stop the package short and line it up
-                const waitingPosition = {
-                    left: `${shippingStationRect.left + shippingStationRect.width / 2}px`,
-                    top: `${shippingStationRect.top - 30 - waitingPackages.length * 25}px` // Stack packages vertically
-                };
-            
-                packageElement.style.left = waitingPosition.left;
-                packageElement.style.top = waitingPosition.top;
-            
-                waitingPackages.push(packageElement); // Add to waiting queue
-            } else {
-                // Animate the package to the shipping station
-                const animation = packageElement.animate([
-                    { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
-                    { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
-                ], {
-                    duration: 1000,
-                    easing: 'ease'
-                });
-            
-                animation.onfinish = function () {
-                    document.body.removeChild(packageElement);
-                    shipmentsLoaded += toPackage;
-                    document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
-                    processWaitingPackages(toPackage); // Check if waiting packages can move in
-                };
-            }
+                // Check if shipmentsLoaded is at max capacity
+                if (shipmentsLoaded >= maxShipments) {
+                    // Stop the package short and line it up
+                    const waitingPosition = {
+                        left: `${shippingStationRect.left + shippingStationRect.width / 2}px`,
+                        top: `${shippingStationRect.top - 30 - waitingPackages.length * 25}px` // Stack packages vertically
+                    };
+        
+                    packageElement.style.left = waitingPosition.left;
+                    packageElement.style.top = waitingPosition.top;
+        
+                    waitingPackages.push({ element: packageElement, value: packageValue }); // Add to waiting queue
+                } else {
+                    // Animate the package to the shipping station
+                    const animation = packageElement.animate([
+                        { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
+                        { left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, top: `${shippingStationRect.top + shippingStationRect.height / 2}px` }
+                    ], {
+                        duration: 1000,
+                        easing: 'ease'
+                    });
+        
+                    animation.onfinish = function () {
+                        document.body.removeChild(packageElement);
+                        shipmentsLoaded += packageValue;
+                        document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
+                        processWaitingPackages(); // Check if waiting packages can move in
+                    };
+                }
+            });
         }
 
-        function processWaitingPackages(toPackage) {
+        function processWaitingPackages() {
             while (waitingPackages.length > 0 && shipmentsLoaded < maxShipments) {
-                const packageElement = waitingPackages.shift(); // Get the first waiting package
-                
+                const { element: packageElement, value: packageValue } = waitingPackages.shift(); // Get the first waiting package
+        
                 const shippingStation = document.getElementById('ShippingStation');
                 const shippingStationRect = shippingStation.getBoundingClientRect();
-            
+        
                 // Animate the package to the shipping station
                 const animation = packageElement.animate([
                     { left: packageElement.style.left, top: packageElement.style.top },
@@ -365,10 +367,10 @@ function gameLoad() {
                     duration: 1000,
                     easing: 'ease'
                 });
-            
+        
                 animation.onfinish = function () {
                     document.body.removeChild(packageElement);
-                    shipmentsLoaded += toPackage;
+                    shipmentsLoaded += packageValue;
                     document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
                 };
             }
@@ -451,15 +453,17 @@ function gameLoad() {
             } else if (shipmentsLoaded >= maxShipments) {
                 alert('Maximum shipments loaded! Please export shipments before packaging more.');
                 if (shipmentsQueued + shipmentsLoaded > maxShipments) {
-                    // If adding the queued shipments would exceed the max, only package the difference
-                    let shipmentsToPackage = maxShipments - shipmentsLoaded;
-                    // Ensure we don't package more than we have queued
-                    if (shipmentsToPackage > shipmentsQueued) {
-                        shipmentsToPackage = shipmentsQueued;
+                    let shipmentsPackaging = shipmentsQueued;
+                    let shipmentsToPackage = [];
+                    for (i = 1; i < Math.ceil(shipmentsQueued/shipmentsPerPackage); i++) {
+                        if (shipmentsPackaging - shipmentsPerPackage < 0) {
+                            shipmentsToPackage.push(shipmentsPackaging);
+                            shipmentsPackaging = 0;
+                        } else {
+                            shipmentsToPackage.push(shipmentsPerPackage);
+                            shipmentsPackaging -= shipmentsPerPackage;
+                        }
                     }
-                    // This ensures we don't package more than we have queued
-                    shipmentsQueued -= shipmentsToPackage;
-                    // Animate the package to the shipping station
                     animatePackageToShippingStation(shipmentsToPackage);
                 }
             }
