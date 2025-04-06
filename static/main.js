@@ -513,6 +513,8 @@ function forumLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
         // Event Listeners
+        document.getElementById("forumStyle").disabled = false;
+        document.getElementById("styleSheet").disabled = true;
     })
     .catch(error => console.error('Error loading forum.html:', error));
 }
