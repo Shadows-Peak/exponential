@@ -511,11 +511,20 @@ function forumLoad() {
     .then(html => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        const link = document.getElementById("mainStyleSheet");
+
+        // Replace body content
+        document.body.innerHTML = doc.body.innerHTML;
+
+        // Handle stylesheet dynamically
+        let link = document.getElementById("mainStyleSheet");
+        if (!link) {
+            // Create the stylesheet link if it doesn't exist
+            link = document.createElement("link");
+            link.id = "mainStyleSheet";
+            link.rel = "stylesheet";
+            document.head.appendChild(link);
+        }
         link.href = "./static/forum.css";
-        document.head.appendChild(link);
-        // Clear existing content
-        
     })
     .catch(error => console.error('Error loading forum.html:', error));
 }
