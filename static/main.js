@@ -511,21 +511,36 @@ function forumLoad() {
     .then(html => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
+
+        // Replace body content
         document.body.innerHTML = doc.body.innerHTML;
-        // Event Listeners
-        const forumStyle = document.getElementById("forumStyle");
-        const styleSheet = document.getElementById("styleSheet");
+
+        // Handle <head> elements
+        const forumStyle = doc.getElementById("forumStyle");
+        const styleSheet = doc.getElementById("styleSheet");
 
         if (forumStyle) {
-            forumStyle.disabled = false;
+            const existingForumStyle = document.getElementById("forumStyle");
+            if (existingForumStyle) {
+                existingForumStyle.disabled = false;
+            } else {
+                document.head.appendChild(forumStyle.cloneNode(true));
+                forumStyle.disabled = false;
+            }
         } else {
-            console.error('Element with ID "forumStyle" not found.');
+            console.error('Element with ID "forumStyle" not found in forum.html.');
         }
 
         if (styleSheet) {
-            styleSheet.disabled = true;
+            const existingStyleSheet = document.getElementById("styleSheet");
+            if (existingStyleSheet) {
+                existingStyleSheet.disabled = true;
+            } else {
+                document.head.appendChild(styleSheet.cloneNode(true));
+                styleSheet.disabled = true;
+            }
         } else {
-            console.error('Element with ID "styleSheet" not found.');
+            console.error('Element with ID "styleSheet" not found in forum.html.');
         }
     })
     .catch(error => console.error('Error loading forum.html:', error));
