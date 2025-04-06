@@ -513,8 +513,20 @@ function forumLoad() {
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
         // Event Listeners
-        document.getElementById("forumStyle").disabled = false;
-        document.getElementById("styleSheet").disabled = true;
+        const forumStyle = document.getElementById("forumStyle");
+        const styleSheet = document.getElementById("styleSheet");
+
+        if (forumStyle) {
+            forumStyle.disabled = false;
+        } else {
+            console.error('Element with ID "forumStyle" not found.');
+        }
+
+        if (styleSheet) {
+            styleSheet.disabled = true;
+        } else {
+            console.error('Element with ID "styleSheet" not found.');
+        }
     })
     .catch(error => console.error('Error loading forum.html:', error));
 }
