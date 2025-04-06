@@ -511,7 +511,7 @@ function forumLoad() {
     .then(html => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        const link = document.getElementById("mainStylesheet");
+        const link = document.getElementById("mainStyleSheet");
         link.href = "./static/forum.css";
         document.head.appendChild(link);
         // Clear existing content
