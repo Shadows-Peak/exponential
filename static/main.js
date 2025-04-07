@@ -332,44 +332,22 @@ function gameLoad() {
         
                     // Check if shipmentsLoaded is at max capacity
                     if (shipmentsLoaded >= maxShipments || willFillorIsFull) {
-                        // Calculate the intermediate position in front of the side of the shipping station
-                        const intermediatePosition = {
-                            left: `${shippingStationRect.left - 50}px`, // Position to the left of the shipping station
-                            top: `${shippingStationRect.top + shippingStationRect.height / 2}px` // Center vertically
-                        };
+                        // Animate the package to the waiting position
+                        const waitingPositionX = processUnitRect.left + (shippingStationRect.left - processUnitRect.left) * (waitingPackages.length + 1) / (waitingPackages.length + 2);
+                        const waitingPositionY = processUnitRect.top + (shippingStationRect.top - processUnitRect.top) * (waitingPackages.length + 1) / (waitingPackages.length + 2);
 
-                        // Animate the package to the intermediate position
-                        const animationToIntermediate = packageElement.animate([
+                        const waitingAnimation = packageElement.animate([
                             { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
-                            { left: intermediatePosition.left, top: intermediatePosition.top }
+                            { left: `${waitingPositionX}px`, top: `${waitingPositionY}px` }
                         ], {
-                            duration: 500,
+                            duration: 1000,
                             easing: 'ease'
                         });
 
-                        animationToIntermediate.onfinish = function () {
-                            // Calculate the final waiting position
-                            const waitingPosition = {
-                                left: `${intermediatePosition.left}`,
-                                top: `${intermediatePosition.top - 30 - waitingPackages.length * spacing}px` // Stack packages vertically
-                            };
-
-                            // Animate the package to the final waiting position
-                            const animationToFinal = packageElement.animate([
-                                { left: intermediatePosition.left, top: intermediatePosition.top },
-                                { left: waitingPosition.left, top: waitingPosition.top }
-                            ], {
-                                duration: 500,
-                                easing: 'ease'
-                            });
-
-                            animationToFinal.onfinish = function () {
-                                // Update the package's position and add it to the waiting queue
-                                packageElement.style.left = waitingPosition.left;
-                                packageElement.style.top = waitingPosition.top;
-
-                                waitingPackages.push({ element: packageElement, value: packageValue }); // Add to waiting queue
-                            };
+                        waitingAnimation.onfinish = function () {
+                            packageElement.style.left = `${waitingPositionX}px`;
+                            packageElement.style.top = `${waitingPositionY}px`;
+                            waitingPackages.push({ element: packageElement, value: packageValue });
                         };
                     } else {
                         // Animate the package to the shipping station with spacing
@@ -424,7 +402,7 @@ function gameLoad() {
                 animation.onfinish = function () {
                     document.body.removeChild(packageElement);
                     shipmentsLoaded += packageValue;
-                    pendingToAdd
+                    pendingToAdd -= packageValue;
                     document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
                 };
             }
