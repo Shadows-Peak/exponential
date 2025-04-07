@@ -125,7 +125,6 @@ async function submitRun(event) {
                 } else {
                     alert('Incorrect password. Login failed.');
                     console.error('Incorrect password for user:', userRecord.fields.username);
-                    
                 }
             } else {
                 alert('Error: User not found.');
