@@ -82,8 +82,7 @@ async function submitRun(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log('Form submitted:', data.username, await hashPassword(data.password));
-    const posts = await loadPosts(); // This should not be here, but it is for testing purposes
-    console.log('Posts:', JSON.stringify(posts, undefined, 2)); // ditto for this line
+    
 
     if (form.id === 'signup-form') {
         console.log('Sign Up Form Data:', JSON.stringify(data, undefined, 2));
@@ -504,7 +503,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching value:', error)); */
 });
-function forumLoad() {
+async function forumLoad() {
+    try {
     // HTML Load
     fetch('./templates/forum.html')
     .then(response => response.text())
@@ -514,7 +514,9 @@ function forumLoad() {
 
         // Replace body content
         document.body.innerHTML = doc.body.innerHTML;
-
+        // Load posts from Airtable
+        const posts = await loadPosts(); // This should not be here, but it is for testing purposes
+        console.log('Posts:', JSON.stringify(posts, undefined, 2)); // ditto for this line
         // Handle stylesheet dynamically
         let link = document.getElementById("mainStyleSheet");
         if (!link) {
@@ -526,5 +528,9 @@ function forumLoad() {
         }
         link.href = "./static/forum.css";
     })
-    .catch(error => console.error('Error loading forum.html:', error));
+} catch (error) {
+    console.error('Error loading forum.html:', error);
+    alert('Error loading forum page. Please try again later.');
+    return;
+    }
 }
