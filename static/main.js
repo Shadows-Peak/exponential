@@ -309,6 +309,7 @@ function gameLoad() {
         
             const spacing = 70; // Spacing between packages
             const curWaiting = waitingPackages.length;
+            var localIndex = 0;
         
             toPackage.forEach((packageValue, index) => {
                 setTimeout(() => {
@@ -337,8 +338,10 @@ function gameLoad() {
                         alert("index Variable: "+index);
                         alert("curWaiting Variable: "+curWaiting);
                         alert("Combined: "+(curWaiting + index + 1));
-                        const waitingPositionX = processUnitRect.left + (shippingStationRect.left - processUnitRect.left) * (curWaiting + index + 1) / (curWaiting + index + 2);
-                        const waitingPositionY = processUnitRect.top + (shippingStationRect.top - processUnitRect.top) * (curWaiting + index + 1) / (curWaiting + index + 2);
+                        const waitingPositionX = processUnitRect.left + (shippingStationRect.left - processUnitRect.left) * (curWaiting + localIndex + 1) / (curWaiting + index + 2);
+                        const waitingPositionY = processUnitRect.top + (shippingStationRect.top - processUnitRect.top) * (curWaiting + localIndex + 1) / (curWaiting + index + 2);
+
+                        localIndex++;
 
                         const waitingAnimation = packageElement.animate([
                             { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
