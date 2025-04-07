@@ -374,16 +374,15 @@ function gameLoad() {
                 const shippingStationRect = shippingStation.getBoundingClientRect();
                 
                 // Calculate the position with spacing
-                const currentLoadedCount = shipmentsLoaded;
-                const offsetX = (currentLoadedCount % 5) * spacing; // Adjust X position for spacing
-                const offsetY = Math.floor(currentLoadedCount / 5) * spacing; // Adjust Y position for spacing
+                const offsetX = (shipmentsLoaded % 5) * spacing; // Adjust X position for spacing
+                const offsetY = Math.floor(shipmentsLoaded / 5) * spacing; // Adjust Y position for spacing
                 
                 // Animate the package to the shipping station with spacing
                 const animation = packageElement.animate([
-                    { left: packageElement.style.left, top: packageElement.style.top },
+                    { left: packageElement.style.left + offsetX, top: packageElement.style.top + offsetY },
                     { 
-                    left: `${shippingStationRect.left + shippingStationRect.width / 2 + offsetX}px`, 
-                    top: `${shippingStationRect.top + shippingStationRect.height / 2 + offsetY}px` 
+                    left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, 
+                    top: `${shippingStationRect.top + shippingStationRect.height / 2}px` 
                     }
                 ], {
                     duration: 1000,
