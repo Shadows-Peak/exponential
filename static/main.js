@@ -346,7 +346,7 @@ function gameLoad() {
                     const animation = packageElement.animate([
                     { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
                     { 
-                        left: `${shippingStationRect.left + shippingStationRect.width / 2 + (index * spacing)}px`, 
+                        left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, 
                         top: `${shippingStationRect.top + shippingStationRect.height / 2}px` 
                     }
                     ], {
@@ -374,15 +374,16 @@ function gameLoad() {
                 const shippingStationRect = shippingStation.getBoundingClientRect();
                 
                 // Calculate the position with spacing
-                const offsetX = (shipmentsLoaded % 5) * spacing; // Adjust X position for spacing
-                const offsetY = Math.floor(shipmentsLoaded / 5) * spacing; // Adjust Y position for spacing
+                const currentLoadedCount = shipmentsLoaded;
+                const offsetX = (currentLoadedCount % 5) * spacing; // Adjust X position for spacing
+                const offsetY = Math.floor(currentLoadedCount / 5) * spacing; // Adjust Y position for spacing
                 
                 // Animate the package to the shipping station with spacing
                 const animation = packageElement.animate([
-                    { left: packageElement.style.left + offsetX, top: packageElement.style.top + offsetY },
+                    { left: packageElement.style.left, top: packageElement.style.top },
                     { 
-                    left: `${shippingStationRect.left + shippingStationRect.width / 2}px`, 
-                    top: `${shippingStationRect.top + shippingStationRect.height / 2}px` 
+                    left: `${shippingStationRect.left + shippingStationRect.width / 2 + offsetX}px`, 
+                    top: `${shippingStationRect.top + shippingStationRect.height / 2 + offsetY}px` 
                     }
                 ], {
                     duration: 1000,
