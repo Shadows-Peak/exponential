@@ -505,18 +505,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 async function forumLoad() {
     try {
-    // HTML Load
-    fetch('./templates/forum.html')
-    .then(response => response.text())
-    .then(html => {
+        // Fetch the forum HTML
+        const response = await fetch('./templates/forum.html');
+        const html = await response.text();
+
+        // Parse the HTML and replace body content
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-
-        // Replace body content
         document.body.innerHTML = doc.body.innerHTML;
+
         // Load posts from Airtable
-        const posts = await loadPosts(); // This should not be here, but it is for testing purposes
-        console.log('Posts:', JSON.stringify(posts, undefined, 2)); // ditto for this line
+        const posts = await loadPosts(); // Ensure loadPosts is defined and works correctly
+        console.log('Posts:', JSON.stringify(posts, undefined, 2));
+
         // Handle stylesheet dynamically
         let link = document.getElementById("mainStyleSheet");
         if (!link) {
@@ -527,10 +528,8 @@ async function forumLoad() {
             document.head.appendChild(link);
         }
         link.href = "./static/forum.css";
-    })
-} catch (error) {
-    console.error('Error loading forum.html:', error);
-    alert('Error loading forum page. Please try again later.');
-    return;
+    } catch (error) {
+        console.error('Error loading forum.html:', error);
+        alert('Error loading forum page. Please try again later.');
     }
 }
