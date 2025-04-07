@@ -332,16 +332,45 @@ function gameLoad() {
         
                     // Check if shipmentsLoaded is at max capacity
                     if (shipmentsLoaded >= maxShipments || willFillorIsFull) {
-                        // Stop the package short and line it up
-                        const waitingPosition = {
-                            left: `${shippingStationRect.left + shippingStationRect.width / 2 + (index * spacing)}px`,
-                            top: `${shippingStationRect.top - 30 - waitingPackages.length * spacing}px` // Stack packages vertically
+                        // Calculate the intermediate position in front of the side of the shipping station
+                        const intermediatePosition = {
+                            left: `${shippingStationRect.left - 50}px`, // Position to the left of the shipping station
+                            top: `${shippingStationRect.top + shippingStationRect.height / 2}px` // Center vertically
                         };
-        
-                        packageElement.style.left = waitingPosition.left;
-                        packageElement.style.top = waitingPosition.top;
-        
-                        waitingPackages.push({ element: packageElement, value: packageValue }); // Add to waiting queue
+
+                        // Animate the package to the intermediate position
+                        const animationToIntermediate = packageElement.animate([
+                            { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
+                            { left: intermediatePosition.left, top: intermediatePosition.top }
+                        ], {
+                            duration: 500,
+                            easing: 'ease'
+                        });
+
+                        animationToIntermediate.onfinish = function () {
+                            // Calculate the final waiting position
+                            const waitingPosition = {
+                                left: `${intermediatePosition.left}`,
+                                top: `${intermediatePosition.top - 30 - waitingPackages.length * spacing}px` // Stack packages vertically
+                            };
+
+                            // Animate the package to the final waiting position
+                            const animationToFinal = packageElement.animate([
+                                { left: intermediatePosition.left, top: intermediatePosition.top },
+                                { left: waitingPosition.left, top: waitingPosition.top }
+                            ], {
+                                duration: 500,
+                                easing: 'ease'
+                            });
+
+                            animationToFinal.onfinish = function () {
+                                // Update the package's position and add it to the waiting queue
+                                packageElement.style.left = waitingPosition.left;
+                                packageElement.style.top = waitingPosition.top;
+
+                                waitingPackages.push({ element: packageElement, value: packageValue }); // Add to waiting queue
+                            };
+                        };
                     } else {
                         // Animate the package to the shipping station with spacing
                         const animation = packageElement.animate([
