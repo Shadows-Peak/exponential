@@ -308,6 +308,7 @@ function gameLoad() {
             const shippingStationRect = shippingStation.getBoundingClientRect();
         
             const spacing = 70; // Spacing between packages
+            const curWaiting = waitingPackages.length;
         
             toPackage.forEach((packageValue, index) => {
                 setTimeout(() => {
@@ -333,8 +334,8 @@ function gameLoad() {
                     // Check if shipmentsLoaded is at max capacity
                     if (shipmentsLoaded >= maxShipments || willFillorIsFull) {
                         // Animate the package to the waiting position
-                        const waitingPositionX = processUnitRect.left + (shippingStationRect.left - processUnitRect.left) * (waitingPackages.length + 1) / (waitingPackages.length + 2);
-                        const waitingPositionY = processUnitRect.top + (shippingStationRect.top - processUnitRect.top) * (waitingPackages.length + 1) / (waitingPackages.length + 2);
+                        const waitingPositionX = processUnitRect.left + (shippingStationRect.left - processUnitRect.left) * (curWaiting + index + 1) / (curWaiting + index + 2);
+                        const waitingPositionY = processUnitRect.top + (shippingStationRect.top - processUnitRect.top) * (curWaiting + index + 1) / (curWaiting + index + 2);
 
                         const waitingAnimation = packageElement.animate([
                             { left: `${processUnitRect.left + processUnitRect.width / 2}px`, top: `${processUnitRect.top + processUnitRect.height / 2}px` },
