@@ -336,7 +336,7 @@ function gameLoad() {
                     if (shipmentsLoaded >= maxShipments || willFillorIsFull) {
                         // Animate the package to the waiting position
                         const waitingPositionX = ((shippingStationRect.left - processUnitRect.left)*(maxWaitingShipments-localIndex))/maxWaitingShipments;
-                        const waitingPositionY = ((shippingStationRect.top - processUnitRect.top)/(shippingStationRect.left))*((shippingStationRect.left - processUnitRect.left)/maxWaitingShipments)*localIndex + (100 - shippingStationRect.top);
+                        const waitingPositionY = -1*((shippingStationRect.top - processUnitRect.top)/(shippingStationRect.left))*((shippingStationRect.left - processUnitRect.left)/maxWaitingShipments)*localIndex + (shippingStationRect.top-document.body.getBoundingClientRect().top);
 
                         localIndex++;
 
