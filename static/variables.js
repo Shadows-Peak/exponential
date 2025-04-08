@@ -12,4 +12,5 @@ var maxShipments = 5;
 var maxQueueableShipments = 10;
 var shipmentsQueued = 0;
 var shipmentsPerPackage = 1;
+var maxWaitingShipments = 10;
 //export { Points, ClickValue, currentpage };
