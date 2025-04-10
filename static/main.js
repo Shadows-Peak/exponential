@@ -309,9 +309,8 @@ function gameLoad() {
             const processUnitRect = processUnit.getBoundingClientRect();
             const shippingStationRect = shippingStation.getBoundingClientRect();
         
-            const spacing = 70; // Spacing between packages
             var localIndex = 0;
-            
+
             toPackage.forEach((packageValue, index) => {
                 const curWaiting = waitingPackages.length;
 
@@ -496,17 +495,13 @@ function gameLoad() {
         }
 
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
-            if (shipmentsQueued > 0 && shipmentsLoaded < maxShipments) {
+            if (shipmentsQueued > 0 && waitingPackages.length < maxWaitingShipments) {
                 let shipmentsToPackage = splitExports(shipmentsQueued,shipmentsPerPackage);
                 animatePackageToShippingStation(shipmentsToPackage);
-            } else if (shipmentsQueued < 0 && shipmentsLoaded < maxShipments) {
+            } else if (shipmentsQueued <= 0) {
                 alert('You have no shipments queued! Please queue some shipments before packaging.');
-            } else if (shipmentsLoaded >= maxShipments) {
-                alert('Maximum shipments loaded! Please export shipments before packaging more.');
-                if (shipmentsQueued + shipmentsLoaded > maxShipments) {
-                    let shipmentsToPackage = splitExports(shipmentsQueued,shipmentsPerPackage);
-                    animatePackageToShippingStation(shipmentsToPackage);
-                }
+            } else if (waitingPackages.length >= maxWaitingShipments) {
+                alert('You have reached the maximum number of waiting packages. Please export some shipments before packaging more.');
             }
         });
     })
