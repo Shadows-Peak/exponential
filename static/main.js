@@ -311,35 +311,14 @@ function gameLoad() {
         
             const spacing = 70; // Spacing between packages
             var localIndex = 0;
-
-            // Define the two points for the diagonal line
             
-            // Set initial positions for the points
-            point1.style.left = '50px';
-            point1.style.top = '50px';
-            point2.style.left = '400px';
-            point2.style.top = '200px';
-                    
-            function lineUpDivs(numDivs) {
-              
-            
-              for (let i = 0; i < numDivs; i++) {
-                
-              }
-            }
-            
-            // Example: Line up 5 divs between the two points
-            lineUpDivs(5);
-
-            // Calculate slope (m) and y-intercept (b)
-        
             toPackage.forEach((packageValue, index) => {
                 const curWaiting = waitingPackages.length;
 
-                const x1 = point1.offsetLeft + point1.offsetWidth / 2;
-                const y1 = point1.offsetTop + point1.offsetHeight / 2;
-                const x2 = point2.offsetLeft + point2.offsetWidth / 2;
-                const y2 = point2.offsetTop + point2.offsetHeight / 2;
+                const x1 = shippingStationRect.right + 30;
+                const y1 = shippingStationRect.top + (shippingStationRect.bottom-shippingStationRect.top) / 2;
+                const x2 = processUnitRect.left - 30;
+                const y2 = processUnitRect.top + (processUnitRect.bottom-processUnitRect.top) / 2;
                 
                 const dx = (x2 - x1) / (maxWaitingShipments - 1);
                 const dy = (y2 - y1) / (maxWaitingShipments - 1);
