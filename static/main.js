@@ -310,6 +310,17 @@ function gameLoad() {
             const spacing = 70; // Spacing between packages
             const curWaiting = waitingPackages.length;
             var localIndex = 0;
+
+            // Define the two points for the diagonal line
+            const x1 = shippingStationRect.right; // Halfway up the shipping station's right wall
+            const y1 = shippingStationRect.top + shippingStationRect.height / 2;
+
+            const x2 = processUnitRect.left; // Halfway up the processing unit's left wall
+            const y2 = processUnitRect.top + processUnitRect.height / 2;
+
+            // Calculate slope (m) and y-intercept (b)
+            const m = (y2 - y1) / (x2 - x1);
+            const b = y1 - m * x1;
         
             toPackage.forEach((packageValue, index) => {
                 setTimeout(() => {
@@ -334,12 +345,9 @@ function gameLoad() {
         
                     // Check if shipmentsLoaded is at max capacity
                     if (shipmentsLoaded >= maxShipments || willFillorIsFull) {
-                        // Calculate the diagonal position for waiting packages
-                        const totalDistanceX = shippingStationRect.left - processUnitRect.right;
-                        const totalDistanceY = shippingStationRect.top - processUnitRect.bottom;
-
-                        const waitingPositionX = processUnitRect.right + (localIndex % maxWaitingShipments) * (totalDistanceX / maxWaitingShipments);
-                        const waitingPositionY = processUnitRect.bottom + (localIndex % maxWaitingShipments) * (totalDistanceY / maxWaitingShipments);
+                        // Calculate the diagonal position for waiting packages using y = mx + b
+                        const waitingPositionX = x1 - index * spacing; // Move left along the x-axis
+                        const waitingPositionY = m * waitingPositionX + b; // Calculate corresponding y using the line equation
 
                         localIndex++;
 
