@@ -3,7 +3,6 @@
 var roomids;
 
 function GameTick() {
-    processWaitingPackages(); // Dont mind this being here
     //console.log("running game tick")
     if (document.getElementById('points')) {
         document.getElementById('points').innerHTML = "You have:" + (DilyanPoints) + " Dilyan Points";
@@ -17,6 +16,11 @@ function GameTick() {
     //add anything that should be constantly running\
     roomids = document.querySelectorAll('[data-room-id]');
     //console.log(Points)
+
+    if (document.readyState === 'complete') {
+        // Code to execute when the body has finished loading
+        processWaitingPackages(); // Dont mind this being here
+    }
 }
 
 //export { GameTick };
