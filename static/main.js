@@ -496,7 +496,12 @@ function gameLoad() {
 
         document.getElementById('packageShipmentsButton').addEventListener('click', function () {
             if (shipmentsQueued > 0 && waitingPackages.length < maxWaitingShipments) {
-                let shipmentsToPackage = splitExports(shipmentsQueued,shipmentsPerPackage);
+                let shipmentsToPackage;
+                if (shipmentsLoaded >= maxShipments) {
+                    shipmentsToPackage = splitExports(Math.min(maxWaitingShipments-waitingPackages.length,shipmentsQueued),shipmentsPerPackage);
+                } else {
+                    shipmentsToPackage = splitExports(shipmentsQueued,shipmentsPerPackage);
+                }
                 animatePackageToShippingStation(shipmentsToPackage);
             } else if (shipmentsQueued <= 0) {
                 alert('You have no shipments queued! Please queue some shipments before packaging.');
