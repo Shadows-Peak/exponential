@@ -334,10 +334,10 @@ function gameLoad() {
             toPackage.forEach((packageValue, index) => {
                 const curWaiting = waitingPackages.length;
 
-                const x1 = point1.offsetLeft + point1.offsetWidth / 2;
-                const y1 = point1.offsetTop + point1.offsetHeight / 2;
-                const x2 = point2.offsetLeft + point2.offsetWidth / 2;
-                const y2 = point2.offsetTop + point2.offsetHeight / 2;
+                const x1 = shippingStationRect.right + 30;
+                const y1 = shippingStationRect.top + shippingStationRect.height / 2;
+                const x2 = processUnitRect.left - 30;
+                const y2 = processUnitRect.top + processUnitRect.height / 2;
                 
                 const dx = (x2 - x1) / (maxWaitingShipments - 1);
                 const dy = (y2 - y1) / (maxWaitingShipments - 1);
