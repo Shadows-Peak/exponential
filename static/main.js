@@ -82,6 +82,8 @@ async function submitRun(event) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log('Form submitted:', data.username, await hashPassword(data.password));
+    localStorage.setItem('username', data.username);
+    localStorage.setItem('password', data.password);
     
 
     if (form.id === 'signup-form') {
