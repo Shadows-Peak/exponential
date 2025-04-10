@@ -3,6 +3,7 @@
 var roomids;
 
 function GameTick() {
+    processWaitingPackages(); // Dont mind this being here
     //console.log("running game tick")
     if (document.getElementById('points')) {
         document.getElementById('points').innerHTML = "You have:" + (DilyanPoints) + " Dilyan Points";
