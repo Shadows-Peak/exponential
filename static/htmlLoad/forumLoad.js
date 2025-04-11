@@ -12,8 +12,30 @@ async function forumLoad() {
         // Load posts from Airtable
         const posts = await loadPosts(); // Ensure loadPosts is defined and works correctly
         console.log('Posts:', JSON.stringify(posts, undefined, 2));
-        
+        posts.sort((a, b) => new Date(b.fields.Date) - new Date(a.fields.Date)); // Sort posts by date
+        const postList = document.getElementById("post-list");
+        async function updatePosts() {
+            const posts = await loadPosts(); // Ensure loadPosts is defined and works correctly
+            console.log('Posts:', JSON.stringify(posts, undefined, 2));
+            posts.sort((a, b) => new Date(b.fields.Date) - new Date(a.fields.Date)); // Sort posts by date
+            postList.innerHTML = ""; // Clear the current posts
+            posts.forEach(post => {
+            const postEl = document.createElement("div");
+            postEl.classList.add("post");
+            postEl.innerHTML = `
+                <div><strong>${post.username}</strong> <em>${new Date(post.fields.Date).toLocaleString()}</em></div>
+                <div>${post.fields.Content}</div>
+                <hr>
+            `;
+            postList.appendChild(postEl);
+            });
+        }
 
+        // Initial load of posts
+        await updatePosts();
+
+        // Set interval to update posts every minute
+        setInterval(updatePosts, 60000);
         // Handle stylesheet dynamically
         let link = document.getElementById("mainStyleSheet");
         if (!link) {
