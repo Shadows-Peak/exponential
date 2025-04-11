@@ -1,8 +1,4 @@
-/*import { Points, ClickValue, currentpage } from './variables.js';
-import { GameTick } from './visuals.js';*/
-
-//import bcrypt from 'bcrypt';
-
+// This is the main JavaScript file for the web application
 function fillCircle(value) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
