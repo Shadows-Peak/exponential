@@ -19,8 +19,12 @@ function GameTick() {
 
     if (document.readyState === 'complete') {
         // Code to execute when the body has finished loading
-        alert("pretest");
-        processWaitingPackages(); // Dont mind this being here
+
+        if (window.processWaitingPackages) {
+            window.processWaitingPackages(); // Call the function if it exists
+        } else {
+            console.error("processWaitingPackages is not defined yet.");
+        }
     }
 }
 

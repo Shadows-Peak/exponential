@@ -424,6 +424,7 @@ function gameLoad() {
                 };
             }
         }
+        window.processWaitingPackages = processWaitingPackages;
         function clickExportShipment() {
             if (shipmentsLoaded > 0) {
                 DilyanPoints += shipmentsLoaded;
