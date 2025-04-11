@@ -391,6 +391,7 @@ function gameLoad() {
         }
 
         function processWaitingPackages() {
+            alert("Hi i ran the function!");
             const spacing = 30; // Spacing between package elements
             while (waitingPackages.length > 0 && shipmentsLoaded < maxShipments) {
                 const { element: packageElement, value: packageValue } = waitingPackages.shift(); // Get the first waiting package

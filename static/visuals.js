@@ -19,6 +19,7 @@ function GameTick() {
 
     if (document.readyState === 'complete') {
         // Code to execute when the body has finished loading
+        alert("pretest");
         processWaitingPackages(); // Dont mind this being here
     }
 }
