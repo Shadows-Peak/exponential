@@ -31,15 +31,6 @@ async function forumLoad() {
             postList.appendChild(postEl);
         });
 
-        // Handle stylesheet dynamically
-        let link = document.getElementById("mainStyleSheet");
-        if (!link) {
-            link = document.createElement("link");
-            link.id = "mainStyleSheet";
-            link.rel = "stylesheet";
-            document.head.appendChild(link);
-        }
-        link.href = "/static/forum.css?v=" + new Date().getTime(); // Cache-busting query string
     } catch (error) {
         console.error('Error loading forum.html:', error);
         alert('Error loading forum page. Please try again later.');
