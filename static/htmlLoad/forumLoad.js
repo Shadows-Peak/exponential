@@ -22,16 +22,11 @@ async function forumLoad() {
             posts.forEach(post => {
             const postEl = document.createElement("div");
             postEl.classList.add("post");
-            try {
-                postEl.innerHTML = `
-                    <div><strong>${post.username}</strong> <em>${new Date(post.fields.Date).toLocaleString()}</em></div>
-                    <div>${post.fields.text}</div>
-                    <hr>
-                `;
-            } catch (error) {
-                console.error('Error rendering post:', error);
-                postEl.innerHTML = `<div>Error loading post content.</div>`;
-            }
+            postEl.innerHTML = `
+                <div><strong>${post.username}</strong> <em>${new Date(post.fields.Date).toLocaleString()}</em></div>
+                <div>${post.fields.text}</div>
+                <hr>
+            `;
             postList.appendChild(postEl);
             });
         }
@@ -50,7 +45,7 @@ async function forumLoad() {
             link.rel = "stylesheet";
             document.head.appendChild(link);
         }
-        link.href = "./static/forum.css";
+        link.href = "../static/forum.css";
     } catch (error) {
         console.error('Error loading forum.html:', error);
         alert('Error loading forum page. Please try again later.');
