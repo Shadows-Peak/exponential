@@ -16,7 +16,7 @@ async function gameLoad() {
                 menuLoad();
                 localStorage.removeItem('username');
                 localStorage.removeItem('password');
-                localStorage.removeItem('loggedIn');
+                localStorage.removeItem('logged_in');
                 localStorage.removeItem('first_load');
             });
         } else {
