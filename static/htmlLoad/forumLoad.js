@@ -22,11 +22,16 @@ async function forumLoad() {
             posts.forEach(post => {
             const postEl = document.createElement("div");
             postEl.classList.add("post");
-            postEl.innerHTML = `
-                <div><strong>${post.username}</strong> <em>${new Date(post.fields.Date).toLocaleString()}</em></div>
-                <div>${post.fields.text}</div>
-                <hr>
-            `;
+            try {
+                postEl.innerHTML = `
+                    <div><strong>${post.username}</strong> <em>${new Date(post.fields.Date).toLocaleString()}</em></div>
+                    <div>${post.fields.text}</div>
+                    <hr>
+                `;
+            } catch (error) {
+                console.error('Error rendering post:', error);
+                postEl.innerHTML = `<div>Error loading post content.</div>`;
+            }
             postList.appendChild(postEl);
             });
         }
