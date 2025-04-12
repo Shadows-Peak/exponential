@@ -7,9 +7,7 @@ function GameTick() {
         document.getElementById('processDisplay').innerHTML = (queuedResources)+'/'+(maxQueueableResources)+' Resources Queued   ---  '+(shipmentsQueued)+'/'+(maxQueueableShipments)+' Shipments Queued';
         document.getElementById('shipmentsCounter').textContent = `Shipments Loaded: ${shipmentsLoaded}/${maxShipments}`;
     }
-    if (document.getElementById('version')) {
-        document.getElementById('version').innerHTML = (output);
-    }
+    
     if (document.readyState === 'complete') {
         // Code to execute when the body has finished loading
 

@@ -17,6 +17,7 @@ async function gameLoad() {
                 localStorage.removeItem('username');
                 localStorage.removeItem('password');
                 localStorage.removeItem('loggedIn');
+                localStorage.removeItem('first_load');
             });
         } else {
             console.warn('logoutButton element not found.');
