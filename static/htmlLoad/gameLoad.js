@@ -11,12 +11,23 @@ async function gameLoad() {
         setInterval(GameTick, 10);
 
         // Event Listeners
-        document.getElementById('logoutButton').addEventListener('click', function () {
-            menuLoad();
-        });
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function () {
+                menuLoad();
+            });
+        } else {
+            console.warn('logoutButton element not found.');
+        }
         document.getElementById('forumButton').addEventListener('click', function () {
-            forumLoad();
-        });
+            const forumButton = document.getElementById('forumButton');
+            if (forumButton) {
+                forumButton.addEventListener('click', function () {
+                    forumLoad();
+                });
+            } else {
+                console.warn('forumButton element not found.');
+            }});
 
         function clickButton() {
             if (HarvestPoints + ResourcesPerHarvest < HarvestPointsNeeded) {
