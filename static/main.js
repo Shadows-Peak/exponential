@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-menuLoad();
+
 async function fillCircle(value) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
@@ -23,6 +22,7 @@ async function fillCircle(value) {
             });
         });
     };
+    window.fillCircle = fillCircle;
 
     waitForElement('.fill').then((fillElement) => {
         //let height = 0;
@@ -73,6 +73,7 @@ async function loginRun() {
     document.getElementById('backButton').addEventListener('click', backButtonRun);
     
 }
+window.signUpRun = signUpRun;
 async function submitRun(event) {
     event.preventDefault();
     const form = event.target;
@@ -137,4 +138,7 @@ async function submitRun(event) {
     }
 menuLoad();
 }
-});
+window.submitRun = submitRun;
+document.addEventListener('DOMContentLoaded', () => {
+    menuLoad();
+    });

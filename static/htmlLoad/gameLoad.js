@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
 async function gameLoad() {
     // HTML Load
     fetch('./templates/game.html')
@@ -356,4 +355,3 @@ async function gameLoad() {
     .catch(error => console.error('Error loading game.html:', error));
 }
 window.gameLoad = gameLoad;
-});
