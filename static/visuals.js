@@ -1,7 +1,5 @@
-//import { Points } from './variables.js';
 
 var roomids;
-
 function GameTick() {
     //console.log("running game tick")
     if (document.getElementById('points')) {

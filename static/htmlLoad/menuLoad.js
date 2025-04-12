@@ -1,3 +1,5 @@
+
+
 async function menuLoad() {
     // HTML Load
     fetch('./templates/menu.html')
