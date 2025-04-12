@@ -136,7 +136,6 @@ async function submitRun(event) {
             alert('Login Failed');
         }
     }
-menuLoad();
 }
 window.submitRun = submitRun;
 document.addEventListener('DOMContentLoaded', () => {
