@@ -24,7 +24,7 @@ async function forumLoad() {
             postEl.classList.add("post");
             postEl.innerHTML = `
                 <div><strong>${post.username}</strong> <em>${new Date(post.fields.Date).toLocaleString()}</em></div>
-                <div>${post.fields.Content}</div>
+                <div>${post.fields.text}</div>
                 <hr>
             `;
             postList.appendChild(postEl);
