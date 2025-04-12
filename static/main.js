@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 menuLoad();
-});
 async function fillCircle(value) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
@@ -138,3 +137,4 @@ async function submitRun(event) {
     }
 menuLoad();
 }
+});
