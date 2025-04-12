@@ -1,5 +1,4 @@
 
-var roomids;
 function GameTick() {
     //console.log("running game tick")
     if (document.getElementById('points')) {
@@ -11,10 +10,6 @@ function GameTick() {
     if (document.getElementById('version')) {
         document.getElementById('version').innerHTML = (output);
     }
-    //add anything that should be constantly running\
-    roomids = document.querySelectorAll('[data-room-id]');
-    //console.log(Points)
-
     if (document.readyState === 'complete') {
         // Code to execute when the body has finished loading
 
@@ -26,4 +21,3 @@ function GameTick() {
     }
 }
 
-//export { GameTick };

@@ -1,5 +1,4 @@
-
-
+document.addEventListener('DOMContentLoaded', function() {
 async function menuLoad() {
     // HTML Load
     fetch('./templates/menu.html')
@@ -28,3 +27,4 @@ async function menuLoad() {
     //.catch(error => console.error('Error loading menu.html:', error));
 }
 window.menuLoad = menuLoad;
+});

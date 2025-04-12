@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-// This is the main JavaScript file for the web application
 menuLoad();
-// This is the main JavaScript file for the web application
+});
 async function fillCircle(value) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
@@ -139,4 +138,3 @@ async function submitRun(event) {
     }
 menuLoad();
 }
-});
