@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // This is the main JavaScript file for the web application
 menuLoad();
 // This is the main JavaScript file for the web application
-function fillCircle(value) {
+async function fillCircle(value) {
     const waitForElement = (selector) => {
         return new Promise((resolve) => {
             const element = document.querySelector(selector);
@@ -43,7 +43,7 @@ function fillCircle(value) {
     });
 }
 
-function signUpRun() {
+async function signUpRun() {
     document.body.innerHTML = `
         <h1>Sign Up</h1>
         <form id="signup-form">
@@ -57,10 +57,10 @@ function signUpRun() {
     `;
     document.getElementById('backButton').addEventListener('click', backButtonRun);
 }
-function backButtonRun() {
+async function backButtonRun() {
     menuLoad();
 }
-function loginRun() {
+async function loginRun() {
     document.body.innerHTML = `
         <h1>Login</h1>
         <form id="login-form">
@@ -139,4 +139,4 @@ async function submitRun(event) {
     }
 menuLoad();
 }
-});
+
