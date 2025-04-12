@@ -14,6 +14,9 @@ async function gameLoad() {
         if (logoutButton) {
             logoutButton.addEventListener('click', function () {
                 menuLoad();
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+                localStorage.removeItem('loggedIn');
             });
         } else {
             console.warn('logoutButton element not found.');

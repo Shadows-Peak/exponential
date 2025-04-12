@@ -140,5 +140,18 @@ menuLoad();
 }
 window.submitRun = submitRun;
 document.addEventListener('DOMContentLoaded', () => {
-    menuLoad();
+    localStorage.setItem('first_load', 'true');
+    if (localStorage.getItem('first_load') === 'true') {
+        menuLoad();
+        localStorage.setItem('first_load', 'false');
+        console.log('First load completed.');
+        // Check if the user is logged in
+        if (localStorage.getItem('logged_in') === 'true') {
+            console.log('User is logged in.');
+            gameLoad();
+        } else {
+            console.log('User is not logged in.');
+            menuLoad();
+        }
+    }
     });
