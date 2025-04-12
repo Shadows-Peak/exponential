@@ -19,7 +19,7 @@ async function loadPosts() {
                 }));
             }
         } catch (error) {
-            console.error("Error loading posts:", error);
+            console.error("Error loading posts from loadposts:", error);
             return null;
         }
     }
