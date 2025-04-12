@@ -45,7 +45,7 @@ async function forumLoad() {
             link.rel = "stylesheet";
             document.head.appendChild(link);
         }
-        link.href = "../static/forum.css";
+        link.href = "./static/forum.css";
     } catch (error) {
         console.error('Error loading forum.html:', error);
         alert('Error loading forum page. Please try again later.');
