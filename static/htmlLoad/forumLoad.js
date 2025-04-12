@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
 async function forumLoad() {
     try {
         // Fetch the forum HTML
@@ -37,4 +36,3 @@ async function forumLoad() {
     }
 }
 window.forumLoad = forumLoad;
-});
