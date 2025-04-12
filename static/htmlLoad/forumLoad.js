@@ -1,7 +1,8 @@
+const FORUM_HTML_PATH = './templates/forum.html';
 async function forumLoad() {
     try {
         // Fetch the forum HTML
-        const response = await fetch('./templates/forum.html');
+        const response = await fetch(FORUM_HTML_PATH);
         if (!response.ok) {
             console.error('Failed to fetch forum.html:', response.status, response.statusText);
             throw new Error('Failed to fetch forum.html');
@@ -18,8 +19,16 @@ async function forumLoad() {
         console.log('Posts:', JSON.stringify(posts, undefined, 2));
         posts.sort((a, b) => new Date(b.fields.Date) - new Date(a.fields.Date)); // Sort posts by date
         const postList = document.getElementById("post-list");
+        if (!postList) {
+            console.error("post-list element not found.");
+            return;
+        }
         postList.innerHTML = ""; // Clear the current posts
         posts.forEach(post => {
+            if (!post.username || !post.fields.text) {
+                console.warn("Invalid post data:", post);
+                return;
+            }
             const postEl = document.createElement("div");
             postEl.classList.add("post");
             postEl.innerHTML = `
