@@ -2,6 +2,10 @@ async function forumLoad() {
     try {
         // Fetch the forum HTML
         const response = await fetch('./templates/forum.html');
+        if (!response.ok) {
+            console.error('Failed to fetch forum.html:', response.status, response.statusText);
+            throw new Error('Failed to fetch forum.html');
+        }
         const html = await response.text();
 
         // Parse the HTML and replace body content
@@ -14,12 +18,8 @@ async function forumLoad() {
         console.log('Posts:', JSON.stringify(posts, undefined, 2));
         posts.sort((a, b) => new Date(b.fields.Date) - new Date(a.fields.Date)); // Sort posts by date
         const postList = document.getElementById("post-list");
-        async function updatePosts() {
-            const posts = await loadPosts(); // Ensure loadPosts is defined and works correctly
-            console.log('Posts:', JSON.stringify(posts, undefined, 2));
-            posts.sort((a, b) => new Date(b.fields.Date) - new Date(a.fields.Date)); // Sort posts by date
-            postList.innerHTML = ""; // Clear the current posts
-            posts.forEach(post => {
+        postList.innerHTML = ""; // Clear the current posts
+        posts.forEach(post => {
             const postEl = document.createElement("div");
             postEl.classList.add("post");
             postEl.innerHTML = `
@@ -28,24 +28,17 @@ async function forumLoad() {
                 <hr>
             `;
             postList.appendChild(postEl);
-            });
-        }
+        });
 
-        // Initial load of posts
-        await updatePosts();
-
-        // Set interval to update posts every minute
-        setInterval(updatePosts, 60000);
         // Handle stylesheet dynamically
         let link = document.getElementById("mainStyleSheet");
         if (!link) {
-            // Create the stylesheet link if it doesn't exist
             link = document.createElement("link");
             link.id = "mainStyleSheet";
             link.rel = "stylesheet";
             document.head.appendChild(link);
         }
-        link.href = "./static/forum.css";
+        link.href = "./static/forum.css?v=" + new Date().getTime(); // Cache-busting query string
     } catch (error) {
         console.error('Error loading forum.html:', error);
         alert('Error loading forum page. Please try again later.');
