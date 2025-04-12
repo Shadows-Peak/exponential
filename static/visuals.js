@@ -1,5 +1,5 @@
 
-async function GameTick() {
+function GameTick() {
     //console.log("running game tick")
     if (document.getElementById('points')) {
         document.getElementById('points').innerHTML = "You have:" + (DilyanPoints) + " Dilyan Points";
