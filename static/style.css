@@ -306,12 +306,17 @@ header h1 {
 }
 
 .forum-container {
-    width: 80%;
-    max-width: 800px;
-    background-color: #fff;
+    width: 1000%; /* Adjust this value to make it wider */
+    max-width: 3200px; /* Set a maximum width to prevent it from becoming too wide */
+    margin: 0 auto; /* Keep it centered horizontally */
     padding: 20px;
     border-radius: 8px;
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
 }
 
 .forum-container h2 {
