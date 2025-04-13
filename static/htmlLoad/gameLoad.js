@@ -25,8 +25,8 @@ async function gameLoad() {
         document.getElementById('forumButton').addEventListener('click', function () {
             const forumButton = document.getElementById('forumButton');
             if (forumButton) {
-                forumButton.addEventListener('click', function () {
-                    forumLoad();
+                forumButton.addEventListener('click', async function () {
+                    await forumLoad();
                 });
             } else {
                 console.warn('forumButton element not found.');
