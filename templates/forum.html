@@ -4,19 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum Board</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <script src="/static/variables.js"></script>
-    <script src="/static/framework/numberFramework.js"></script>
-    <script src="/static/visuals.js"></script>
-    <script src="/static/database.js"></script>
-    <script src="/static/api/signup.js"></script>
-    <script src="/static/api/login.js"></script>
-    <script src="/static/hasher.js"></script>
-    <script src="/static/api/loadposts.js"></script>
-    <script src="/static/main.js"></script>
-    <script src="/static/htmlLoad/menuLoad.js"></script>
-    <script src="/static/htmlLoad/gameLoad.js"></script>
-    <script src="/static/htmlLoad/forumLoad.js"></script>
+    <script src="./static/variables.js"></script>
+    <script src="./static/framework/numberFramework.js"></script>
+    <script src="./static/visuals.js"></script>
+    <script src="./static/database.js"></script>
+    <script src="./static/api/signup.js"></script>
+    <script src="./static/api/login.js"></script>
+    <script src="./static/hasher.js"></script>
+    <script src="./static/api/loadposts.js"></script>
+    <script src="./static/main.js"></script>
+    <script src="./static/htmlLoad/menuLoad.js"></script>
+    <script src="./static/htmlLoad/gameLoad.js"></script>
+    <script src="./static/htmlLoad/forumLoad.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5dc;
+            font-family: Arial, sans-serif;
+        }
+
+        .forum-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .forum-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .forum-container h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .post-box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .post-box textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .post-box button {
+            align-self: flex-end;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .post-box button:hover {
+            background-color: #0056b3;
+        }
+
+        #post-list {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body class="forum-page">
     <header>
@@ -28,11 +110,11 @@
     <main>
         <section class="forum-container">
             <h2>Discussion Thread</h2>
-            <div class="forum-post-box">
+            <div class="post-box">
                 <textarea placeholder="Write a reply..."></textarea>
                 <button>Post Reply</button>
             </div>
-            <div class="post-list"></div>
+            <div id="post-list"></div>
         </section>
     </main>
 </body>

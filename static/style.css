@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f5f5dc; /* Cream color background */
+    background-color: #f5f5dc; /* Light gray background */
     font-family: Arial, sans-serif;
 }
 #top, #bottom, #left, #right {
@@ -285,86 +286,3 @@ left {
     background-color: #0056b3;
 }
 
-.forum-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
-}
-
-header h1 {
-    font-size: 2em;
-    margin: 20px 0;
-    color: #333;
-}
-
-.banner img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.forum-container {
-    width: 1000%; /* Adjust this value to make it wider */
-    max-width: 3200px; /* Set a maximum width to prevent it from becoming too wide */
-    margin: 0 auto; /* Keep it centered horizontally */
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-}
-
-.forum-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.forum-post-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.forum-post-box textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: none;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-.forum-post-box button {
-    align-self: flex-end;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.forum-post-box button:hover {
-    background-color: #0056b3;
-}
-
-.post-list {
-    margin-top: 20px;
-}
-
-.post {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-}
