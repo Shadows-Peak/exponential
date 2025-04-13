@@ -1,7 +1,7 @@
 async function forumLoad() {
     // Fetch the forum HTML
     try {
-        const response = await fetch('/templates/forum.html');
+        const response = await fetch('./templates/forum.html');
         const html = await response.text();
 
         // Parse the HTML and replace body content
