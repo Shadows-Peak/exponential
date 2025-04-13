@@ -8,7 +8,8 @@ async function forumLoad() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         document.body.innerHTML = doc.body.innerHTML;
-
+        const themeStylesheet = document.getElementById("mainStylesheet");
+        themeStylesheet.setAttribute('href', './static/forum_styles.css')
         // Load posts from Airtable
         try {
             const posts = await loadPosts();
