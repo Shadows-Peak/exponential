@@ -41,8 +41,6 @@ async function forumLoad() {
             const posts = await loadPosts();
             console.log('Posts:', JSON.stringify(posts, undefined, 2));
             displayPosts(posts);
-            
-            }
         } catch (error) {
             console.error('Error loading posts:', error);
             alert('Error loading posts. Please try again later.');
