@@ -61,6 +61,8 @@ header h1 {
     resize: none;
     margin-bottom: 10px;
     font-size: 14px;
+    position: relative;
+    left: -10px;
 }
 
 .post-box button {
