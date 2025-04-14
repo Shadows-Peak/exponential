@@ -1,3 +1,29 @@
+function displayPosts(postsArray) {
+    const postsContainer = document.getElementById('post-list');
+    if (!postsContainer) {
+        console.error('Posts container not found');
+        return;
+    }
+    postsContainer.innerHTML = ''; // Clear existing content
+    if (!Array.isArray(postsArray) || postsArray.length === 0) {
+        postsContainer.innerHTML = '<p>No posts available.</p>';
+        return;
+    }
+    postsArray.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'post';
+        const textElement = document.createElement('p');
+        textElement.classList.add('post-text');
+        textElement.textContent = post.fields.text;
+        const usernameElement = document.createElement('p');
+        usernameElement.classList.add('post-username');
+        usernameElement.textContent = `- ${post.fields.username} || 'Anon'}`;
+        postElement.appendChild(textElement);
+        postElement.appendChild(usernameElement);
+        postsContainer.appendChild(postElement);
+    });
+    console.log('Posts displayed successfully');
+}
 async function forumLoad() {
     // Fetch the forum HTML
     try {
@@ -14,43 +40,9 @@ async function forumLoad() {
         try {
             const posts = await loadPosts();
             console.log('Posts:', JSON.stringify(posts, undefined, 2));
-
-            // Get the post list container
-            posts = posts.map(post => ({
-                username: post.fields.username,
-                fields: {
-                    text: post.fields.text,
-                    Date: post.fields.Date
-                }
-            }));
-            const postList = document.getElementById("post-list");
-            if (!postList) {
-                console.error("post-list element not found.");
-                return;
+            displayPosts(posts);
+            
             }
-
-            // Clear the current posts
-            postList.innerHTML = "";
-
-            // Render each post
-            posts.forEach(post => {
-                if (!post.username || !post.fields.text) {
-                    console.warn("Invalid post data:", post);
-                    return;
-                }
-
-                const postEl = document.createElement("div");
-                postEl.classList.add("post");
-                postEl.innerHTML = `
-                    <div>
-                        <strong>${post.username}</strong>
-                        <em>${new Date(post.fields.Date).toLocaleString()}</em>
-                    </div>
-                    <div>${post.fields.text}</div>
-                    <hr>
-                `;
-                postList.appendChild(postEl);
-            });
         } catch (error) {
             console.error('Error loading posts:', error);
             alert('Error loading posts. Please try again later.');

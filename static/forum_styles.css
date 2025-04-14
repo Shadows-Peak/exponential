@@ -83,3 +83,18 @@ header h1 {
 #post-list {
     margin-top: 20px;
 }
+.post {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.post-text {
+    font-size: 14px;
+    color: #333;
+}
+.post-username {
+    font-weight: bold;
+    color: #007BFF;
+}
