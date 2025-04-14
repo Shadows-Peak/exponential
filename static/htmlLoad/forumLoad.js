@@ -17,7 +17,7 @@ function displayPosts(postsArray) {
         textElement.textContent = post.fields.text;
         const usernameElement = document.createElement('p');
         usernameElement.classList.add('post-username');
-        usernameElement.textContent = `- ${post.fields.username} || 'Anon'}`;
+        usernameElement.textContent = `- ${post.fields.username || 'Anon'}`;
         postElement.appendChild(textElement);
         postElement.appendChild(usernameElement);
         postsContainer.appendChild(postElement);
