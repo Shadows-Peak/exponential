@@ -1,27 +1,35 @@
-function displayPosts(postsArray) {
+function displayPosts(postsJson) {
     const postsContainer = document.getElementById('post-list');
     if (!postsContainer) {
         console.error('Posts container not found');
         return;
     }
     postsContainer.innerHTML = ''; // Clear existing content
+
+    // Extract the posts array from the JSON object
+    const postsArray = postsJson.records; // Assuming the JSON has a "records" key
     if (!Array.isArray(postsArray) || postsArray.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
+
     postsArray.forEach(post => {
         const postElement = document.createElement('div');
         postElement.className = 'post';
+
         const textElement = document.createElement('p');
         textElement.classList.add('post-text');
         textElement.textContent = post.fields.text;
+
         const usernameElement = document.createElement('p');
         usernameElement.classList.add('post-username');
         usernameElement.textContent = `- ${post.fields.username || 'Anon'}`;
+
         postElement.appendChild(textElement);
         postElement.appendChild(usernameElement);
         postsContainer.appendChild(postElement);
     });
+
     console.log('Posts displayed successfully');
 }
 async function forumLoad() {
