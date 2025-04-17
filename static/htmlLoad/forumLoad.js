@@ -7,7 +7,7 @@ function displayPosts(postsJson) {
     postsContainer.innerHTML = ''; // Clear existing content
 
     // Extract the posts array from the JSON object
-    const postsArray = postsJson.records; // Assuming the JSON has a "records" key
+    const postsArray = postsJson.Posts; // Assuming the JSON has a "records" key
     if (!Array.isArray(postsArray) || postsArray.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
